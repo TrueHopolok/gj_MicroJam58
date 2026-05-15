@@ -13,7 +13,7 @@ var _is_dead: bool = false
 
 
 func heal(hp: int) -> void:
-	if is_dead() || hp == 0:
+	if is_dead() or hp == 0:
 		return
 	elif hp < 0:
 		damage(-hp)
@@ -34,5 +34,5 @@ func damage(dmg: int) -> void:
 
 
 func is_dead() -> bool:
-	_is_dead = _is_dead || health <= 0
+	_is_dead = _is_dead or health <= 0
 	return _is_dead
