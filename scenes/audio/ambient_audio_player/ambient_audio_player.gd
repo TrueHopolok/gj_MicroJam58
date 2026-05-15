@@ -18,7 +18,8 @@ var _timer_player: Timer
 
 
 func _ready() -> void:
-	if bus != &"SFX" && bus != &"SFX_panning": printerr("Ambience Audio Player is not set on SFX bus")
+	if bus != &"SFX" and bus != &"SFX_panning":
+		printerr("Ambience Audio Player is not set on SFX bus")
 
 	_timer_player = Timer.new()
 	_timer_player.one_shot = true
@@ -51,7 +52,7 @@ func _play_sound() -> void:
 		if _reset_panning_on_play: _effect_panner.pan = 0.5
 		var tween = get_tree().create_tween()
 		var _delta_pan: float = randf_range(_min_panning, _max_panning) * [-1.0, 1.0].pick_random()
-		tween.tween_property(_effect_panner, ^'pan', _delta_pan, stream.get_length())
+		tween.tween_property(_effect_panner, ^"pan", _delta_pan, stream.get_length())
 	play()
 
 
