@@ -58,6 +58,7 @@ folder_colors={
 
 AudioSettings=""
 EnemyMother=""
+Enemy=""
 
 [gui]
 
