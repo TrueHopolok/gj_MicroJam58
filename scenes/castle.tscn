@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://duhkj06jamchu"]
+
+[ext_resource type="Script" uid="uid://tcip471tqf86" path="res://scenes/castle.gd" id="1_bly62"]
+[ext_resource type="Texture2D" uid="uid://dntljm6f44288" path="res://assets/art/castle.png" id="2_0ysgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ysgy"]
+radius = 27.0
+height = 78.0
+
+[node name="Castle" type="Area2D" unique_id=1034605710]
+script = ExtResource("1_bly62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241299326]
+position = Vector2(-7, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0ysgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=243940076]
+texture = ExtResource("2_0ysgy")
