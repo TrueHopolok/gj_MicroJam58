@@ -42,13 +42,13 @@ float dist_sqr(vec2 a, vec2 b) {
 vec3 get_water_color(vec4 n1, vec4 n2) {
     // Combined noise value (grayscale)
     float noise_val = sqrt(n1.r * n2.r);
-    
+
     // Water: blend water_base_color darkened in troughs, lighter on crests
     vec3 water = mix(water_base_color.rgb * water_darkness, water_base_color.rgb, step(0.5, noise_val));
-    
+
     // Foam: soft threshold near the bright peaks of the noise
     float foam_amount = step(foam_threshold - foam_softness, noise_val);
-    
+
     // Composite foam over water
     return mix(water, water_foam_color.rgb, foam_amount * water_foam_color.a);
 }
@@ -76,7 +76,7 @@ void fragment() {
     vec4 foam = get_foam_circle(xy, hole_pos_xy, hole_rad, hole_foam_thickness, n3);
 
     vec4 col = vec4(mix(water_color, foam.xyz, foam.a), max(water_a, foam.a));
-    
+
     col.a *= water_base_color.a;
     COLOR = col;
 }

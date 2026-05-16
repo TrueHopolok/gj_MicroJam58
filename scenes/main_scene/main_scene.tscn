@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mlfopegdrvw6"]
 
 [ext_resource type="Script" uid="uid://cagct1tdxfty" path="res://scenes/game_manager/game_manager.gd" id="1_s5p1y"]
-[ext_resource type="Resource" uid="uid://lu6e120io87x" path="res://scenes/game_manager/spawn_policy.tres" id="2_6loks"]
+[ext_resource type="Resource" uid="uid://calr7r0oup3sa" path="res://scenes/game_manager/spawn_policy.tres" id="2_6loks"]
 [ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="6_sro07"]
 [ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="7_3naof"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="8_17klg"]
