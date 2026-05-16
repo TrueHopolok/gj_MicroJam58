@@ -28,7 +28,6 @@ func _ready() -> void:
 	for enemy: EnemySpec in enemies:
 		_total_enemy_cost += enemy.cost
 
-
 	_next_level()
 
 
