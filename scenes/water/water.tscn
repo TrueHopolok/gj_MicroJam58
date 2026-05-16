@@ -11,8 +11,8 @@ fractal_lacunarity = 2.126
 fractal_gain = 0.63
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l4m65"]
-width = 320
-height = 180
+width = 640
+height = 360
 generate_mipmaps = false
 noise = SubResource("FastNoiseLite_l4m65")
 seamless = true
@@ -34,13 +34,19 @@ shader = ExtResource("1_2dnj0")
 shader_parameter/output_size = Vector2(640, 360)
 shader_parameter/noise1 = SubResource("NoiseTexture2D_l4m65")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_iyjrf")
-shader_parameter/scroll_speed1 = Vector2(-0.03, 0.03)
+shader_parameter/scroll_speed1 = Vector2(-0.015, 0.015)
 shader_parameter/scroll_speed2 = Vector2(0.015, 0.03)
-shader_parameter/base_color = Color(0.20007345, 0.47174197, 0.8356744, 1)
-shader_parameter/foam_color = Color(0.63117033, 0.8116257, 1, 1)
-shader_parameter/foam_threshold = 0.698000033155
+shader_parameter/water_base_color = Color(0.13726759, 0.38468856, 0.7159044, 1)
+shader_parameter/water_foam_color = Color(0.63, 0.81, 1, 1)
+shader_parameter/foam_threshold = 0.7810000370975
 shader_parameter/foam_softness = 0.094000004465
-shader_parameter/water_darkness = 0.286000013585
+shader_parameter/water_darkness = 0.8610000408975
+shader_parameter/aspect_ratio = 1.778
+shader_parameter/hole_pos_uv = Vector2(0.5, 0.5)
+shader_parameter/hole_rad = 0.41
+shader_parameter/hole_foam_thickness = 0.195
+shader_parameter/hole_floam_main_color = Color(1, 1, 1, 1)
+shader_parameter/hole_floam_secondary_color = Color(0.44861436, 0.72321355, 0.9999992, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xvg6f"]
 viewport_path = NodePath("SubViewport")
@@ -60,7 +66,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Water" type="Sprite2D" parent="." unique_id=735585952]
-visible = false
 z_index = -10
 z_as_relative = false
 texture = SubResource("ViewportTexture_xvg6f")
