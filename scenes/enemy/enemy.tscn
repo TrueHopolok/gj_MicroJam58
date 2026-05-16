@@ -1,6 +1,29 @@
 [gd_scene format=3 uid="uid://gbsgy7a03y4m"]
 
 [ext_resource type="Script" uid="uid://de8wu08g3lpb0" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
+[ext_resource type="Texture2D" uid="uid://e0evc1huuphq" path="res://assets/art/gull.png" id="2_a3pup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3pup"]
+atlas = ExtResource("2_a3pup")
+region = Rect2(0, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40wdo"]
+atlas = ExtResource("2_a3pup")
+region = Rect2(48, 0, 48, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjssy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3pup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40wdo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_883im"]
 radius = 8.0
@@ -13,7 +36,13 @@ collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_4a83h")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=969379060]
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_tjssy")
+frame_progress = 0.8140692
+
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1811444601]
+visible = false
 polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123139418]

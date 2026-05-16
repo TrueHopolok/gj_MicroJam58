@@ -1,11 +1,14 @@
 class_name Enemy
 extends CharacterBody2D
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 signal died(score: int)
 
 const GROUP: StringName = &"Enemy"
 const TARGET := Vector2.ZERO
+
+var direction: Vector2 = global_position.direction_to(TARGET)
 
 @export var health: int = 1
 @export var speed: float = 40.0
@@ -13,9 +16,12 @@ const TARGET := Vector2.ZERO
 
 
 func _physics_process(_delta: float) -> void:
-	velocity = global_position.direction_to(TARGET) * speed
+	velocity = direction * speed
 	move_and_slide()
 
+func _ready() -> void:
+	sprite.play()
+	rotate(global_position.angle_to_point(direction))
 
 func _die() -> void:
 	died.emit(score)
