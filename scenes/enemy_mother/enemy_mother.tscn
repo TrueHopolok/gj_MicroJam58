@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hiys7loc6fle"]
+
+[ext_resource type="Script" uid="uid://d2k0hr4noexsg" path="res://scenes/enemy_mother/enemy_mother.gd" id="1_hy66v"]
+
+[node name="EnemyMother" type="Node2D" unique_id=140479501 groups=["EnemyMother"]]
+script = ExtResource("1_hy66v")
