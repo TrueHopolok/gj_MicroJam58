@@ -7,7 +7,8 @@ signal tide_finished()
 const GROUP: String = "EnemyMother"
 const DRAW: bool = true
 
-@export var _inner_radius: float = 200.0
+@export var _tide_shortest_radius: float = 150.0
+@export var _tide_longest_radius: float = 200.0
 @export var _outer_radius: float = 300.0
 
 var _tide_spawning: bool = false
@@ -52,10 +53,10 @@ func _single_tide_spawn(enemy: Node2D) -> void:
 	if !is_instance_valid(enemy):
 		push_error("[%s.single_tide_spawn]: invalid instance to spawn" % [GROUP])
 		return
-	var x: float = randf_range(-_outer_radius, _outer_radius)
-	var y: float = sqrt(_outer_radius * _outer_radius - x * x) * [-1, 1].pick_random()
+	var x: float = randf_range(-_tide_longest_radius, _tide_longest_radius)
+	var y: float = sqrt(_tide_longest_radius * _tide_longest_radius - x * x) * [-1, 1].pick_random()
 	var p: Vector2 = Vector2(x, y)
-	p += p.direction_to(Vector2.ZERO) * randf_range(0, _outer_radius - _inner_radius)
+	p += p.direction_to(Vector2.ZERO) * randf_range(0, _tide_longest_radius - _tide_shortest_radius)
 	enemy.position = p
 	add_child(enemy)
 	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, p.x, p.y])
@@ -99,7 +100,8 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if DRAW && OS.is_debug_build():
-		draw_circle(global_position, _inner_radius, Color.RED, false)
-		draw_circle(global_position, _outer_radius, Color.BLUE, false)
+		draw_circle(global_position, _tide_shortest_radius, Color.BLUE, false)
+		draw_circle(global_position, _tide_longest_radius, Color.BLUE, false)
+		draw_circle(global_position, _outer_radius, Color.RED, false)
 
 ######## ############# ########
