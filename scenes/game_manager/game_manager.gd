@@ -3,12 +3,14 @@ extends Node
 
 
 @export var enemies: Array[EnemySpec] = []
+@export var cursor_manager: CursorManager
 
 var _total_enemy_cost: int = 0
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
 var _level_counter: int = 0 # first level is 1 not 0
+var _level_start_ticks: int = 0
 
 const LEVEL_TIME: float = 120.0
 const MAX_BIG_SPAWNS: int = 5
@@ -16,6 +18,9 @@ const BIG_SPAWN_COST: int = 10
 
 ## how much of the budget goes towards big waves
 const BIG_SPAWN_PERCENT: int = 40
+
+const CURSOR_RADIUS_BIG: float = 64
+const CURSOR_RADIUS_SMALL: float = 2
 
 
 func _ready() -> void:
@@ -37,12 +42,19 @@ func _physics_process(_delta: float) -> void:
 		_process_event(_event_queue.pop_back())
 		_try_finish_level()
 
+	var r := _clamp_remap(now - _level_start_ticks, 0, ceili(LEVEL_TIME * 1e6), CURSOR_RADIUS_BIG, CURSOR_RADIUS_SMALL)
+	cursor_manager.set_radius(r)
+
+
+func _clamp_remap(v: float, istart: float, istop: float, ostart: float, ostop: float) -> float:
+	return remap(clampf(v, istart, istop), istart, istop, ostart, ostop)
+
 
 func _process_event(ev: TimedEvent) -> void:
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:
 		var inst: Node2D = ev.spawn.scene.instantiate()
-		inst.connect_death_signal(_on_enemy_death)
+		_initialize_child(inst)
 		m.single_spawn(inst)
 
 	if ev.tide.is_empty():
@@ -50,9 +62,17 @@ func _process_event(ev: TimedEvent) -> void:
 
 		for p: EnemySpec in ev.tide:
 			var inst: Node2D = p.scene.instantiate()
-			inst.connect_death_signal(_on_enemy_death)
+			_initialize_child(inst)
 
 		m.tide_spawn(insts)
+
+
+func _initialize_child(inst: Node) -> void:
+	inst.connect_death_signal(_on_enemy_death)
+	if inst.has_method("get_enemy_amount"):
+		_active_enemies += inst.get_enemy_amount()
+	else:
+		_active_enemies += 1
 
 
 func _on_enemy_death() -> void:
@@ -63,7 +83,7 @@ func _on_enemy_death() -> void:
 func _try_finish_level() -> void:
 	if _active_enemies > 0 or not _event_queue.is_empty():
 		return
-	
+
 	_next_level()
 
 
@@ -73,6 +93,8 @@ func _next_level() -> void:
 	var balance := ceili(remap(_level_counter, 1, 10, 50, 1000))
 	var spec := _gen_level_spec(balance)
 	_execute_level_spec(spec)
+
+	_level_start_ticks = Time.get_ticks_usec()
 
 
 func _gen_level_spec(budget: int) -> LevelSpec:
@@ -150,15 +172,12 @@ func _execute_level_spec(spec: LevelSpec) -> void:
 	for i: int in spec.enemies.size():
 		var delay: int = roundi(remap(i, 0, spec.enemies.size() - 1, 0, ceili(LEVEL_TIME * 1e6)))
 
-		_active_enemies += 1
 		_event_queue.push_back(TimedEvent.single(start+delay, spec.enemies[i]))
 
 	for i: int in spec.tides.size():
 		var delay: int = roundi(remap(i, 0, spec.tides.size() - 1, ceili(LEVEL_TIME * 0.3 * 1e6), ceili(LEVEL_TIME * 1e6)))
 
-		_active_enemies += spec.tides[i].size()
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
-	
 
 
 class LevelSpec:
@@ -182,4 +201,3 @@ class TimedEvent:
 		te.t = time
 		te.tide =  v
 		return te
-	
