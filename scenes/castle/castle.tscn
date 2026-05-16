@@ -48,6 +48,8 @@ animations = [{
 }]
 
 [node name="Castle" type="Area2D" unique_id=1034605710]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_bly62")
 metadata/_edit_group_ = true
 
