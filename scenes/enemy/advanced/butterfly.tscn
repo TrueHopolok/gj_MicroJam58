@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d0kpht6wfc0we"]
+
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_hx0e3"]
+[ext_resource type="Script" uid="uid://ca5wme55h4hq6" path="res://scenes/enemy/advanced/butterfly.gd" id="2_hwte4"]
+
+[node name="Butterfly" unique_id=344490489 instance=ExtResource("1_hx0e3")]
+script = ExtResource("2_hwte4")
+speed = 20.0
+damage = -1

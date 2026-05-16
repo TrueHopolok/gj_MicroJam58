@@ -1,7 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 signal died(score: int)
 
@@ -11,6 +10,9 @@ const TARGET := Vector2.ZERO
 @export var health: int = 1
 @export var speed: float = 40.0
 @export var score: int = 2
+@export var damage: int = 1
+
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _physics_process(_delta: float) -> void:
@@ -19,20 +21,22 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	sprite.look_at(velocity)
+	_sprite.look_at(velocity)
 
 
 func _ready() -> void:
-	sprite.play()
+	_sprite.play()
+
 
 func _die() -> void:
+	queue_free()
 	died.emit(score)
+
+
+func target_reached() -> int:
 	queue_free()
-
-
-func target_reached() -> void:
 	died.emit(0)
-	queue_free()
+	return damage
 
 
 func connect_death_signal(f: Callable) -> void:

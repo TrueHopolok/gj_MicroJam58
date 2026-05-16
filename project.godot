@@ -64,6 +64,7 @@ folder_colors={
 AudioSettings=""
 EnemyMother=""
 Enemy=""
+Castle=""
 
 [gui]
 

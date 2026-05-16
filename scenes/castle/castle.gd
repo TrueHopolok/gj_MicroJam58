@@ -1,41 +1,48 @@
 class_name Castle
 extends Area2D
 
+
 signal game_over
 
-@export var hp: int = 3
+const GROUP: StringName = &"Castle"
 
-var dead: bool = false
+@export var health: int = 10
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
-	sprite.play(&"idle")
-
+	_sprite.play(&"idle")
 	body_entered.connect(_get_kicked)
+	_sprite.animation_finished.connect(_on_animation_finished)
 
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if sprite.animation == &"hit":
-		if dead:
-			sprite.play(&"dead")
+func _on_animation_finished() -> void:
+	if _sprite.animation == &"hit":
+		if health <= 0:
+			_sprite.play(&"dead")
 		else:
-			sprite.play(&"idle")
+			_sprite.play(&"idle")
 
 
 func _get_kicked(body: Node2D) -> void:
 	if body.has_method(&"target_reached"):
-		body.target_reached()
+		var dmg: int = body.target_reached()
+		take_damage(dmg)
 	else:
 		push_error("Castle: took damage from %s, which has no target_reached()." % body.name)
 		body.queue_free()
 
-	if dead:
-		return
 
-	hp -= 1
-	sprite.play(&"hit")
-	if hp <= 0:
-		dead = true
-		game_over.emit()
+func take_damage(dmg: int) -> void:
+	if health <= 0:
+		return
+	health -= dmg
+	if dmg > 0:
+		_sprite.play(&"hit")
+		if health <= 0:
+			game_over.emit()
+
+
+static func get_instance() -> Castle:
+	return Engine.get_main_loop().get_first_node_in_group(GROUP)

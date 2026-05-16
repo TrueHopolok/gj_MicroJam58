@@ -46,7 +46,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_vutgn"]
 radius = 24.0
 
-[node name="Castle" type="Area2D" unique_id=1034605710]
+[node name="Castle" type="Area2D" unique_id=1034605710 groups=["Castle"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_bly62")
@@ -60,5 +60,3 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241299326]
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_vutgn")
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
