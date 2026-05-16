@@ -5,3 +5,4 @@
 
 [node name="EnemyIdolled" unique_id=344490489 instance=ExtResource("1_4n8d7")]
 script = ExtResource("2_iwr62")
+score = 4

@@ -6,3 +6,4 @@
 [node name="EnemyRotate" unique_id=344490489 instance=ExtResource("1_w6r5s")]
 script = ExtResource("2_f7e01")
 _rotation_strength = 30.0
+score = 3
