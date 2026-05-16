@@ -2,19 +2,15 @@ class_name GameManager
 extends Node
 
 
-@export var enemies: Array[EnemySpec] = []
+@export var spawn_policy: SpawnPolicy
 @export var cursor_manager: CursorManager
 @export var castle: Castle
 
-var _total_enemy_cost: int = 0
-
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
-var _level_counter: int = 0 # first level is 1 not 0
-var _level_start_ticks: int = 0
+var _level_counter: int = -1 # first level is 1 not 0
 var _score: int = 0
 
-const LEVEL_TIME: float = 60.0
 const MAX_BIG_SPAWNS: int = 5
 const BIG_SPAWN_COST: int = 10
 
@@ -30,12 +26,19 @@ const GAME_OVER_SCENE := preload('uid://bwtp0mt7tkcx4')
 func _ready() -> void:
 	randomize()
 
-	enemies.sort_custom(func(lhs: EnemySpec, rhs: EnemySpec) -> bool:
-		return lhs.cost < rhs.cost
-	)
+	if spawn_policy == null:
+		push_error("game manager: no spawn policy")
+		return
 
-	for enemy: EnemySpec in enemies:
-		_total_enemy_cost += enemy.cost
+	if castle == null:
+		push_error("game manager: no castle")
+		return
+
+	if cursor_manager == null:
+		push_error("game manager: no cursor manager")
+		return
+
+	spawn_policy.initialize()
 
 	_next_level()
 
@@ -50,10 +53,6 @@ func _physics_process(_delta: float) -> void:
 		_try_finish_level()
 
 
-	var r := _clamp_remap(now - _level_start_ticks, 0, ceili(LEVEL_TIME * 1e6), CURSOR_RADIUS_BIG, CURSOR_RADIUS_SMALL)
-	cursor_manager.set_radius(r)
-
-
 func _clamp_remap(v: float, istart: float, istop: float, ostart: float, ostop: float) -> float:
 	return remap(clampf(v, istart, istop), istart, istop, ostart, ostop)
 
@@ -63,15 +62,15 @@ func _process_event(ev: TimedEvent) -> void:
 
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:
-		var inst: Node2D = ev.spawn.scene.instantiate()
+		var inst: Node2D = ev.spawn.instantiate()
 		_initialize_child(inst)
 		m.single_spawn(inst)
 
 	if not ev.tide.is_empty():
 		var insts: Array[Node2D] = []
 
-		for p: EnemySpec in ev.tide:
-			var inst: Node2D = p.scene.instantiate()
+		for p: PackedScene in ev.tide:
+			var inst: Node2D = p.instantiate()
 			_initialize_child(inst)
 			insts.push_back(inst)
 
@@ -104,100 +103,33 @@ func _next_level() -> void:
 	_level_counter += 1
 	print("Starting level %d" % _level_counter)
 
-	var balance := ceili(remap(_level_counter, 1, 10, 50, 1000))
-	var spec := _gen_level_spec(balance)
+	var spec := spawn_policy.sample(_level_counter)
 
-	print("Generated spec: enemies=%d tides=%d" % [spec.enemies.size(), spec.tides.size()])
+	print("Generated spec: enemies=%d @ %fHz tides=%d @ %fHz" % [
+		spec.enemies.size(),1/spec.enemy_spawn_interval, spec.tides.size(), 1/spec.tide_spawn_interval])
 
 	_execute_level_spec(spec)
 
-	_level_start_ticks = Time.get_ticks_usec()
 
-
-func _gen_level_spec(budget: int) -> LevelSpec:
-	var big_wave_budget: int = budget * BIG_SPAWN_PERCENT / 100
-
-	var big_waves: int = 0
-
-	var max_big_waves := big_wave_budget / BIG_SPAWN_COST
-	if max_big_waves > 0:
-		big_waves = randi_range(1, max_big_waves)
-		budget -= big_waves * BIG_SPAWN_COST
-
-	var b: int = budget
-	var res_enemies: Array[EnemySpec] = []
-
-	while b > 0:
-		var e :=_pick_enemy(b)
-		if e != null:
-			res_enemies.push_back(e)
-			b -= e.cost
-
-	res_enemies.shuffle()
-
-	big_waves = mini(big_waves, res_enemies.size() / 2)
-
-	var big_wave_enemies: Array[Array] = []
-
-	if big_waves > 0:
-		var idxs := _gen_numbers(big_waves, res_enemies.size() / 2, res_enemies.size())
-		idxs.sort()
-		idxs.reverse()
-
-		for idx: int in idxs:
-			var part := res_enemies.slice(idx)
-			if part.size() <= 1:
-				continue
-			big_wave_enemies.push_back(part)
-			res_enemies.resize(idx)
-
-	var res := LevelSpec.new()
-	res.tides = big_wave_enemies
-	res.enemies = res_enemies
-
-	return res
-
-
-func _gen_numbers(n: int, low: int, high: int) -> Array[int]:
-	# hopefully low and high are not far apart lol
-	var res: Array[int]
-	res.assign(range(low, high+1))
-	res.shuffle()
-	res.resize(mini(res.size(), n))
-	return res
-
-
-func _pick_enemy(budget: int) -> EnemySpec:
-	if budget <= 0:
-		push_error("_pick_enemy(%s)" % budget)
-		return null
-
-	var w := randi_range(1, mini(_total_enemy_cost, budget))
-
-	for enemy: EnemySpec in enemies:
-		w -= enemy.cost
-		if w <= 0:
-			return enemy
-
-	return enemies.back()
-
-
-func _execute_level_spec(spec: LevelSpec) -> void:
+func _execute_level_spec(spec: SpawnPolicy.Sample) -> void:
 	var start := Time.get_ticks_usec() + 1000000 # in 1 sec
 
-	_active_enemies = 0
 	for i: int in spec.enemies.size():
-		var delay: int = roundi(remap(i, 0, spec.enemies.size() - 1, 0, ceili(LEVEL_TIME * 1e6)))
-
+		var delay: int = roundi(spec.enemy_spawn_interval * 1e6) * (i + 1)
 		_event_queue.push_back(TimedEvent.single(start+delay, spec.enemies[i]))
 
 	for i: int in spec.tides.size():
-		var delay: int = roundi(remap(i, 0, spec.tides.size() - 1, ceili(LEVEL_TIME * 0.3 * 1e6), ceili(LEVEL_TIME * 1e6)))
-
+		var delay: int = roundi(spec.tide_spawn_interval * 1e6) * (i + 1)
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
 
-	_event_queue.sort()
-	_event_queue.reverse()
+	_event_queue.sort_custom(func (lhs: TimedEvent, rhs: TimedEvent) -> bool:
+		return lhs.t > rhs.t)
+
+	print(_event_queue)
+
+	var dur := 1 + maxf(spec.enemy_spawn_interval * spec.enemies.size(), spec.tide_spawn_interval * spec.tides.size())
+	dur *= spec.cursor_shrink_fract
+	create_tween().tween_method(cursor_manager.set_radius, spec.cursor_start, spec.cursor_end, dur)
 
 
 func _on_game_over() -> void:
@@ -213,16 +145,16 @@ class LevelSpec:
 
 class TimedEvent:
 	var t: int
-	var spawn: EnemySpec
-	var tide: Array[EnemySpec]
+	var spawn: PackedScene
+	var tide: Array[PackedScene]
 
-	static func single(time: int, v: EnemySpec) -> TimedEvent:
+	static func single(time: int, v: PackedScene) -> TimedEvent:
 		var te := TimedEvent.new()
 		te.t = time
 		te.spawn = v
 		return te
 
-	static func many(time: int, v: Array[EnemySpec]) -> TimedEvent:
+	static func many(time: int, v: Array[PackedScene]) -> TimedEvent:
 		var te := TimedEvent.new()
 		te.t = time
 		te.tide =  v

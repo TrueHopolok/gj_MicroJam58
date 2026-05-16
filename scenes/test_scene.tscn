@@ -1,38 +1,109 @@
 [gd_scene format=3 uid="uid://mlfopegdrvw6"]
 
 [ext_resource type="Script" uid="uid://cagct1tdxfty" path="res://scenes/game_manager/game_manager.gd" id="1_7ddre"]
-[ext_resource type="Script" uid="uid://cmh85gndtw1k3" path="res://scenes/game_manager/enemy_spec.gd" id="2_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_wtsjf"]
-[ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="4_qjeyg"]
+[ext_resource type="Script" uid="uid://cmh85gndtw1k3" path="res://scenes/game_manager/enemy_spec.gd" id="2_gthg3"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_ntc4i"]
+[ext_resource type="Script" uid="uid://bdtks2mrdyq3k" path="res://scenes/game_manager/spawn_policy.gd" id="4_h3xc6"]
+[ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="4_u0xbq"]
+[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="5_pln1h"]
 [ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="6_3qnke"]
+[ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="6_8gixj"]
+[ext_resource type="Script" uid="uid://dnl3b8rhvfev0" path="res://scenes/game_manager/premade_level.gd" id="7_hf2sn"]
 [ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="8_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
-[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="9_s36qc"]
 
-[sub_resource type="Resource" id="Resource_s36qc"]
-script = ExtResource("2_qjeyg")
-scene = ExtResource("3_wtsjf")
+[sub_resource type="Curve" id="Curve_qq5q4"]
+_limits = [0.0, 150.0, 0.0, 10.0]
+_data = [Vector2(0, 14.214447), 0.0, 0.0, 0, 0, Vector2(10, 150), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gah1j"]
+_limits = [2.0, 64.0, 0.0, 10.0]
+_data = [Vector2(0, 27.840595), 0.0, 0.0, 0, 0, Vector2(10, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ap2hy"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(10, 0.507489), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nlwlv"]
+_limits = [2.0, 64.0, 0.0, 10.0]
+_data = [Vector2(0, 64), 0.0, 0.0, 0, 0, Vector2(10, 30.748001), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_6gkjt"]
+script = ExtResource("2_gthg3")
+scene = ExtResource("3_ntc4i")
 cost = 2
+weight = 5
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
-[sub_resource type="Resource" id="Resource_6qxox"]
-script = ExtResource("2_qjeyg")
-scene = ExtResource("9_s36qc")
-cost = 4
+[sub_resource type="Resource" id="Resource_lmrlb"]
+script = ExtResource("2_gthg3")
+scene = ExtResource("4_u0xbq")
+cost = 3
+weight = 4
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
-[sub_resource type="Resource" id="Resource_ntc4i"]
-script = ExtResource("2_qjeyg")
-scene = ExtResource("4_qjeyg")
-cost = 2
+[sub_resource type="Resource" id="Resource_nks25"]
+script = ExtResource("2_gthg3")
+scene = ExtResource("5_pln1h")
+cost = 6
+weight = 2
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
+
+[sub_resource type="Resource" id="Resource_kub5s"]
+script = ExtResource("2_gthg3")
+scene = ExtResource("6_8gixj")
+cost = 8
+metadata/_custom_type_script = "uid://cmh85gndtw1k3"
+
+[sub_resource type="Curve" id="Curve_afgys"]
+_limits = [0.0, 8.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1.8785378, 0), 0.0, 0.0, 0, 0, Vector2(10, 8), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_sstcd"]
+_limits = [0.0, 8.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(3.39431, 0), 0.039586235, 0.039586235, 0, 0, Vector2(5.351268, 1.434001), 0.0, 0.0, 0, 0, Vector2(10, 8), 1.9007784, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_2oq4n"]
+_limits = [0.0, 3.0, 0.0, 10.0]
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(10, 0.22639036), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_bnteq"]
+_limits = [0.0, 150.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7204051, 0), 0.0, 0.0, 0, 0, Vector2(10, 97.3031), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_oimyc"]
+_limits = [5.0, 50.0, 0.0, 10.0]
+_data = [Vector2(0, 41.20899), 0.0, 0.0, 0, 0, Vector2(10, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_5csvr"]
+script = ExtResource("4_h3xc6")
+enemy_policy = Array[ExtResource("2_gthg3")]([SubResource("Resource_6gkjt"), SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s")])
+balance = SubResource("Curve_qq5q4")
+tide_balance = SubResource("Curve_bnteq")
+max_tides = SubResource("Curve_afgys")
+min_tides = SubResource("Curve_sstcd")
+spawn_gap_seconds = SubResource("Curve_2oq4n")
+tide_gap_seconds = SubResource("Curve_oimyc")
+cursor_start = SubResource("Curve_nlwlv")
+cursor_end = SubResource("Curve_gah1j")
+cursor_shrink_fract = SubResource("Curve_ap2hy")
+metadata/_custom_type_script = "uid://bdtks2mrdyq3k"
 
 [node name="TestScene" type="Node2D" unique_id=988521978]
 
 [node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
 script = ExtResource("1_7ddre")
-enemies = Array[ExtResource("2_qjeyg")]([SubResource("Resource_s36qc"), SubResource("Resource_6qxox"), SubResource("Resource_ntc4i")])
+spawn_policy = SubResource("Resource_5csvr")
 cursor_manager = NodePath("../CursorManager")
 castle = NodePath("../Castle")
 metadata/_custom_type_script = "uid://cagct1tdxfty"
