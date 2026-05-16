@@ -8,7 +8,7 @@ extends Node
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
-var _level_counter: int = 0 # first level is 0 not 1
+var _level_counter: int = -1 # first level is 0 not 1
 
 const MAX_BIG_SPAWNS: int = 5
 const BIG_SPAWN_COST: int = 10
