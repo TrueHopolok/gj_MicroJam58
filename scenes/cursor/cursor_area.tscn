@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://lt5nqprcuii"]
+
+[ext_resource type="Script" uid="uid://cjms4hl4vd6qc" path="res://scenes/cursor/cursor_area.gd" id="1_px5lg"]
+[ext_resource type="Texture2D" uid="uid://qjb8u7ydrqw7" path="res://assets/art/cursor/test_cursor_area_128.png" id="2_px5lg"]
+
+[node name="CursorArea" type="Node2D" unique_id=130380618 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_px5lg")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1157191842]
+modulate = Color(1, 1, 1, 0.49803922)
+texture = ExtResource("2_px5lg")
