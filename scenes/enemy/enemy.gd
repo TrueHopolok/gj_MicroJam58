@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 signal died(score: int)
 
@@ -16,6 +17,13 @@ func _physics_process(_delta: float) -> void:
 	velocity = global_position.direction_to(TARGET) * speed
 	move_and_slide()
 
+
+func _process(_delta: float) -> void:
+	sprite.look_at(velocity)
+
+
+func _ready() -> void:
+	sprite.play()
 
 func _die() -> void:
 	died.emit(score)
