@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duhkj06jamchu"]
 
-[ext_resource type="Script" uid="uid://tcip471tqf86" path="res://scenes/castle.gd" id="1_bly62"]
+[ext_resource type="Script" uid="uid://tcip471tqf86" path="res://scenes/castle/castle.gd" id="1_bly62"]
 [ext_resource type="Texture2D" uid="uid://mepx6xm683l7" path="res://assets/art/castle_dead.png" id="2_njhjj"]
 [ext_resource type="Texture2D" uid="uid://bdcs38hgjs14y" path="res://assets/art/castle_hit.png" id="3_jxdab"]
 [ext_resource type="Texture2D" uid="uid://be264me8fnkh1" path="res://assets/art/castle_idle.png" id="5_jxdab"]
