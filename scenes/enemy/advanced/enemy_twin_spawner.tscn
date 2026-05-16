@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ccpxvxd0vy0qv"]
+
+[ext_resource type="Script" uid="uid://dgycqjf5ev4ok" path="res://scenes/enemy/advanced/enemy_twin_spawner.gd" id="1_lb2x8"]
+[ext_resource type="PackedScene" uid="uid://0gqqnf1wmh6y" path="res://scenes/enemy/advanced/enemy_twin.tscn" id="2_6k3qw"]
+
+[node name="EnemyTwinSpawner" type="Node2D" unique_id=636346674]
+script = ExtResource("1_lb2x8")
+_twin_1 = ExtResource("2_6k3qw")
+_twin_2 = ExtResource("2_6k3qw")
