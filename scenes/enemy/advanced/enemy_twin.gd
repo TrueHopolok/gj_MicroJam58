@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _draw() -> void:
+	if not is_instance_valid(self) or not is_instance_valid(twin):
+		return
 	draw_line(to_local(global_position), to_local(twin.global_position), Color.WHITE)
 
 
