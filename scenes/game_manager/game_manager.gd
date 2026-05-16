@@ -50,35 +50,35 @@ func _gen_level_spec(budget: int) -> LevelSpec:
 		budget -= big_waves * BIG_SPAWN_COST
 
 	var b: int = budget
-	var enemies: Array[EnemySpec] = []
+	var res_enemies: Array[EnemySpec] = []
 
 	while b > 0:
 		var e :=_pick_enemy(b)
 		if e != null:
-			enemies.push_back(e)
+			res_enemies.push_back(e)
 			b -= e.cost
 
-	enemies.shuffle()
+	res_enemies.shuffle()
 
-	big_waves = mini(big_waves, enemies.size() / 2)
+	big_waves = mini(big_waves, res_enemies.size() / 2)
 
 	var big_wave_enemies: Array[Array] = []
 
 	if big_waves > 0:
-		var idxs := _gen_numbers(big_waves, enemies.size() / 2, enemies.size())
+		var idxs := _gen_numbers(big_waves, res_enemies.size() / 2, res_enemies.size())
 		idxs.sort()
 		idxs.reverse()
 
 		for idx: int in idxs:
-			var part := enemies.slice(idx)
+			var part := res_enemies.slice(idx)
 			if part.size() <= 1:
 				continue
 			big_wave_enemies.push_back(part)
-			enemies.resize(idx)
+			res_enemies.resize(idx)
 
 	var res := LevelSpec.new()
 	res.tides = big_wave_enemies
-	res.enemies = enemies
+	res.enemies = res_enemies
 
 	return res
 
