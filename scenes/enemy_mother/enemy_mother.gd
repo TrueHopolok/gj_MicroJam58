@@ -28,8 +28,6 @@ func _physics_process(_delta: float) -> void:
 		return
 	if _tide_queue.is_empty():
 		_tide_spawning = false
-		# TODO: start animation of tide going down
-		# subscribe to animation finish
 		_on_tide_ended()
 		return
 	_single_tide_spawn(_tide_queue.back())
@@ -87,9 +85,8 @@ func tide_spawn(enemies: Array[Node2D]) -> void:
 		return
 	_tide_spawning = true
 	_tide_queue.append_array(enemies)
-	# TODO: start animation of tide going up
-	# subscribe to animation finish
-	_on_tide_started()
+	get_tree().call_group(&"Water", &"play_spawn_anim")
+	get_tree().create_timer(1.0).timeout.connect(_on_tide_started)
 
 
 ######## DRAWING LOGIC ########

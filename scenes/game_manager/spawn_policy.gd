@@ -71,7 +71,7 @@ func sample(level: int) -> Sample:
 		tpol = enemy_policy
 
 	for _i: int in tide_n:
-		var r := _gen_enemy_array(tide_enemy_policy, money_tides)
+		var r := _gen_enemy_array(tpol, money_tides)
 		if r.is_empty():
 			continue
 		res.tides.push_back(r)

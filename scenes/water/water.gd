@@ -1,4 +1,5 @@
-extends Sprite2D
+extends Node
 
-func _ready() -> void:
-	show()
+
+func play_spawn_anim() -> void:
+	$AnimationPlayer.play(&"move_in")

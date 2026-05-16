@@ -3,6 +3,93 @@
 [ext_resource type="Shader" uid="uid://2dc8xad8ktc5" path="res://scenes/water/water.gdshader" id="1_2dnj0"]
 [ext_resource type="Script" uid="uid://bscs7b7himduf" path="res://scenes/water/water.gd" id="2_mj6gl"]
 
+[sub_resource type="Animation" id="Animation_mj6gl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/WaterRect:material:shader_parameter/hole_rad")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.41, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/WaterRect:material:shader_parameter/hole_foam_thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.071, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_xvg6f"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+step = 0.016666668
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/WaterRect:material:shader_parameter/hole_rad")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3),
+"points": PackedFloat32Array(0.41, -0.5, -0.009000003, 0.5, 0.009000003, 0.446, -0.5, 0, 0.5, 0, 0.41, -0.5, 0.009000003, 0.5, -0.009000003),
+"times": PackedFloat32Array(0, 2, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/WaterRect:material:shader_parameter/hole_foam_thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3, 3, 3, 3, 3),
+"points": PackedFloat32Array(0.071358114, -0.13333334, -0.0067683514, 0.13333334, 0.0067683514, 0.09843152, -0.13333334, -0.00053517707, 0.13333334, 0.00053517707, 0.07349882, -0.14999999, 0.0012243018, 0.14999999, -0.0012243018, 0.09353431, -0.15833333, -0.00030635484, 0.15833333, 0.00030635484, 0.07472424, -0.16666669, -0.0012796279, 0.16666669, 0.0012796279, 0.098652825, -0.16666669, 0.00086555816, 0.16666669, -0.00086555816, 0.07126201, -0.21666664, 0.0068477034, 0.21666664, -0.0068477034),
+"times": PackedFloat32Array(0, 0.53333336, 1.1333333, 1.7666667, 2.4666667, 3.1333334, 4)
+}
+
+[sub_resource type="Animation" id="Animation_dmnfl"]
+resource_name = "move_in"
+length = 2.5
+step = 0.016666668
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/WaterRect:material:shader_parameter/hole_rad")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0.41, 0, 0, 0.13333334, -0.0395, 0.17310621, -0.2666169, 0.0063073663, 0.29999992, -0.00709711, 0.41216055, -0.48333335, 0.035788834, 0, 0),
+"times": PackedFloat32Array(0, 0.8833333, 2.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/WaterRect:material:shader_parameter/hole_foam_thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(0.071, 0, 0, 0.06666668, 0.0055000004, 0.19388549, -0.46666664, 0.006052941, 0.100000024, 0.0058998466, 0.06405544, -0.25, 0.0017368421, 0.2166667, 0.043217428),
+"times": PackedFloat32Array(0, 0.8333333, 2.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvg6f"]
+_data = {
+&"RESET": SubResource("Animation_mj6gl"),
+&"idle": SubResource("Animation_xvg6f"),
+&"move_in": SubResource("Animation_dmnfl")
+}
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l4m65"]
 seed = 3
 frequency = 0.0333
@@ -44,14 +131,22 @@ shader_parameter/water_darkness = 0.8610000408975
 shader_parameter/aspect_ratio = 1.778
 shader_parameter/hole_pos_uv = Vector2(0.5, 0.5)
 shader_parameter/hole_rad = 0.41
-shader_parameter/hole_foam_thickness = 0.195
+shader_parameter/hole_foam_thickness = 0.071
 shader_parameter/hole_floam_main_color = Color(1, 1, 1, 1)
 shader_parameter/hole_floam_secondary_color = Color(0.44861436, 0.72321355, 0.9999992, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xvg6f"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Water" type="Node2D" unique_id=1099081789]
+[node name="Water" type="Node2D" unique_id=1099081789 groups=["Water"]]
+script = ExtResource("2_mj6gl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1875254205]
+libraries/ = SubResource("AnimationLibrary_xvg6f")
+autoplay = &"idle"
+next/move_in = &"idle"
+next/idle = &"idle"
+blend_times = [&"idle", &"idle", 1.0, &"idle", &"move_in", 1.0, &"move_in", &"idle", 0.5, &"move_in", &"move_in", 0.5]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1405319351]
 size = Vector2i(640, 360)
@@ -69,5 +164,4 @@ mouse_filter = 2
 z_index = -10
 z_as_relative = false
 texture = SubResource("ViewportTexture_xvg6f")
-script = ExtResource("2_mj6gl")
 metadata/_edit_lock_ = true
