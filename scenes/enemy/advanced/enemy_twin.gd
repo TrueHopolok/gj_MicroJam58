@@ -27,8 +27,11 @@ func take_damage() -> void:
 		return
 	health -= 1
 	if health <= 0:
-		if not is_instance_valid(twin) || twin.stunned():
+		if not is_instance_valid(twin):
 			_die()
+		elif twin.stunned():
+			_die()
+			twin._die()
 		else:
 			health = 1
 			_stun_left = _stun_duration
