@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="8_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="9_s36qc"]
+[ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="10_s36qc"]
 
 [sub_resource type="Resource" id="Resource_s36qc"]
 script = ExtResource("2_qjeyg")
@@ -47,3 +48,5 @@ visible = false
 [node name="Castle" parent="." unique_id=1034605710 instance=ExtResource("6_3qnke")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]
+
+[node name="Water" parent="." unique_id=1099081789 instance=ExtResource("10_s36qc")]
