@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="SpawnPolicy" format=3 uid="uid://lu6e120io87x"]
+
+[ext_resource type="Script" uid="uid://cmh85gndtw1k3" path="res://scenes/game_manager/enemy_spec.gd" id="1_3uyci"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="2_505gr"]
+[ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="3_quk26"]
+[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="4_ae27o"]
+[ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="5_yx4yo"]
+[ext_resource type="Script" uid="uid://dnl3b8rhvfev0" path="res://scenes/game_manager/premade_level.gd" id="6_30l3i"]
+[ext_resource type="Script" uid="uid://bdtks2mrdyq3k" path="res://scenes/game_manager/spawn_policy.gd" id="7_vpnt8"]
+
+[sub_resource type="Curve" id="Curve_qq5q4"]
+_limits = [0.0, 150.0, 0.0, 10.0]
+_data = [Vector2(0, 14.214447), 0.0, 0.0, 0, 0, Vector2(10, 150), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gah1j"]
+_limits = [2.0, 64.0, 0.0, 10.0]
+_data = [Vector2(0, 27.840595), 0.0, 0.0, 0, 0, Vector2(10, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ap2hy"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(10, 0.507489), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nlwlv"]
+_limits = [2.0, 64.0, 0.0, 10.0]
+_data = [Vector2(0, 64), 0.0, 0.0, 0, 0, Vector2(10, 30.748001), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_6gkjt"]
+script = ExtResource("1_3uyci")
+scene = ExtResource("2_505gr")
+cost = 2
+weight = 5
+metadata/_custom_type_script = "uid://cmh85gndtw1k3"
+
+[sub_resource type="Resource" id="Resource_lmrlb"]
+script = ExtResource("1_3uyci")
+scene = ExtResource("3_quk26")
+cost = 3
+weight = 4
+metadata/_custom_type_script = "uid://cmh85gndtw1k3"
+
+[sub_resource type="Resource" id="Resource_nks25"]
+script = ExtResource("1_3uyci")
+scene = ExtResource("4_ae27o")
+cost = 6
+weight = 2
+metadata/_custom_type_script = "uid://cmh85gndtw1k3"
+
+[sub_resource type="Resource" id="Resource_kub5s"]
+script = ExtResource("1_3uyci")
+scene = ExtResource("5_yx4yo")
+cost = 8
+metadata/_custom_type_script = "uid://cmh85gndtw1k3"
+
+[sub_resource type="Curve" id="Curve_afgys"]
+_limits = [0.0, 8.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1.8785378, 0), 0.0, 0.0, 0, 0, Vector2(10, 8), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_sstcd"]
+_limits = [0.0, 8.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(3.39431, 0), 0.039586235, 0.039586235, 0, 0, Vector2(5.351268, 1.434001), 0.0, 0.0, 0, 0, Vector2(10, 8), 1.9007784, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_2oq4n"]
+_limits = [0.0, 3.0, 0.0, 10.0]
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(10, 0.22639036), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_bnteq"]
+_limits = [0.0, 150.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7204051, 0), 0.0, 0.0, 0, 0, Vector2(10, 97.3031), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_oimyc"]
+_limits = [5.0, 50.0, 0.0, 10.0]
+_data = [Vector2(0, 41.20899), 0.0, 0.0, 0, 0, Vector2(10, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("7_vpnt8")
+enemy_policy = Array[ExtResource("1_3uyci")]([SubResource("Resource_6gkjt"), SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s")])
+balance = SubResource("Curve_qq5q4")
+tide_balance = SubResource("Curve_bnteq")
+max_tides = SubResource("Curve_afgys")
+min_tides = SubResource("Curve_sstcd")
+spawn_gap_seconds = SubResource("Curve_2oq4n")
+tide_gap_seconds = SubResource("Curve_oimyc")
+cursor_start = SubResource("Curve_nlwlv")
+cursor_end = SubResource("Curve_gah1j")
+cursor_shrink_fract = SubResource("Curve_ap2hy")
+metadata/_custom_type_script = "uid://bdtks2mrdyq3k"
