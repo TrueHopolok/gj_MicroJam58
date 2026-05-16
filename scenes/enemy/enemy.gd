@@ -15,6 +15,11 @@ const TARGET := Vector2.ZERO
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
+func _ready() -> void:
+	_sprite.play()
+	speed = maxf(speed * 1.0, randfn(speed, speed * 0.25))
+
+
 func _physics_process(_delta: float) -> void:
 	velocity = global_position.direction_to(TARGET) * speed
 	move_and_slide()
@@ -22,10 +27,6 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	_sprite.look_at(velocity)
-
-
-func _ready() -> void:
-	_sprite.play()
 
 
 func _die() -> void:
