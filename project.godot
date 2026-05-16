@@ -65,6 +65,7 @@ AudioSettings=""
 EnemyMother=""
 Enemy=""
 Castle=""
+Water=""
 
 [gui]
 
