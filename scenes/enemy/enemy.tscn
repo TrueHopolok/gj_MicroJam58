@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://gbsgy7a03y4m"]
+
+[ext_resource type="Script" uid="uid://de8wu08g3lpb0" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_883im"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4a83h"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=344490489 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_4a83h")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1811444601]
+polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123139418]
+shape = SubResource("CircleShape2D_883im")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=796946081]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=589498623]
+shape = SubResource("CircleShape2D_4a83h")
+debug_color = Color(0.98039216, 0, 0, 0.41960785)
