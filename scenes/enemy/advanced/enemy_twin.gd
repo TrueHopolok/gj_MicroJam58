@@ -17,20 +17,21 @@ func _physics_process(delta: float) -> void:
 
 
 func _draw() -> void:
-	if not is_instance_valid(self) or not is_instance_valid(twin):
+	if not is_instance_valid(twin):
 		return
 	draw_line(to_local(global_position), to_local(twin.global_position), Color.WHITE)
 
 
 func take_damage() -> void:
-	if stunned() || health <= 0:
+	if health <= 0:
 		return
 	health -= 1
 	if health <= 0:
-		if twin.stunned():
+		if not is_instance_valid(twin) || twin.stunned():
 			_die()
-			twin._die()
-		_stun_left = _stun_duration
+		else:
+			health = 1
+			_stun_left = _stun_duration
 
 
 func stunned() -> bool:
