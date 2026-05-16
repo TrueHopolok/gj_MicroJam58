@@ -2,18 +2,26 @@ extends Area2D
 
 signal game_over
 
-@export var hp = 10
+@export var hp: int = 3
+
+var dead: bool = false
 
 func take_damage() -> void:
-	hp -= 1
-	if (hp < 0):
-		game_over.emit()
+	if !dead:
+		hp -= 1
+		$AnimatedSprite2D.play("hit")
+		if (hp < 0):
+			dead = true
+			game_over.emit()
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	$AnimatedSprite2D.play("idle")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "hit":
+		if dead:
+			$AnimatedSprite2D.play("dead")
+		else:
+			$AnimatedSprite2D.play("idle")
