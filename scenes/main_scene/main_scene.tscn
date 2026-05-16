@@ -36,4 +36,3 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]
 
 [node name="Water" parent="." unique_id=1099081789 instance=ExtResource("10_qgjuk")]
-script = null

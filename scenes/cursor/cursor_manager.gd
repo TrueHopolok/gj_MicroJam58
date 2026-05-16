@@ -22,11 +22,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed(&"shoot"):
 		return
-	
+
 	get_viewport().set_input_as_handled()
 
 	var pos := get_global_mouse_position()
-	
+
 	_create_trace(pos)
 	_try_hit_enemies(pos)
 
