@@ -29,7 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	
-	crate_trace(mb_event.global_position)
+	create_trace(mb_event.global_position)
 	try_hit_enemies(mb_event.global_position)
 
 	get_viewport().set_input_as_handled()
@@ -58,7 +58,7 @@ func try_hit_enemies(pos: Vector2) -> void:
 		enemy.take_damage()
 
 
-func crate_trace(pos: Vector2):
+func create_trace(pos: Vector2):
 	var node := cursor_trace_scene.instantiate() as CursorTrace
 	node.global_position = pos
 	add_child(node)
