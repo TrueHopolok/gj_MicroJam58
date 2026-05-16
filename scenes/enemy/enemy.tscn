@@ -37,7 +37,6 @@ motion_mode = 1
 script = ExtResource("1_4a83h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=969379060]
-rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_tjssy")
 frame_progress = 0.8140692
 

@@ -8,17 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="6_3qnke"]
 [ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="8_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
-[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="9_s36qc"]
 
 [sub_resource type="Resource" id="Resource_s36qc"]
 script = ExtResource("2_qjeyg")
 scene = ExtResource("3_wtsjf")
-metadata/_custom_type_script = "uid://cmh85gndtw1k3"
-
-[sub_resource type="Resource" id="Resource_6qxox"]
-script = ExtResource("2_qjeyg")
-scene = ExtResource("9_s36qc")
-cost = 4
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [sub_resource type="Resource" id="Resource_ntc4i"]
@@ -31,7 +24,7 @@ metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
 script = ExtResource("1_7ddre")
-enemies = Array[ExtResource("2_qjeyg")]([SubResource("Resource_s36qc"), SubResource("Resource_6qxox"), SubResource("Resource_ntc4i")])
+enemies = Array[ExtResource("2_qjeyg")]([SubResource("Resource_s36qc"), SubResource("Resource_ntc4i")])
 cursor_manager = NodePath("../CursorManager")
 castle = NodePath("../Castle")
 metadata/_custom_type_script = "uid://cagct1tdxfty"

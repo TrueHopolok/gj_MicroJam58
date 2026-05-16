@@ -8,20 +8,22 @@ signal died(score: int)
 const GROUP: StringName = &"Enemy"
 const TARGET := Vector2.ZERO
 
-var direction: Vector2 = global_position.direction_to(TARGET)
-
 @export var health: int = 1
 @export var speed: float = 40.0
 @export var score: int = 2
 
 
 func _physics_process(_delta: float) -> void:
-	velocity = direction * speed
+	velocity = global_position.direction_to(TARGET) * speed
 	move_and_slide()
+
+
+func _process(_delta: float) -> void:
+	sprite.look_at(velocity)
+
 
 func _ready() -> void:
 	sprite.play()
-	rotate(global_position.angle_to_point(direction))
 
 func _die() -> void:
 	died.emit(score)
