@@ -8,10 +8,6 @@ var twin: EnemyTwin
 var _stun_left: float = 0.0
 
 
-func _ready() -> void:
-	twin.died.connect(_die)
-
-
 func _physics_process(delta: float) -> void:
 	if stunned():
 		_stun_left = clampf(_stun_left - delta, 0.0, _stun_duration)
@@ -31,6 +27,7 @@ func take_damage() -> void:
 	if health <= 0:
 		if twin.stunned():
 			_die()
+			twin._die()
 		_stun_left = _stun_duration
 
 
