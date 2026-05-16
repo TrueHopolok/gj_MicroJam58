@@ -67,7 +67,7 @@ void fragment() {
     vec2 xy = uv_to_xy(UV);
     vec2 hole_pos_xy = uv_to_xy(hole_pos_uv);
     vec4 n1 = texture(noise1, mod(uv + TIME * scroll_speed1, vec2(1.0)));
-    vec4 n2 = texture(noise2, mod(uv + TIME * scroll_speed2, vec2(.5)));
+    vec4 n2 = texture(noise2, mod(uv + TIME * scroll_speed2, vec2(1.0)));
     vec4 n3 = (1. - n1) + (1. - n2);
 
     vec3 water_color = get_water_color(n1, n2);
