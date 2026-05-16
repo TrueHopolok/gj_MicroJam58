@@ -20,20 +20,15 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is not InputEventMouseButton:
+	if not event.is_action_pressed(&"shoot"):
 		return
-
-	var mb_event := event as InputEventMouseButton
-
-	if not (mb_event.pressed and mb_event.button_index == MOUSE_BUTTON_LEFT):
-		return
+	
+	get_viewport().set_input_as_handled()
 
 	var pos := get_global_mouse_position()
 	
 	_create_trace(pos)
 	_try_hit_enemies(pos)
-
-	get_viewport().set_input_as_handled()
 
 
 func set_radius(r: float) -> void:
