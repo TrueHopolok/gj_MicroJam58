@@ -1,6 +1,5 @@
-extends Node2D
-
 class_name CursorManager
+extends Node2D
 
 
 const DEFAULT_RADIUS: float = 64
@@ -10,7 +9,7 @@ const DEFAULT_RADIUS: float = 64
 @export var cursor_trace_scene: PackedScene
 @export var cursor_area: CursorArea
 
-@export_flags_2d_physics var enemy_collision_mask
+@export_flags_2d_physics var enemy_collision_mask: int
 
 var radius: float
 
@@ -52,14 +51,16 @@ func try_hit_enemies(pos: Vector2) -> void:
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
 
-	var hits := get_world_2d().direct_space_state.intersect_shape(query)
+	var hits := get_world_2d().direct_space_state.intersect_shape(query, 128)
 
 	for hit in hits:
 		var enemy := hit.collider.get_parent() as Enemy
 		enemy.take_damage()
+
 
 func crate_trace(pos: Vector2):
 	var node := cursor_trace_scene.instantiate() as CursorTrace
 	node.global_position = pos
 	add_child(node)
 	node.set_radius(radius)
+
