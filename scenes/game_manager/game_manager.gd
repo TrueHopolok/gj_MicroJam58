@@ -50,9 +50,6 @@ func _physics_process(_delta: float) -> void:
 		_try_finish_level()
 
 
-	if not _event_queue.is_empty():
-		prints("next event:", _event_queue.back())
-
 	var r := _clamp_remap(now - _level_start_ticks, 0, ceili(LEVEL_TIME * 1e6), CURSOR_RADIUS_BIG, CURSOR_RADIUS_SMALL)
 	cursor_manager.set_radius(r)
 
