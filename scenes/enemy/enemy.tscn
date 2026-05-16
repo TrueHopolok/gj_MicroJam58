@@ -5,11 +5,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3pup"]
 atlas = ExtResource("2_a3pup")
-region = Rect2(0, 0, 48, 30)
+region = Rect2(0, 0, 30, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40wdo"]
 atlas = ExtResource("2_a3pup")
-region = Rect2(48, 0, 48, 30)
+region = Rect2(30, 0, 30, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjssy"]
 animations = [{
