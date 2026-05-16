@@ -22,6 +22,11 @@ func _die() -> void:
 	queue_free()
 
 
+func target_reached() -> void:
+	died.emit(0)
+	queue_free()
+
+
 func connect_death_signal(f: Callable) -> void:
 	died.connect(f)
 
@@ -32,3 +37,5 @@ func take_damage() -> void:
 	health -= 1
 	if health <= 0:
 		_die()
+
+

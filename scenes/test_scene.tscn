@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cagct1tdxfty" path="res://scenes/game_manager/game_manager.gd" id="1_7ddre"]
 [ext_resource type="Script" uid="uid://cmh85gndtw1k3" path="res://scenes/game_manager/enemy_spec.gd" id="2_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_7ddre"]
-[ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="4_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="5_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="6_3qnke"]
 [ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_wtsjf"]
 [ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="6_3qnke"]
+[ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="8_h3xc6"]
 [ext_resource type="Script" uid="uid://cau4hs0c4s1p8" path="res://scenes/audio/ambient_audio_player/ambient_audio_player.gd" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
 
@@ -26,6 +23,8 @@ cursor_manager = NodePath("../CursorManager")
 castle = NodePath("../Castle")
 metadata/_custom_type_script = "uid://cagct1tdxfty"
 
+[node name="EnemyMother" parent="." unique_id=140479501 instance=ExtResource("8_h3xc6")]
+
 [node name="CursorManager" parent="." unique_id=736183236 instance=ExtResource("5_qjeyg")]
 
 [node name="AmbientAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1179099831]
@@ -37,17 +36,6 @@ metadata/_custom_type_script = "uid://cau4hs0c4s1p8"
 [node name="PauseMenu" parent="." unique_id=840180984 instance=ExtResource("9_h3xc6")]
 visible = false
 
-[node name="Enemy" parent="." unique_id=344490489 instance=ExtResource("3_7ddre")]
-position = Vector2(40, 96)
-
-[node name="Enemy2" parent="." unique_id=1454387456 instance=ExtResource("4_qjeyg")]
-position = Vector2(40, 208)
-
-[node name="EnemyTwinSpawner" parent="." unique_id=636346674 instance=ExtResource("5_qjeyg")]
-position = Vector2(256, 24)
-
-[node name="EnemyIdolledSpawner" parent="." unique_id=298117548 instance=ExtResource("6_3qnke")]
-position = Vector2(136, 296)
 [node name="Castle" parent="." unique_id=1034605710 instance=ExtResource("6_3qnke")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]

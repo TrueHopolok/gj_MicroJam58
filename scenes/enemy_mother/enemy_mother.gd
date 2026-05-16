@@ -10,14 +10,16 @@ const DRAW: bool = true
 @export var _inner_radius: float = 200.0
 @export var _outer_radius: float = 300.0
 
-var _tide_active: bool = false
 var _tide_spawning: bool = false
 var _tide_queue: Array[Node2D] = []
 
 
 ## Returns first instance in the game tree of the EnemySpawner.
 static func get_instance() -> EnemyMother:
-	return Engine.get_main_loop().get_first_node_in_group(GROUP)
+	var res := Engine.get_main_loop().get_first_node_in_group(GROUP) as EnemyMother
+	if not is_instance_valid(res):
+		push_error("Cannot get instance of EnemyMother: not added to scene.")
+	return res
 
 
 func _physics_process(_delta: float) -> void:
@@ -34,11 +36,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_tide_started() -> void:
-	_tide_spawning = true
+	pass
 
 
 func _on_tide_ended() -> void:
-	_tide_active = false
 	tide_finished.emit()
 
 
@@ -81,11 +82,9 @@ func single_spawn(enemy: Node2D) -> void:
 ## Spawns enemies as a tide.
 ## Enemies will be spawned backwards, meaning FILO.
 func tide_spawn(enemies: Array[Node2D]) -> void:
-	if _tide_active:
-		push_error("[%s.tide_spawn]: tried to start tide, while it was active" % [GROUP])
+	if _tide_spawning:
 		return
-	_tide_active = true
-	_tide_spawning = false
+	_tide_spawning = true
 	_tide_queue.append_array(enemies)
 	# TODO: start animation of tide going up
 	# subscribe to animation finish

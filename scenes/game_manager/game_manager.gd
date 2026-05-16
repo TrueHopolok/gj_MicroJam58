@@ -45,9 +45,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var now := Time.get_ticks_usec()
 
-	if not _event_queue.is_empty():
-		print(_event_queue.back().t - now)
-
 	while not _event_queue.is_empty() and _event_queue.back().t <= now:
 		_process_event(_event_queue.pop_back())
 		_try_finish_level()
