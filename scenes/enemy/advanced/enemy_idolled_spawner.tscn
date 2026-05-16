@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ieygnxsn025m"]
+
+[ext_resource type="Script" uid="uid://c88mxevy3oatr" path="res://scenes/enemy/advanced/enemy_idolled_spawner.gd" id="1_fv0h1"]
+[ext_resource type="PackedScene" uid="uid://g4va3oey314n" path="res://scenes/enemy/advanced/enemy_idolled.tscn" id="2_gv0it"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_vcvjs"]
+
+[node name="EnemyIdolledSpawner" type="Node2D" unique_id=298117548]
+script = ExtResource("1_fv0h1")
+_packed_idol = ExtResource("2_gv0it")
+_packed_enemies = Array[PackedScene]([ExtResource("3_vcvjs"), ExtResource("3_vcvjs"), ExtResource("3_vcvjs")])

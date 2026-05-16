@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0gqqnf1wmh6y"]
+
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_x7ufm"]
+[ext_resource type="Script" uid="uid://b0jb13lc0idhu" path="res://scenes/enemy/advanced/enemy_twin.gd" id="2_2lov3"]
+
+[node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
+script = ExtResource("2_2lov3")
+_stun_duration = 3.0
+score = 3
