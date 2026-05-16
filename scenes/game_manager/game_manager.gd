@@ -66,12 +66,13 @@ func _process_event(ev: TimedEvent) -> void:
 		_initialize_child(inst)
 		m.single_spawn(inst)
 
-	if ev.tide.is_empty():
+	if not ev.tide.is_empty():
 		var insts: Array[Node2D] = []
 
 		for p: EnemySpec in ev.tide:
 			var inst: Node2D = p.scene.instantiate()
 			_initialize_child(inst)
+			insts.push_back(inst)
 
 		m.tide_spawn(insts)
 
