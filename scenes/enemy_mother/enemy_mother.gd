@@ -1,10 +1,11 @@
 class_name EnemyMother
 extends Node2D
 
+
 signal tide_finished()
 
-const GROUP = "EnemyMother"
-const DRAW = true
+const GROUP: String = "EnemyMother"
+const DRAW: bool = true
 
 @export var _inner_radius: float = 200.0
 @export var _outer_radius: float = 300.0
@@ -39,11 +40,11 @@ func _on_tide_ended() -> void:
 	tide_finished.emit()
 
 
-## Spawns enemy on the tide, meaning between inner and outer radiuses.
-##
-## x^2 + y^2 = R^2
-## 1. Do the same as single_spawn;
-## 2. Then move point between differences of 2 radiuses.
+# Spawns enemy on the tide, meaning between inner and outer radiuses.
+#
+# x^2 + y^2 = R^2
+# 1. Do the same as single_spawn;
+# 2. Then move point between differences of 2 radiuses.
 func _single_tide_spawn(enemy: Node2D) -> void:
 	if !is_instance_valid(enemy):
 		push_error("[%s.single_tide_spawn]: invalid instance to spawn" % [GROUP])
