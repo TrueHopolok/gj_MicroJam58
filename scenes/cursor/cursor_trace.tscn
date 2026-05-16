@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c1bt64rl2mpt6"]
+
+[ext_resource type="Script" uid="uid://beo0jfm08fbq" path="res://scenes/cursor/cursor_trace.gd" id="1_jjo5u"]
+[ext_resource type="Texture2D" uid="uid://qjb8u7ydrqw7" path="res://assets/art/cursor/test_cursor_area_128.png" id="1_t124d"]
+
+[node name="CursorTrace" type="Node2D" unique_id=1820940696 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_jjo5u")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1184437357]
+texture = ExtResource("1_t124d")
