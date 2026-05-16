@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cagct1tdxfty" path="res://scenes/game_manager/game_manager.gd" id="1_7ddre"]
 [ext_resource type="Script" uid="uid://cmh85gndtw1k3" path="res://scenes/game_manager/enemy_spec.gd" id="2_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="5_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="6_3qnke"]
 [ext_resource type="Script" uid="uid://cau4hs0c4s1p8" path="res://scenes/audio/ambient_audio_player/ambient_audio_player.gd" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
 
@@ -19,10 +20,11 @@ cost = 5
 
 [node name="TestScene" type="Node2D" unique_id=988521978]
 
-[node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager")]
+[node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
 script = ExtResource("1_7ddre")
 enemies = Array[ExtResource("2_qjeyg")]([SubResource("Resource_3qnke"), SubResource("Resource_wtsjf"), SubResource("Resource_rnaij")])
 cursor_manager = NodePath("../CursorManager")
+castle = NodePath("../Castle")
 metadata/_custom_type_script = "uid://cagct1tdxfty"
 
 [node name="CursorManager" parent="." unique_id=736183236 instance=ExtResource("5_qjeyg")]
@@ -35,3 +37,7 @@ metadata/_custom_type_script = "uid://cau4hs0c4s1p8"
 
 [node name="PauseMenu" parent="." unique_id=840180984 instance=ExtResource("9_h3xc6")]
 visible = false
+
+[node name="Castle" parent="." unique_id=1034605710 instance=ExtResource("6_3qnke")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]

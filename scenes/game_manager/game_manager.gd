@@ -4,6 +4,7 @@ extends Node
 
 @export var enemies: Array[EnemySpec] = []
 @export var cursor_manager: CursorManager
+@export var castle: Castle
 
 var _total_enemy_cost: int = 0
 
@@ -11,6 +12,7 @@ var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
 var _level_counter: int = 0 # first level is 1 not 0
 var _level_start_ticks: int = 0
+var _score: int = 0
 
 const LEVEL_TIME: float = 120.0
 const MAX_BIG_SPAWNS: int = 5
@@ -21,6 +23,8 @@ const BIG_SPAWN_PERCENT: int = 40
 
 const CURSOR_RADIUS_BIG: float = 64
 const CURSOR_RADIUS_SMALL: float = 2
+
+const GAME_OVER_SCENE := preload('uid://bwtp0mt7tkcx4')
 
 
 func _ready() -> void:
@@ -34,6 +38,8 @@ func _ready() -> void:
 		_total_enemy_cost += enemy.cost
 
 	_next_level()
+
+	castle.game_over.connect(_on_game_over)
 
 
 func _physics_process(_delta: float) -> void:
@@ -75,8 +81,10 @@ func _initialize_child(inst: Node) -> void:
 		_active_enemies += 1
 
 
-func _on_enemy_death() -> void:
+func _on_enemy_death(enemy_score: int = 1) -> void:
 	_active_enemies -= 1
+	_score += enemy_score
+
 	_try_finish_level()
 
 
@@ -178,6 +186,12 @@ func _execute_level_spec(spec: LevelSpec) -> void:
 		var delay: int = roundi(remap(i, 0, spec.tides.size() - 1, ceili(LEVEL_TIME * 0.3 * 1e6), ceili(LEVEL_TIME * 1e6)))
 
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
+
+
+func _on_game_over() -> void:
+	var inst := GAME_OVER_SCENE.instantiate()
+	inst.score = _score
+	Transition.change_scene_instance(inst)
 
 
 class LevelSpec:

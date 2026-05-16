@@ -28,9 +28,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not (mb_event.pressed and mb_event.button_index == MOUSE_BUTTON_LEFT):
 		return
 
-	
-	create_trace(mb_event.global_position)
-	try_hit_enemies(mb_event.global_position)
+	var pos := get_global_mouse_position()
+
+	create_trace(pos)
+	try_hit_enemies(pos)
 
 	get_viewport().set_input_as_handled()
 

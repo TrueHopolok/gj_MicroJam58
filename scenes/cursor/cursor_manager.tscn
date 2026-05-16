@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lt5nqprcuii" path="res://scenes/cursor/cursor_area.tscn" id="3_i1jaf"]
 
 [node name="CursorManager" type="Node2D" unique_id=736183236 node_paths=PackedStringArray("cursor_area")]
+z_index = 5
 script = ExtResource("1_0ah4l")
 cursor_texture = ExtResource("2_ue65d")
 cursor_hotspot = Vector2(16, 16)
