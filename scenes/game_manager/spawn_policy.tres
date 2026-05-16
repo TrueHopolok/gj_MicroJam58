@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="3_quk26"]
 [ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="4_ae27o"]
 [ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="5_yx4yo"]
-[ext_resource type="Script" path="res://scenes/game_manager/premade_level.gd" id="6_30l3i"]
-[ext_resource type="Script" path="res://scenes/game_manager/spawn_policy.gd" id="7_vpnt8"]
+[ext_resource type="Script" uid="uid://dnl3b8rhvfev0" path="res://scenes/game_manager/premade_level.gd" id="6_30l3i"]
+[ext_resource type="Script" uid="uid://bdtks2mrdyq3k" path="res://scenes/game_manager/spawn_policy.gd" id="7_vpnt8"]
 
 [sub_resource type="Curve" id="Curve_qq5q4"]
 _limits = [0.0, 150.0, 0.0, 10.0]

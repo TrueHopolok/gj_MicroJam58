@@ -145,8 +145,8 @@ script = ExtResource("2_mj6gl")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1875254205]
 libraries/ = SubResource("AnimationLibrary_xvg6f")
 autoplay = &"idle"
-next/move_in = &"idle"
 next/idle = &"idle"
+next/move_in = &"idle"
 blend_times = [&"idle", &"idle", 1.0, &"idle", &"move_in", 1.0, &"move_in", &"idle", 0.5, &"move_in", &"move_in", 0.5]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1405319351]
