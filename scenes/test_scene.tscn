@@ -13,6 +13,7 @@
 [sub_resource type="Resource" id="Resource_s36qc"]
 script = ExtResource("2_qjeyg")
 scene = ExtResource("3_wtsjf")
+cost = 2
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [sub_resource type="Resource" id="Resource_6qxox"]

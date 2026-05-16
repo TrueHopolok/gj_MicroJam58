@@ -14,7 +14,7 @@ var _level_counter: int = 0 # first level is 1 not 0
 var _level_start_ticks: int = 0
 var _score: int = 0
 
-const LEVEL_TIME: float = 120.0
+const LEVEL_TIME: float = 60.0
 const MAX_BIG_SPAWNS: int = 5
 const BIG_SPAWN_COST: int = 10
 
@@ -49,6 +49,10 @@ func _physics_process(_delta: float) -> void:
 		_process_event(_event_queue.pop_back())
 		_try_finish_level()
 
+
+	if not _event_queue.is_empty():
+		prints("next event:", _event_queue.back())
+
 	var r := _clamp_remap(now - _level_start_ticks, 0, ceili(LEVEL_TIME * 1e6), CURSOR_RADIUS_BIG, CURSOR_RADIUS_SMALL)
 	cursor_manager.set_radius(r)
 
@@ -58,7 +62,7 @@ func _clamp_remap(v: float, istart: float, istop: float, ostart: float, ostop: f
 
 
 func _process_event(ev: TimedEvent) -> void:
-	print("Process event single=%s tide=%s" % [ev.spawn != null, ev.tide.size()])
+	print("Process event %s" % ev)
 
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:
@@ -196,6 +200,7 @@ func _execute_level_spec(spec: LevelSpec) -> void:
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
 
 	_event_queue.sort()
+	_event_queue.reverse()
 
 
 func _on_game_over() -> void:
@@ -225,3 +230,8 @@ class TimedEvent:
 		te.t = time
 		te.tide =  v
 		return te
+
+
+	func _to_string() -> String:
+		var dur := t - Time.get_ticks_usec()
+		return "TimedEvent(single=%s, tide=%s, in=%ss)" % [spawn != null, tide.size(), dur * 0.000001]
