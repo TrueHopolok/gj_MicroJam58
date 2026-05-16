@@ -8,7 +8,7 @@ const GROUP: StringName = &"Enemy"
 const TARGET: Vector2 = Vector2(320, 180)
 
 @export var health: int = 1
-@export var speed: float = 5.0
+@export var speed: float = 40.0
 
 
 func _physics_process(_delta: float) -> void:
