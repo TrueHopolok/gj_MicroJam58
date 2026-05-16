@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_7ddre"]
 [ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="4_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="5_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="6_3qnke"]
 [ext_resource type="Script" uid="uid://cau4hs0c4s1p8" path="res://scenes/audio/ambient_audio_player/ambient_audio_player.gd" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
 
@@ -25,3 +26,6 @@ position = Vector2(40, 208)
 
 [node name="EnemyTwinSpawner" parent="." unique_id=636346674 instance=ExtResource("5_qjeyg")]
 position = Vector2(256, 24)
+
+[node name="EnemyIdolledSpawner" parent="." unique_id=298117548 instance=ExtResource("6_3qnke")]
+position = Vector2(136, 296)

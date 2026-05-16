@@ -11,8 +11,8 @@ extends Node2D
 func _ready() -> void:
 	var x: float = randf_range(0, _spawn_radius)
 	var y: float = sqrt(_spawn_radius * _spawn_radius - x * x)
-	_inst_1.position = Vector2(x, y)
-	_inst_2.position = Vector2(-x, -y)
+	_inst_1.position = Vector2(x, y) + position
+	_inst_2.position = Vector2(-x, -y) + position
 	_inst_1.twin = _inst_2
 	_inst_2.twin = _inst_1
 	get_parent().add_child.call_deferred(_inst_1)
