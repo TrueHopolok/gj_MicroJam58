@@ -6,26 +6,27 @@
 [ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="4_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="6_3qnke"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="3_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="5_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="6_3qnke"]
 [ext_resource type="Script" uid="uid://cau4hs0c4s1p8" path="res://scenes/audio/ambient_audio_player/ambient_audio_player.gd" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="9_h3xc6"]
 
-[sub_resource type="Resource" id="Resource_3qnke"]
-script = ExtResource("2_qjeyg")
-
-[sub_resource type="Resource" id="Resource_wtsjf"]
-script = ExtResource("2_qjeyg")
-cost = 3
-
 [sub_resource type="Resource" id="Resource_rnaij"]
 script = ExtResource("2_qjeyg")
-cost = 5
+scene = ExtResource("3_wtsjf")
+metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [node name="TestScene" type="Node2D" unique_id=988521978]
 
-[node name="GameManager" type="Node" parent="." unique_id=308351053]
+[node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
 script = ExtResource("1_7ddre")
-enemies = Array[ExtResource("2_qjeyg")]([SubResource("Resource_3qnke"), SubResource("Resource_wtsjf"), SubResource("Resource_rnaij")])
+enemies = Array[ExtResource("2_qjeyg")]([SubResource("Resource_rnaij")])
+cursor_manager = NodePath("../CursorManager")
+castle = NodePath("../Castle")
 metadata/_custom_type_script = "uid://cagct1tdxfty"
+
+[node name="CursorManager" parent="." unique_id=736183236 instance=ExtResource("5_qjeyg")]
 
 [node name="AmbientAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1179099831]
 bus = &"SFX_panning"
@@ -47,3 +48,6 @@ position = Vector2(256, 24)
 
 [node name="EnemyIdolledSpawner" parent="." unique_id=298117548 instance=ExtResource("6_3qnke")]
 position = Vector2(136, 296)
+[node name="Castle" parent="." unique_id=1034605710 instance=ExtResource("6_3qnke")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]

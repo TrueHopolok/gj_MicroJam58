@@ -5,7 +5,7 @@ extends CharacterBody2D
 signal died(score: int)
 
 const GROUP: StringName = &"Enemy"
-const TARGET: Vector2 = Vector2(320, 180)
+const TARGET := Vector2.ZERO
 
 @export var health: int = 1
 @export var speed: float = 40.0

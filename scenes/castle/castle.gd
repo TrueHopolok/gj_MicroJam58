@@ -1,3 +1,4 @@
+class_name Castle
 extends Area2D
 
 signal game_over
@@ -6,22 +7,26 @@ signal game_over
 
 var dead: bool = false
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 func take_damage() -> void:
-	if !dead:
-		hp -= 1
-		$AnimatedSprite2D.play("hit")
-		if (hp < 0):
-			dead = true
-			game_over.emit()
+	if dead:
+		return
+
+	hp -= 1
+	sprite.play(&"hit")
+	if hp <= 0:
+		dead = true
+		game_over.emit()
 
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("idle")
+	sprite.play(&"idle")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if $AnimatedSprite2D.animation == "hit":
+	if sprite.animation == &"hit":
 		if dead:
-			$AnimatedSprite2D.play("dead")
+			sprite.play(&"dead")
 		else:
-			$AnimatedSprite2D.play("idle")
+			sprite.play(&"idle")
