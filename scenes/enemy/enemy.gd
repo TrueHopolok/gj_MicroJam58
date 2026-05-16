@@ -18,6 +18,7 @@ func _physics_process(_delta: float) -> void:
 
 func _die() -> void:
 	died.emit()
+	queue_free()
 
 
 func connect_death_signal(f: Callable) -> void:
