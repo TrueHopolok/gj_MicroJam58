@@ -11,6 +11,7 @@ const DRAW: bool = true
 @export var _tide_longest_radius: float = 200.0
 @export var _outer_radius: float = 300.0
 
+var _tide_active: bool = false
 var _tide_spawning: bool = false
 var _tide_queue: Array[Node2D] = []
 
@@ -35,10 +36,11 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_tide_started() -> void:
-	pass
+	_tide_spawning = true
 
 
 func _on_tide_ended() -> void:
+	_tide_active = false
 	tide_finished.emit()
 
 
@@ -81,9 +83,11 @@ func single_spawn(enemy: Node2D) -> void:
 ## Spawns enemies as a tide.
 ## Enemies will be spawned backwards, meaning FILO.
 func tide_spawn(enemies: Array[Node2D]) -> void:
-	if _tide_spawning:
+	if _tide_active:
+		push_error("[%s.tide_spawn]: tried to call tide_spawn while another one was active" % GROUP)
 		return
-	_tide_spawning = true
+	_tide_active = true
+	_tide_spawning = false
 	_tide_queue.append_array(enemies)
 	get_tree().call_group(&"Water", &"play_spawn_anim")
 	get_tree().create_timer(1.0).timeout.connect(_on_tide_started)
