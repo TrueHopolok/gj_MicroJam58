@@ -44,6 +44,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var now := Time.get_ticks_usec()
+
+	if not _event_queue.is_empty():
+		print(_event_queue.back().t - now)
+
 	while not _event_queue.is_empty() and _event_queue.back().t <= now:
 		_process_event(_event_queue.pop_back())
 		_try_finish_level()
@@ -57,6 +61,8 @@ func _clamp_remap(v: float, istart: float, istop: float, ostart: float, ostop: f
 
 
 func _process_event(ev: TimedEvent) -> void:
+	print("Process event single=%s tide=%s" % [ev.spawn != null, ev.tide.size()])
+
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:
 		var inst: Node2D = ev.spawn.scene.instantiate()
@@ -97,9 +103,13 @@ func _try_finish_level() -> void:
 
 func _next_level() -> void:
 	_level_counter += 1
+	print("Starting level %d" % _level_counter)
 
 	var balance := ceili(remap(_level_counter, 1, 10, 50, 1000))
 	var spec := _gen_level_spec(balance)
+
+	print("Generated spec: enemies=%d tides=%d" % [spec.enemies.size(), spec.tides.size()])
+
 	_execute_level_spec(spec)
 
 	_level_start_ticks = Time.get_ticks_usec()
@@ -186,6 +196,8 @@ func _execute_level_spec(spec: LevelSpec) -> void:
 		var delay: int = roundi(remap(i, 0, spec.tides.size() - 1, ceili(LEVEL_TIME * 0.3 * 1e6), ceili(LEVEL_TIME * 1e6)))
 
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
+
+	_event_queue.sort()
 
 
 func _on_game_over() -> void:
