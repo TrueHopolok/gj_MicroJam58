@@ -150,6 +150,7 @@ next/move_in = &"idle"
 blend_times = [&"idle", &"idle", 1.0, &"idle", &"move_in", 1.0, &"move_in", &"idle", 0.5, &"move_in", &"move_in", 0.5]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1405319351]
+transparent_bg = true
 size = Vector2i(640, 360)
 
 [node name="WaterRect" type="ColorRect" parent="SubViewport" unique_id=1780255894]
