@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://mlfopegdrvw6"]
 
+[ext_resource type="PackedScene" uid="uid://doh5v2chquosb" path="res://scenes/audio/gameplay_audio_player/gameplay_audio_player.tscn" id="1_3t4qf"]
 [ext_resource type="Script" uid="uid://cagct1tdxfty" path="res://scenes/game_manager/game_manager.gd" id="1_s5p1y"]
 [ext_resource type="Resource" uid="uid://calr7r0oup3sa" path="res://scenes/game_manager/spawn_policy.tres" id="2_6loks"]
+[ext_resource type="AudioStream" uid="uid://xx3u4g8jko0a" path="res://assets/audio/music/gj_tides_preloop.wav" id="2_ugojt"]
+[ext_resource type="AudioStream" uid="uid://cq5qrae7ribaj" path="res://assets/audio/music/gj_tides_loop.wav" id="3_f6yoc"]
 [ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="6_sro07"]
 [ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="7_3naof"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="8_17klg"]
@@ -9,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="10_qgjuk"]
 
 [node name="MainScene" type="Node2D" unique_id=988521978]
+
+[node name="GameplayAudioPlayer" parent="." unique_id=1302492400 instance=ExtResource("1_3t4qf")]
+stream = ExtResource("2_ugojt")
+loop_stream = ExtResource("3_f6yoc")
 
 [node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
 script = ExtResource("1_s5p1y")

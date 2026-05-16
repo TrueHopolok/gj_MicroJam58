@@ -51,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Butterfly" unique_id=344490489 instance=ExtResource("1_hx0e3")]
@@ -62,4 +62,4 @@ damage = -1
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
 sprite_frames = SubResource("SpriteFrames_4cy37")
-frame_progress = 0.33238134
+frame_progress = 0.88944983
