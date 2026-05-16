@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d0n0hpovbmibx"]
+
+[ext_resource type="Script" uid="uid://bhnh04ns0ycd1" path="res://ui/menus/gameover_menu/play_button.gd" id="1_hqf28"]
+[ext_resource type="Script" uid="uid://choq3jc28gskv" path="res://ui/menus/gameover_menu/score.gd" id="2_hqd6e"]
+[ext_resource type="Script" uid="uid://hlriunb32btt" path="res://ui/menus/gameover_menu/exit_button.gd" id="2_hqf28"]
+
+[node name="GameoverMenu" type="CanvasLayer" unique_id=90418660]
+
+[node name="Title" type="Label" parent="." unique_id=1717459934]
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 512.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "Gameover"
+horizontal_alignment = 1
+vertical_alignment = 2
+justification_flags = 162
+
+[node name="Score" type="Label" parent="." unique_id=475655209]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 192.0
+text = "Your score:        %d
+Best score:         %d"
+vertical_alignment = 1
+script = ExtResource("2_hqd6e")
+
+[node name="PlayButton" type="Button" parent="." unique_id=1570319937]
+offset_left = 216.0
+offset_top = 216.0
+offset_right = 304.0
+offset_bottom = 256.0
+text = "Play again"
+script = ExtResource("1_hqf28")
+metadata/_custom_type_script = "uid://2htt7bkeytt7"
+
+[node name="ExitButton" type="Button" parent="." unique_id=592144459]
+offset_left = 336.0
+offset_top = 216.0
+offset_right = 424.0
+offset_bottom = 256.0
+text = "Main menu"
+script = ExtResource("2_hqf28")
+metadata/_custom_type_script = "uid://2htt7bkeytt7"

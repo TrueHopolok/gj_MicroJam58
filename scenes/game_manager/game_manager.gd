@@ -12,8 +12,6 @@ var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
 var _level_counter: int = 0 # first level is 1 not 0
 var _level_start_ticks: int = 0
-var _score: int = 0
-
 const LEVEL_TIME: float = 60.0
 const MAX_BIG_SPAWNS: int = 5
 const BIG_SPAWN_COST: int = 10
@@ -24,10 +22,12 @@ const BIG_SPAWN_PERCENT: int = 40
 const CURSOR_RADIUS_BIG: float = 64
 const CURSOR_RADIUS_SMALL: float = 2
 
-const GAME_OVER_SCENE := preload('uid://bwtp0mt7tkcx4')
+const GAME_OVER_SCENE: StringName = &"res://ui/menus/gameover_menu/gameover_menu.tscn"
 
 
 func _ready() -> void:
+	Persistence.current_score = 0
+
 	randomize()
 
 	enemies.sort_custom(func(lhs: EnemySpec, rhs: EnemySpec) -> bool:
@@ -88,7 +88,7 @@ func _initialize_child(inst: Node) -> void:
 
 func _on_enemy_death(enemy_score: int = 1) -> void:
 	_active_enemies -= 1
-	_score += enemy_score
+	Persistence.current_score += enemy_score
 
 	_try_finish_level()
 
@@ -201,9 +201,8 @@ func _execute_level_spec(spec: LevelSpec) -> void:
 
 
 func _on_game_over() -> void:
-	var inst := GAME_OVER_SCENE.instantiate()
-	inst.score = _score
-	Transition.change_scene_instance(inst)
+	Persistence.submit()
+	Transition.change_scene_path(GAME_OVER_SCENE)
 
 
 class LevelSpec:

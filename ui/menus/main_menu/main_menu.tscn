@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dh808cqj70n3l"]
 
+[ext_resource type="Script" uid="uid://ccjc1acnstkjx" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
 [ext_resource type="PackedScene" uid="uid://i0n7cjiw24yl" path="res://ui/settings/audio_settings/audio_settings.tscn" id="2_6s8a2"]
 [ext_resource type="Script" uid="uid://bltl6imnc8x2t" path="res://ui/menus/main_menu/play_button.gd" id="3_ioe73"]
 [ext_resource type="Script" uid="uid://c3kdhco0ibbsu" path="res://ui/menus/main_menu/reset_button.gd" id="4_txwgg"]
@@ -20,26 +21,36 @@ horizontal_alignment = 1
 vertical_alignment = 2
 justification_flags = 162
 
+[node name="Score" type="Label" parent="." unique_id=816618577]
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 384.0
+offset_bottom = 206.0
+text = "Best score: %d"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_j3h1s")
+
 [node name="AudioSettings" parent="." unique_id=280711572 instance=ExtResource("2_6s8a2")]
 offset_left = 192.0
-offset_top = 192.0
+offset_top = 232.0
 offset_right = -192.0
-offset_bottom = -44.0
+offset_bottom = -4.0
 
 [node name="PlayButton" type="Button" parent="." unique_id=1330982424]
 offset_left = 216.0
-offset_top = 144.0
+offset_top = 136.0
 offset_right = 304.0
-offset_bottom = 184.0
+offset_bottom = 176.0
 text = "Play"
 script = ExtResource("3_ioe73")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
 
 [node name="ResetButton" type="Button" parent="." unique_id=266406353]
 offset_left = 336.0
-offset_top = 144.0
-offset_right = 400.0
-offset_bottom = 184.0
+offset_top = 136.0
+offset_right = 422.0
+offset_bottom = 176.0
 text = "Reset progress"
 script = ExtResource("4_txwgg")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
