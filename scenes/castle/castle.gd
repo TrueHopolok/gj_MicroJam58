@@ -6,9 +6,9 @@ signal game_over
 
 const GROUP: StringName = &"Castle"
 
-@export var starting_health: int = 10
-
-var health: int = starting_health
+# NOTE: can be used for overheal mechanics
+@export var max_health: int = 10
+@export var health: int = 10
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -39,7 +39,7 @@ func _get_kicked(body: Node2D) -> void:
 func take_damage(dmg: int) -> void:
 	if health <= 0:
 		return
-	health = clampi(health - dmg, 0, starting_health)
+	health = clampi(health - dmg, 0, max_health)
 	if dmg > 0:
 		_sprite.play(&"hit")
 		if health <= 0:
