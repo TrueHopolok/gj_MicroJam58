@@ -156,7 +156,7 @@ func _sample_from_premade(pm: PremadeLevel) -> Sample:
 	res.enemies = es
 	res.enemy_spawn_interval = pm.length / res.enemies.size()
 	res.tides = ts
-	res.tide_spawn_interval = pm.length / res.tides.size()
+	res.tide_spawn_interval = pm.length / (res.tides.size() + 1)
 	res.cursor_start = pm.cursor_start
 	res.cursor_end = pm.cursor_end
 	res.cursor_clicks = pm.cursor_clicks

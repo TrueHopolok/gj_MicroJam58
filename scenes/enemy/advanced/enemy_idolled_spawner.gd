@@ -26,4 +26,4 @@ func _ready() -> void:
 
 
 func get_enemy_amount() -> int:
-	return _packed_enemies.size()
+	return _packed_enemies.size() + 1

@@ -34,6 +34,7 @@ bus = &"SFX"
 
 [node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
 script = ExtResource("1_s5p1y")
+start_at_level = 10
 spawn_policy = ExtResource("2_6loks")
 cursor_manager = NodePath("../CursorManager")
 castle = NodePath("../Castle")

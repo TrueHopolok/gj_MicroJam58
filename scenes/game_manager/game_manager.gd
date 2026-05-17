@@ -2,13 +2,14 @@ class_name GameManager
 extends Node
 
 
+@export var start_at_level: int = 1
 @export var spawn_policy: SpawnPolicy
 @export var cursor_manager: CursorManager
 @export var castle: Castle
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
-var _level_counter: int = 3 # first level is 0 not 1
+var _level_counter: int = -1 # first level is 0 not 1
 
 var _cursor_start: float
 var _cursor_end: float
@@ -29,6 +30,7 @@ static func get_instance() -> GameManager:
 
 
 func _ready() -> void:
+	_level_counter = start_at_level - 1
 	add_to_group(GROUP_NAME)
 
 	Persistence.current_score = 0
