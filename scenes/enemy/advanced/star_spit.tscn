@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://blxrdldc6b3bp"]
+
+[ext_resource type="Script" uid="uid://djsgljbjgphmi" path="res://scenes/enemy/advanced/star_spit.gd" id="1_3f28a"]
+[ext_resource type="Texture2D" uid="uid://dxhs8lqgjchxn" path="res://assets/art/spit.png" id="1_apnks"]
+
+[node name="StarSpit" type="Sprite2D" unique_id=1643608210]
+modulate = Color(0.33333334, 0.88235295, 0.57254905, 0.8)
+texture = ExtResource("1_apnks")
+offset = Vector2(-5, 0)
+script = ExtResource("1_3f28a")
+speed = 400.0

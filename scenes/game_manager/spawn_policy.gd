@@ -139,9 +139,10 @@ func _select_with_w(spec: Array[EnemySpec], w: int, b: int) -> EnemySpec:
 
 func _sample_from_premade(pm: PremadeLevel) -> Sample:
 	var es: Array[PackedScene]
-	for key: PackedScene in pm.enemies.data:
-		for _i: int in pm.enemies.data[key]:
-			es.push_back(key)
+	if pm.enemies != null:
+		for key: PackedScene in pm.enemies.data:
+			for _i: int in pm.enemies.data[key]:
+				es.push_back(key)
 
 	var ts: Array[Array]
 	for t: EnemyList in pm.tides:

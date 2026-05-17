@@ -4,6 +4,8 @@ extends Node2D
 const STAR_CHILD := preload("res://scenes/enemy/advanced/enemy_star.tscn")
 const StarChild := preload("res://scenes/enemy/advanced/enemy_star.gd")
 
+const STAR_SPIT := preload("res://scenes/enemy/advanced/star_spit.tscn")
+
 const TIME: float = 5.0
 const DAMAGE: int = 5
 
@@ -55,7 +57,9 @@ func _child_clicked(idx: int) -> void:
 	if _click_n == 0:
 		_child_at(idx).mark_clicked()
 		_child_at(idx+1).mark_target()
+		_spit(_child_at(idx), _child_at(idx+1))
 		_child_at(idx-1).mark_target()
+		_spit(_child_at(idx), _child_at(idx-1))
 		_sound_ok.play()
 	elif _click_n == 1:
 		if idx != _wrap(_last_click + 1) and idx != _wrap(_last_click - 1):
@@ -65,6 +69,8 @@ func _child_clicked(idx: int) -> void:
 		_child_at(_last_click - _direction).reset()
 		_child_at(idx).mark_clicked()
 		_child_at(idx + _direction).mark_target()
+		_spit(_child_at(idx), _child_at(idx+_direction))
+
 		_sound_ok.play()
 	else:
 		if idx != _wrap(_last_click + _direction):
@@ -72,6 +78,7 @@ func _child_clicked(idx: int) -> void:
 			return
 		_child_at(idx).mark_clicked()
 		_child_at(idx + _direction).mark_target()
+		_spit(_child_at(idx), _child_at(idx+_direction))
 		_sound_ok.play()
 
 	_click_n += 1
@@ -83,6 +90,12 @@ func _child_clicked(idx: int) -> void:
 
 		queue_free()
 
+
+func _spit(from: Node2D, to: Node2D):
+	var inst := STAR_SPIT.instantiate()
+	add_child(inst)
+	inst.global_position = from.global_position
+	inst.target = to
 
 
 func _reset() -> void:
