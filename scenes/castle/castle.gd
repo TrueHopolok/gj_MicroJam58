@@ -15,6 +15,11 @@ const GROUP: StringName = &"Castle"
 @onready var _death_audio_player: AudioStreamPlayer = $CastleDeathSFX
 @onready var _damage_audio_player: AudioStreamPlayer = $CastleDamageSFX
 @onready var _heal_audio_player: AudioStreamPlayer = $CastleHealSFX
+@onready var flower_path: Node = $FlowerPath
+
+
+static func get_instance() -> Castle:
+	return Engine.get_main_loop().get_first_node_in_group(GROUP)
 
 
 func _ready() -> void:
@@ -22,6 +27,7 @@ func _ready() -> void:
 	body_entered.connect(_get_kicked)
 	_sprite.animation_finished.connect(_on_animation_finished)
 	remove_child(_label)
+	_update_health_visual()
 
 
 func _on_animation_finished() -> void:
@@ -45,6 +51,7 @@ func take_damage(dmg: int) -> void:
 	if health <= 0:
 		return
 	health = clampi(health - dmg, 0, max_health)
+	_update_health_visual()
 	if dmg > 0:
 		_sprite.play(&"hit")
 		if health <= 0:
@@ -70,5 +77,9 @@ func print_level(level: int) -> void:
 	t.chain().tween_callback(l.queue_free)
 
 
-static func get_instance() -> Castle:
-	return Engine.get_main_loop().get_first_node_in_group(GROUP)
+func _update_health_visual() -> void:
+	for i: int in health:
+		flower_path.get_child(i).show()
+
+	for i: int in range(health, flower_path.get_child_count()):
+		flower_path.get_child(i).hide()

@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c4d3aogcu5jjh" path="res://assets/audio/sfx/castle_heal.wav" id="6_tfbss"]
 [ext_resource type="AudioStream" uid="uid://bb53j21yxw5sy" path="res://assets/audio/sfx/castle_damage.wav" id="7_nb1nt"]
 [ext_resource type="AudioStream" uid="uid://0v4b4ixb6lgr" path="res://assets/audio/sfx/castle_death.wav" id="8_dt7vm"]
+[ext_resource type="PackedScene" uid="uid://etntpjtuh1hf" path="res://scenes/castle/flower.tscn" id="9_sd1s0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njhjj"]
 animations = [{
@@ -50,7 +51,6 @@ z_as_relative = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_bly62")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=593212714]
 position = Vector2(-1, -9)
@@ -84,3 +84,36 @@ bus = &"SFX"
 [node name="CastleDeathSFX" type="AudioStreamPlayer" parent="." unique_id=1938658545]
 stream = ExtResource("8_dt7vm")
 bus = &"SFX"
+
+[node name="FlowerPath" type="Node2D" parent="." unique_id=1357816856]
+metadata/_edit_lock_ = true
+
+[node name="Flower" parent="FlowerPath" unique_id=1148444808 instance=ExtResource("9_sd1s0")]
+position = Vector2(-17, -62)
+
+[node name="Flower2" parent="FlowerPath" unique_id=627593166 instance=ExtResource("9_sd1s0")]
+position = Vector2(-42, -34)
+
+[node name="Flower3" parent="FlowerPath" unique_id=351984701 instance=ExtResource("9_sd1s0")]
+position = Vector2(-56, -6)
+
+[node name="Flower4" parent="FlowerPath" unique_id=669535538 instance=ExtResource("9_sd1s0")]
+position = Vector2(-45, 21)
+
+[node name="Flower5" parent="FlowerPath" unique_id=85352965 instance=ExtResource("9_sd1s0")]
+position = Vector2(-14, 39)
+
+[node name="Flower6" parent="FlowerPath" unique_id=951777363 instance=ExtResource("9_sd1s0")]
+position = Vector2(23, 42)
+
+[node name="Flower7" parent="FlowerPath" unique_id=1431861575 instance=ExtResource("9_sd1s0")]
+position = Vector2(59, 24)
+
+[node name="Flower8" parent="FlowerPath" unique_id=701765106 instance=ExtResource("9_sd1s0")]
+position = Vector2(56, -9)
+
+[node name="Flower9" parent="FlowerPath" unique_id=363065640 instance=ExtResource("9_sd1s0")]
+position = Vector2(48, -44)
+
+[node name="Flower10" parent="FlowerPath" unique_id=235897512 instance=ExtResource("9_sd1s0")]
+position = Vector2(17, -63)

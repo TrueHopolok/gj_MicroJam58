@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://etntpjtuh1hf"]
+
+[node name="Flower" type="Node2D" unique_id=627593166]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2067497793]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=657611228]
+scale = Vector2(0.46216044, 0.31240124)
+polygon = PackedVector2Array(-6, 22, -6, 7, -18, 8, -21, 0, -21, -2, -22, -29, -21, -29, -17, -20, -16, -13, -10, -25, -8, -18, -6, -20, 1, -36, 0, -20, 1, -18, 7, -28, 7, -15, 9, -16, 17, -29, 13, -15, 13, -14, 23, -8, 23, 0, 14, 3, 8, 3, 2, 5, 2, 24, 2, 25)
