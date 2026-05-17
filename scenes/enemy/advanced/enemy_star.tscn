@@ -23,6 +23,8 @@ animations = [{
 [node name="EnemyStar" unique_id=344490489 instance=ExtResource("1_5ikqp")]
 z_index = -11
 z_as_relative = false
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("2_ruaxj")
 score = 1
 damage = 0

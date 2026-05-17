@@ -25,9 +25,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	velocity = global_position.direction_to(TARGET) * speed
 	move_and_slide()
-
-
-func _process(_delta: float) -> void:
 	look_at(velocity)
 
 

@@ -6,6 +6,7 @@ const StarChild := preload("res://scenes/enemy/advanced/enemy_star.gd")
 
 const STAR_SPIT := preload("res://scenes/enemy/advanced/star_spit.tscn")
 
+const STAR_SPAWN_DIST: float = 110.0
 const TIME: float = 5.0
 const DAMAGE: int = 5
 
@@ -19,7 +20,7 @@ var _children: Array[StarChild]
 
 
 func _ready() -> void:
-	var initial_pos := global_position
+	var initial_pos := Vector2.from_angle(randf_range(0, TAU)) * STAR_SPAWN_DIST
 
 	for i: int in 5:
 		var inst := STAR_CHILD.instantiate() as StarChild
