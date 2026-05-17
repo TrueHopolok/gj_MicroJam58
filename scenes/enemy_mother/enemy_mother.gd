@@ -4,12 +4,12 @@ extends Node2D
 
 signal tide_finished()
 
+const BATCH_SPAWN: int = 50
 const GROUP: String = "EnemyMother"
-const DRAW: bool = true
 
-@export var _tide_shortest_radius: float = 150.0
-@export var _tide_longest_radius: float = 200.0
-@export var _outer_radius: float = 300.0
+@export var _tide_shortest_radius: float = 90.0
+@export var _tide_longest_radius: float = 140.0
+@export var _outer_radius: float = 400.0
 
 var _tide_active: bool = false
 var _tide_spawning: bool = false
@@ -27,12 +27,13 @@ static func get_instance() -> EnemyMother:
 func _physics_process(_delta: float) -> void:
 	if !_tide_spawning:
 		return
-	if _tide_queue.is_empty():
-		_tide_spawning = false
-		_on_tide_ended()
-		return
-	_single_tide_spawn(_tide_queue.back())
-	_tide_queue.pop_back()
+	for i in BATCH_SPAWN:
+		if _tide_queue.is_empty():
+			_tide_spawning = false
+			_on_tide_ended()
+			return
+		_single_tide_spawn(_tide_queue.back())
+		_tide_queue.pop_back()
 
 
 func _on_tide_started() -> void:
@@ -96,11 +97,11 @@ func tide_spawn(enemies: Array[Node2D]) -> void:
 ######## DRAWING LOGIC ########
 
 func _process(_delta: float) -> void:
-	if DRAW && OS.is_debug_build():
+	if get_tree().debug_navigation_hint && OS.is_debug_build():
 		queue_redraw()
 
 func _draw() -> void:
-	if DRAW && OS.is_debug_build():
+	if get_tree().debug_navigation_hint && OS.is_debug_build():
 		draw_circle(global_position, _tide_shortest_radius, Color.BLUE, false)
 		draw_circle(global_position, _tide_longest_radius, Color.BLUE, false)
 		draw_circle(global_position, _outer_radius, Color.RED, false)

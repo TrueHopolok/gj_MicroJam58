@@ -8,7 +8,6 @@ extends Node
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
-var _queued_enemies: int = 0
 var _level_counter: int = -1 # first level is 0 not 1
 
 const GAME_OVER_SCENE: StringName = &"res://ui/menus/gameover_menu/gameover_menu.tscn"
