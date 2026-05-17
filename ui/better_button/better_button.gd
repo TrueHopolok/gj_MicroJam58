@@ -18,5 +18,5 @@ func _on_press() -> void:
 func _set_sfx() -> void:
 	var press_sfx_player := AudioStreamPlayer.new()
 	press_sfx_player.stream = _press_sfx
-	pressed.connect(press_sfx_player.play)
+	button_down.connect(press_sfx_player.play)
 	add_child(press_sfx_player)
