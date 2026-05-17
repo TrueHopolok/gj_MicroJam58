@@ -3,9 +3,6 @@ extends AudioStreamPlayer
 
 @export var loop_stream: AudioStream
 
-@onready var _bus_idx: int = AudioServer.get_bus_index(&'Music')
-@onready var _effect_idx: int = 0
-
 
 func _ready() -> void:
 	finished.connect(func() -> void:
