@@ -33,6 +33,7 @@ func take_damage() -> void:
 			_die()
 			twin._die()
 		else:
+			_hit_sfx_player.play()
 			health = 1
 			_stun_left = _stun_duration
 

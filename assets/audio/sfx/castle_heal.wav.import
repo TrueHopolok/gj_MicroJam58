@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c4d3aogcu5jjh"
-path="res://.godot/imported/heal_placeholder.wav-95d0dc941268552664bc567e9720a578.sample"
+path="res://.godot/imported/castle_heal.wav-60fcdeebe0c253d0bd84ba92fb81f2bc.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/heal_placeholder.wav"
-dest_files=["res://.godot/imported/heal_placeholder.wav-95d0dc941268552664bc567e9720a578.sample"]
+source_file="res://assets/audio/sfx/castle_heal.wav"
+dest_files=["res://.godot/imported/castle_heal.wav-60fcdeebe0c253d0bd84ba92fb81f2bc.sample"]
 
 [params]
 

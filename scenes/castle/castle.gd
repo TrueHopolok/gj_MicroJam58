@@ -11,8 +11,10 @@ const GROUP: StringName = &"Castle"
 @export var health: int = 10
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
-
 @onready var _label: Label = $LevelLabel
+@onready var _death_audio_player: AudioStreamPlayer = $CastleDeathSFX
+@onready var _damage_audio_player: AudioStreamPlayer = $CastleDamageSFX
+@onready var _heal_audio_player: AudioStreamPlayer = $CastleHealSFX
 
 
 func _ready() -> void:
@@ -46,7 +48,12 @@ func take_damage(dmg: int) -> void:
 	if dmg > 0:
 		_sprite.play(&"hit")
 		if health <= 0:
+			_death_audio_player.play()
 			game_over.emit()
+		else:
+			_damage_audio_player.play()
+	else:
+		_heal_audio_player.play()
 
 
 func print_level(level: int) -> void:

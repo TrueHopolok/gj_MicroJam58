@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bb53j21yxw5sy"
-path="res://.godot/imported/castle_take_damage.wav-d26665f0a7427fa9ec1ffed11f4930c9.sample"
+path="res://.godot/imported/castle_damage.wav-e9818f9d6d31f9df605df9a0923063e2.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/castle_take_damage.wav"
-dest_files=["res://.godot/imported/castle_take_damage.wav-d26665f0a7427fa9ec1ffed11f4930c9.sample"]
+source_file="res://assets/audio/sfx/castle_damage.wav"
+dest_files=["res://.godot/imported/castle_damage.wav-e9818f9d6d31f9df605df9a0923063e2.sample"]
 
 [params]
 

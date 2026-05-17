@@ -13,7 +13,7 @@ const TARGET := Vector2.ZERO
 @export var damage: int = 1
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _hit_sfx_player: AudioStreamPlayer = GameplaySfxPlayer.get_audio_stream_player("EnemyHit")
+@onready var _hit_sfx_player: AudioStreamPlayer = get_tree().get_first_node_in_group('EnemySFX')
 
 
 func _ready() -> void:

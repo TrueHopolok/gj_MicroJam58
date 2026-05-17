@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bdcs38hgjs14y" path="res://assets/art/castle_hit.png" id="3_vutgn"]
 [ext_resource type="Texture2D" uid="uid://be264me8fnkh1" path="res://assets/art/castle_idle.png" id="5_jxdab"]
 [ext_resource type="FontFile" uid="uid://quhl6q6tlmeb" path="res://assets/fonts/MedievalKnife-Regular.ttf" id="5_qfbvt"]
+[ext_resource type="AudioStream" uid="uid://c4d3aogcu5jjh" path="res://assets/audio/sfx/castle_heal.wav" id="6_tfbss"]
+[ext_resource type="AudioStream" uid="uid://bb53j21yxw5sy" path="res://assets/audio/sfx/castle_damage.wav" id="7_nb1nt"]
+[ext_resource type="AudioStream" uid="uid://0v4b4ixb6lgr" path="res://assets/audio/sfx/castle_death.wav" id="8_dt7vm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njhjj"]
 animations = [{
@@ -69,3 +72,15 @@ text = "Level "
 label_settings = SubResource("LabelSettings_vutgn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CastleHealSFX" type="AudioStreamPlayer" parent="." unique_id=1516614982]
+stream = ExtResource("6_tfbss")
+bus = &"SFX"
+
+[node name="CastleDamageSFX" type="AudioStreamPlayer" parent="." unique_id=1423455147]
+stream = ExtResource("7_nb1nt")
+bus = &"SFX"
+
+[node name="CastleDeathSFX" type="AudioStreamPlayer" parent="." unique_id=1938658545]
+stream = ExtResource("8_dt7vm")
+bus = &"SFX"

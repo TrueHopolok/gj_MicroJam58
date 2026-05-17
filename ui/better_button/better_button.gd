@@ -2,7 +2,7 @@ class_name BetterButton
 extends Button
 
 
-@export var _press_sfx: AudioStream
+@export var _press_sfx: AudioStream = load('res://assets/audio/sfx/menu_sound.wav')
 
 
 func _ready() -> void:
