@@ -3,11 +3,31 @@
 [ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_5ikqp"]
 [ext_resource type="Script" uid="uid://b4t8qgnqpsf4u" path="res://scenes/enemy/advanced/enemy_star.gd" id="2_ruaxj"]
 [ext_resource type="Texture2D" uid="uid://dbythb581nyg5" path="res://assets/art/ring.png" id="3_1or7h"]
+[ext_resource type="Texture2D" uid="uid://hy8t48m7lje7" path="res://assets/art/star.png" id="3_4mqbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoec0"]
+atlas = ExtResource("3_4mqbe")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63li6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoec0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EnemyStar" unique_id=344490489 instance=ExtResource("1_5ikqp")]
 script = ExtResource("2_ruaxj")
 score = 1
 damage = 0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
+sprite_frames = SubResource("SpriteFrames_63li6")
+frame_progress = 0.0
 
 [node name="Ring" type="Sprite2D" parent="." index="4" unique_id=1746686804]
 visible = false
