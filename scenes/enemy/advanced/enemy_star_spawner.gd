@@ -27,6 +27,7 @@ func _ready() -> void:
 		inst.clicked.connect(_child_clicked.bind(i))
 		_children.push_back(inst)
 		get_parent().add_child(inst)
+		inst.mark_target()
 
 	_children[0].damage = DAMAGE
 
@@ -55,6 +56,8 @@ func _child_clicked(idx: int) -> void:
 		return
 
 	if _click_n == 0:
+		for i: int in 5:
+			_child_at(i).reset()
 		_child_at(idx).mark_clicked()
 		_child_at(idx+1).mark_target()
 		_spit(_child_at(idx), _child_at(idx+1))
