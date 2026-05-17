@@ -40,6 +40,8 @@ animations = [{
 }]
 
 [node name="Enemy" unique_id=344490489 instance=ExtResource("1_ncrg0")]
+z_index = -11
+z_as_relative = false
 speed = 30.0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]

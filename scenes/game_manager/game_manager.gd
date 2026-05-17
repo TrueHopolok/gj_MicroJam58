@@ -2,7 +2,7 @@ class_name GameManager
 extends Node
 
 
-@export var start_at_level: int = 1
+@export var start_at_level: int = 0
 @export var spawn_policy: SpawnPolicy
 @export var cursor_manager: CursorManager
 @export var castle: Castle

@@ -41,8 +41,10 @@ animations = [{
 }]
 
 [node name="EnemyIdolled" unique_id=344490489 instance=ExtResource("1_4n8d7")]
+z_index = -11
+z_as_relative = false
 script = ExtResource("2_iwr62")
-speed = 25.0
+speed = 15.0
 score = 4
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]

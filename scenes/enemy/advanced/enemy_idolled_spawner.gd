@@ -16,7 +16,7 @@ func _ready() -> void:
 		var x: float = randf_range(-_spawn_radius, _spawn_radius)
 		var y: float = sqrt(_spawn_radius * _spawn_radius - x * x)
 		var pos := Vector2(x, y)
-		if (pos + position).distance_squared_to(idol.TARGET) > position.distance_squared_to(idol.TARGET):
+		if (pos + position).distance_squared_to(idol.TARGET) < position.distance_squared_to(idol.TARGET):
 			pos = Vector2(-pos.x, -pos.y)
 		inst.died.connect(idol.idol_died.unbind(1), CONNECT_APPEND_SOURCE_OBJECT)
 		idol.enemies[inst] = true
