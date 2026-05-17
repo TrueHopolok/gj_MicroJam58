@@ -17,9 +17,9 @@ func _physics_process(delta: float) -> void:
 func _draw() -> void:
 	if enemies.is_empty():
 		return
-	draw_circle(Vector2.ZERO, CIRCLE_RADIUS, Color.CYAN, false)
+	draw_circle(Vector2.ZERO, CIRCLE_RADIUS, Color.ORANGE, false, 2.0)
 	for enemy in enemies:
-		draw_line(to_local(global_position), to_local(enemy.global_position), Color.CYAN)
+		draw_dashed_line(to_local(global_position), to_local(enemy.global_position), Color.ORANGE, 1.0)
 
 
 func idol_died(enemy: Enemy) -> void:
