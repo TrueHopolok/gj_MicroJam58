@@ -4,12 +4,12 @@ extends Node2D
 
 signal tide_finished()
 
+const BATCH_SPAWN: int = 50
 const GROUP: String = "EnemyMother"
-const DRAW: bool = true
 
-@export var _tide_shortest_radius: float = 150.0
-@export var _tide_longest_radius: float = 200.0
-@export var _outer_radius: float = 300.0
+@export var _tide_shortest_radius: float = 90.0
+@export var _tide_longest_radius: float = 140.0
+@export var _outer_radius: float = 400.0
 
 var _tide_active: bool = false
 var _tide_spawning: bool = false
@@ -27,12 +27,13 @@ static func get_instance() -> EnemyMother:
 func _physics_process(_delta: float) -> void:
 	if !_tide_spawning:
 		return
-	if _tide_queue.is_empty():
-		_tide_spawning = false
-		_on_tide_ended()
-		return
-	_single_tide_spawn(_tide_queue.back())
-	_tide_queue.pop_back()
+	for i in BATCH_SPAWN:
+		if _tide_queue.is_empty():
+			_tide_spawning = false
+			_on_tide_ended()
+			return
+		_single_tide_spawn(_tide_queue.back())
+		_tide_queue.pop_back()
 
 
 func _on_tide_started() -> void:
@@ -55,11 +56,11 @@ func _single_tide_spawn(enemy: Node2D) -> void:
 		return
 	var x: float = randf_range(-_tide_longest_radius, _tide_longest_radius)
 	var y: float = sqrt(_tide_longest_radius * _tide_longest_radius - x * x) * [-1, 1].pick_random()
-	var p: Vector2 = Vector2(x, y)
-	p += p.direction_to(Vector2.ZERO) * randf_range(0, _tide_longest_radius - _tide_shortest_radius)
-	enemy.position = p
+	var pos: Vector2 = Vector2(x, y)
+	pos += pos.direction_to(Vector2.ZERO) * randf_range(0, _tide_longest_radius - _tide_shortest_radius)
+	enemy.position = pos
 	add_child(enemy)
-	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, p.x, p.y])
+	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, pos.x, pos.y])
 
 
 ## Spawns enemy node on the outer radius.
@@ -68,16 +69,19 @@ func _single_tide_spawn(enemy: Node2D) -> void:
 ## 1. Generates x from -R to R;
 ## 2. Calculates y = +-sqrt(R^2 - x^2);
 ## 3. Add node to a tree as a child.
-func single_spawn(enemy: Node2D) -> void:
+func single_spawn(enemy: Node2D, pos: Vector2 = Vector2.ZERO) -> void:
 	if !is_instance_valid(enemy):
 		push_error("[%s.single_spawn]: invalid instance to spawn" % [GROUP])
 		return
-	var x: float = randf_range(-_outer_radius, _outer_radius)
-	var y: float = sqrt(_outer_radius * _outer_radius - x * x) * [-1, 1].pick_random()
-	var p: Vector2 = Vector2(x, y)
-	enemy.position = p
+	if pos == Vector2.ZERO:
+		var x: float = randf_range(-_outer_radius, _outer_radius)
+		var y: float = sqrt(_outer_radius * _outer_radius - x * x) * [-1, 1].pick_random()
+		pos = Vector2(x, y)
+		enemy.position = pos
+	else:
+		enemy.position = pos
 	add_child(enemy)
-	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, p.x, p.y])
+	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, pos.x, pos.y])
 
 
 ## Spawns enemies as a tide.
@@ -96,11 +100,11 @@ func tide_spawn(enemies: Array[Node2D]) -> void:
 ######## DRAWING LOGIC ########
 
 func _process(_delta: float) -> void:
-	if DRAW && OS.is_debug_build():
+	if get_tree().debug_navigation_hint && OS.is_debug_build():
 		queue_redraw()
 
 func _draw() -> void:
-	if DRAW && OS.is_debug_build():
+	if get_tree().debug_navigation_hint && OS.is_debug_build():
 		draw_circle(global_position, _tide_shortest_radius, Color.BLUE, false)
 		draw_circle(global_position, _tide_longest_radius, Color.BLUE, false)
 		draw_circle(global_position, _outer_radius, Color.RED, false)
