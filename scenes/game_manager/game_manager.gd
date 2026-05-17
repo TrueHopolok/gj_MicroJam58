@@ -147,6 +147,7 @@ func _on_click() -> void:
 
 func _on_game_over() -> void:
 	Persistence.submit()
+	await get_tree().create_timer(1.5).timeout
 	Transition.change_scene_path(GAME_OVER_SCENE)
 
 
