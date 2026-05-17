@@ -1,7 +1,42 @@
 [gd_resource type="Theme" format=3 uid="uid://b8ecc687tvf12"]
 
 [ext_resource type="FontFile" uid="uid://b72dpbyv1r7a0" path="res://assets/fonts/Minecraftia-Regular.ttf" id="1_6tjce"]
+[ext_resource type="Texture2D" uid="uid://c2tiafsn6bwhr" path="res://assets/art/button/button_hover.png" id="1_hvkdh"]
+[ext_resource type="Texture2D" uid="uid://dxejgjsloi3xp" path="res://assets/art/button/button_normal.png" id="1_oa4jb"]
+[ext_resource type="Texture2D" uid="uid://q5v1ejfks5rj" path="res://assets/art/button/button_pressed.png" id="2_0ecif"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyfqg"]
+texture = ExtResource("1_hvkdh")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ecif"]
+texture = ExtResource("1_oa4jb")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvkdh"]
+texture = ExtResource("2_0ecif")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 32, 16)
 
 [resource]
 default_font = ExtResource("1_6tjce")
 default_font_size = 8
+Button/styles/hover = SubResource("StyleBoxTexture_qyfqg")
+Button/styles/normal = SubResource("StyleBoxTexture_0ecif")
+Button/styles/pressed = SubResource("StyleBoxTexture_hvkdh")
