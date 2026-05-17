@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh808cqj70n3l"]
 
-[ext_resource type="Script" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
+[ext_resource type="Script" uid="uid://ccjc1acnstkjx" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
 [ext_resource type="PackedScene" uid="uid://i0n7cjiw24yl" path="res://ui/settings/audio_settings/audio_settings.tscn" id="2_6s8a2"]
 [ext_resource type="Script" uid="uid://bltl6imnc8x2t" path="res://ui/menus/main_menu/play_button.gd" id="3_ioe73"]
 [ext_resource type="Script" uid="uid://c3kdhco0ibbsu" path="res://ui/menus/main_menu/reset_button.gd" id="4_txwgg"]

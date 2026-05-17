@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c2tiafsn6bwhr" path="res://assets/art/button/button_hover.png" id="1_hvkdh"]
 [ext_resource type="Texture2D" uid="uid://dxejgjsloi3xp" path="res://assets/art/button/button_normal.png" id="1_oa4jb"]
 [ext_resource type="Texture2D" uid="uid://q5v1ejfks5rj" path="res://assets/art/button/button_pressed.png" id="2_0ecif"]
+[ext_resource type="Texture2D" uid="uid://b18ak3so7ej28" path="res://assets/art/slider/slider_fill.png" id="4_qf2id"]
+[ext_resource type="Texture2D" uid="uid://bmmw5ek4umdrn" path="res://assets/art/slider/slider.png" id="5_4bmj0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyfqg"]
 texture = ExtResource("1_hvkdh")
@@ -34,9 +36,36 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 32, 16)
 
+[sub_resource type="ImageTexture" id="ImageTexture_qf2id"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exttd"]
+texture = ExtResource("4_qf2id")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n83um"]
+texture = ExtResource("5_4bmj0")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [resource]
 default_font = ExtResource("1_6tjce")
 default_font_size = 8
 Button/styles/hover = SubResource("StyleBoxTexture_qyfqg")
 Button/styles/normal = SubResource("StyleBoxTexture_0ecif")
 Button/styles/pressed = SubResource("StyleBoxTexture_hvkdh")
+HSlider/icons/grabber = SubResource("ImageTexture_qf2id")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_qf2id")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_qf2id")
+HSlider/icons/tick = SubResource("ImageTexture_qf2id")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_exttd")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_exttd")
+HSlider/styles/slider = SubResource("StyleBoxTexture_n83um")
