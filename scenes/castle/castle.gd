@@ -58,8 +58,8 @@ func print_level(level: int) -> void:
 	l.text = "Level %d" % level
 	add_child(l)
 	var t := l.create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	t.tween_property(l, "position:y", -50, 1.5).as_relative()
-	t.parallel().tween_property(l, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+	t.tween_property(l, "position:y", -50, 3.0).as_relative()
+	t.parallel().tween_property(l, "modulate:a", 0.0, 3.0).set_ease(Tween.EASE_IN_OUT)
 	t.chain().tween_callback(l.queue_free)
 
 
