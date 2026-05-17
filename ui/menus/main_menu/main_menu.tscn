@@ -67,9 +67,14 @@ script = ExtResource("4_txwgg")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
 
 [node name="ResetDialog" type="ConfirmationDialog" parent="ResetButton" unique_id=1030727301]
+oversampling_override = 1.0
 initial_position = 1
+size = Vector2i(209, 108)
+borderless = true
+ok_button_text = "    OK    "
 dialog_text = "Reset all progress?
 This action is irreversible."
+cancel_button_text = "  Cancel  "
 script = ExtResource("5_j3h1s")
 
 [node name="Water" parent="." unique_id=1099081789 instance=ExtResource("6_igis3")]

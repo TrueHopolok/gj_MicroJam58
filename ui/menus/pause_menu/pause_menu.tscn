@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.27450982)
+color = Color(0, 0, 0, 0.3137255)
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="." unique_id=1397348034]
@@ -41,7 +41,7 @@ offset_bottom = -1.0
 offset_left = 248.0
 offset_top = 152.0
 offset_right = 392.0
-offset_bottom = 192.0
+offset_bottom = 184.0
 text = "Continue"
 script = ExtResource("3_2gx4h")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
@@ -50,13 +50,18 @@ metadata/_custom_type_script = "uid://2htt7bkeytt7"
 offset_left = 248.0
 offset_top = 200.0
 offset_right = 392.0
-offset_bottom = 240.0
+offset_bottom = 232.0
 text = "Return to main menu"
 script = ExtResource("4_cid4m")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
 
 [node name="ReturnDialog" type="ConfirmationDialog" parent="ReturnButton" unique_id=2080949241]
+oversampling_override = 1.0
 initial_position = 1
+size = Vector2i(258, 108)
+borderless = true
+ok_button_text = "    OK    "
 dialog_text = "Return to main menu?
 All current progress would be lost."
+cancel_button_text = "  Cancel  "
 script = ExtResource("5_yio2i")

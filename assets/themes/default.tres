@@ -7,6 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://bmmw5ek4umdrn" path="res://assets/art/slider/slider.png" id="5_4bmj0"]
 [ext_resource type="FontFile" uid="uid://quhl6q6tlmeb" path="res://assets/fonts/MedievalKnife-Regular.ttf" id="6_qf2id"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qf2id"]
+load_path = "res://.godot/imported/confirmation_window.png-a3384cee542d17f2b748c4cb867d7500.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4bmj0"]
+texture = SubResource("CompressedTexture2D_qf2id")
+texture_margin_left = 23.0
+texture_margin_top = 21.0
+texture_margin_right = 14.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 64, 64)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyfqg"]
 texture = ExtResource("1_hvkdh")
 texture_margin_left = 4.0
@@ -59,6 +72,9 @@ axis_stretch_vertical = 1
 [resource]
 default_font = ExtResource("6_qf2id")
 default_font_size = 16
+AcceptDialog/styles/embedded_border = SubResource("StyleBoxTexture_4bmj0")
+AcceptDialog/styles/embedded_unfocused_border = SubResource("StyleBoxTexture_4bmj0")
+AcceptDialog/styles/panel = SubResource("StyleBoxTexture_4bmj0")
 Button/styles/hover = SubResource("StyleBoxTexture_qyfqg")
 Button/styles/normal = SubResource("StyleBoxTexture_0ecif")
 Button/styles/pressed = SubResource("StyleBoxTexture_hvkdh")
