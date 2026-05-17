@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://etntpjtuh1hf"]
+
+[ext_resource type="Texture2D" uid="uid://cdp0bxohvy2v7" path="res://assets/art/flowers/flower_01.png" id="1_8354e"]
+[ext_resource type="Texture2D" uid="uid://dtty1oebo5kmm" path="res://assets/art/flowers/flower_02.png" id="2_noy32"]
+[ext_resource type="Script" uid="uid://bb1jh6xlw0ts3" path="res://scenes/castle/flower.gd" id="3_noy32"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01qv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8354e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_noy32")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Flower" type="AnimatedSprite2D" unique_id=1933816294]
+sprite_frames = SubResource("SpriteFrames_01qv7")
+speed_scale = 0.0
+script = ExtResource("3_noy32")

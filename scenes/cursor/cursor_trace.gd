@@ -2,7 +2,7 @@ class_name CursorTrace
 extends Node2D
 
 
-const START_OPACITY: float = 0.75
+const START_OPACITY: float = 0.3
 const LIFETIME: float = 0.5
 
 @export var sprite: Sprite2D
