@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	_sprite.look_at(velocity)
+	look_at(velocity)
 
 
 func _die() -> void:
