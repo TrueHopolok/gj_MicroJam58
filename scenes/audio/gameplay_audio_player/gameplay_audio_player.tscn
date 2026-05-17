@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://thvgh2n82qse" path="res://scenes/audio/gameplay_audio_player/gameplay_audio_player.gd" id="1_sfsxq"]
 
-[node name="GameplayAudioPlayer" type="AudioStreamPlayer" unique_id=1302492400]
+[node name="MusicAudioPlayer" type="AudioStreamPlayer" unique_id=1302492400]
 process_mode = 3
 autoplay = true
 bus = &"Music"

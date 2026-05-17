@@ -16,7 +16,7 @@
 
 [node name="MainScene" type="Node2D" unique_id=988521978]
 
-[node name="GameplayAudioPlayer" parent="." unique_id=1302492400 instance=ExtResource("1_3t4qf")]
+[node name="MusicAudioPlayer" parent="." unique_id=1302492400 instance=ExtResource("1_3t4qf")]
 stream = ExtResource("2_ugojt")
 loop_stream = ExtResource("3_f6yoc")
 

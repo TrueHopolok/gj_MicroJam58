@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dh808cqj70n3l"]
 
+[ext_resource type="PackedScene" uid="uid://doh5v2chquosb" path="res://scenes/audio/gameplay_audio_player/gameplay_audio_player.tscn" id="1_gpubi"]
 [ext_resource type="Script" uid="uid://ccjc1acnstkjx" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
 [ext_resource type="PackedScene" uid="uid://i0n7cjiw24yl" path="res://ui/settings/audio_settings/audio_settings.tscn" id="2_6s8a2"]
 [ext_resource type="Script" uid="uid://bltl6imnc8x2t" path="res://ui/menus/main_menu/play_button.gd" id="3_ioe73"]
@@ -9,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="6_igis3"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1082861136]
+
+[node name="MusicAudioPlayer" parent="." unique_id=1302492400 instance=ExtResource("1_gpubi")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=576904860]
 offset_right = 640.0
