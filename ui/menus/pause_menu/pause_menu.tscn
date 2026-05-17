@@ -38,18 +38,18 @@ offset_right = -192.0
 offset_bottom = -1.0
 
 [node name="ContinueButton" type="Button" parent="." unique_id=78623454]
-offset_left = 256.0
+offset_left = 248.0
 offset_top = 152.0
-offset_right = 384.0
+offset_right = 392.0
 offset_bottom = 192.0
 text = "Continue"
 script = ExtResource("3_2gx4h")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
 
 [node name="ReturnButton" type="Button" parent="." unique_id=1724090446]
-offset_left = 256.0
+offset_left = 248.0
 offset_top = 200.0
-offset_right = 384.0
+offset_right = 392.0
 offset_bottom = 240.0
 text = "Return to main menu"
 script = ExtResource("4_cid4m")
