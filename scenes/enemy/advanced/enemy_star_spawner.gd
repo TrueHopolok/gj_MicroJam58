@@ -12,6 +12,9 @@ var _last_click: int = -1
 var _direction: int = 0 # 0 if undecided, -1 or 1
 var _children: Array[StarChild]
 
+@onready var _sound_punish := get_tree().get_first_node_in_group("ImpossibleSFX") as AudioStreamPlayer
+@onready var _sound_ok := get_tree().get_first_node_in_group("StarOkSFX") as AudioStreamPlayer
+
 
 func _ready() -> void:
 	var initial_pos := global_position
@@ -46,12 +49,14 @@ func _draw() -> void:
 
 func _child_clicked(idx: int) -> void:
 	if idx == _last_click:
+		_reset()
 		return
 
 	if _click_n == 0:
 		_child_at(idx).mark_clicked()
 		_child_at(idx+1).mark_target()
 		_child_at(idx-1).mark_target()
+		_sound_ok.play()
 	elif _click_n == 1:
 		if idx != _wrap(_last_click + 1) and idx != _wrap(_last_click - 1):
 			_reset()
@@ -60,12 +65,14 @@ func _child_clicked(idx: int) -> void:
 		_child_at(_last_click - _direction).reset()
 		_child_at(idx).mark_clicked()
 		_child_at(idx + _direction).mark_target()
+		_sound_ok.play()
 	else:
 		if idx != _wrap(_last_click + _direction):
 			_reset()
 			return
 		_child_at(idx).mark_clicked()
 		_child_at(idx + _direction).mark_target()
+		_sound_ok.play()
 
 	_click_n += 1
 	_last_click = idx
@@ -79,12 +86,8 @@ func _child_clicked(idx: int) -> void:
 
 
 func _reset() -> void:
-	_direction = 0
-	_last_click = -1
-	_click_n = 0
-
-	for c: StarChild in _children:
-		c.reset()
+	# update: don't punish, just sound
+	_sound_punish.play()
 
 
 func _wrap(idx: int) -> int:
