@@ -13,6 +13,7 @@ const TARGET := Vector2.ZERO
 @export var damage: int = 1
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _hit_sfx_player: AudioStreamPlayer = get_tree().get_first_node_in_group("EnemyHitAudioStreamPlayer")
 
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func _process(_delta: float) -> void:
 
 func _die() -> void:
 	queue_free()
+	_hit_sfx_player.play()
 	died.emit(score)
 
 

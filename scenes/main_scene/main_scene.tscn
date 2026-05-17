@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="8_17klg"]
 [ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="9_datfd"]
 [ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="10_qgjuk"]
+[ext_resource type="AudioStream" uid="uid://dqokd3waeuw75" path="res://assets/audio/sfx/enemy_hit.wav" id="11_3t4qf"]
 
 [node name="MainScene" type="Node2D" unique_id=988521978]
 
@@ -36,3 +37,6 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]
 
 [node name="Water" parent="." unique_id=1099081789 instance=ExtResource("10_qgjuk")]
+
+[node name="EnemyHitAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1188095117 groups=["EnemyHitAudioStreamPlayer"]]
+stream = ExtResource("11_3t4qf")
