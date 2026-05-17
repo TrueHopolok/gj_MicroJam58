@@ -45,6 +45,9 @@ func _draw() -> void:
 
 
 func _child_clicked(idx: int) -> void:
+	if idx == _last_click:
+		return
+
 	if _click_n == 0:
 		_child_at(idx).mark_clicked()
 		_child_at(idx+1).mark_target()
