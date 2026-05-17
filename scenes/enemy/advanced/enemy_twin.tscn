@@ -2,8 +2,49 @@
 
 [ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_x7ufm"]
 [ext_resource type="Script" uid="uid://b0jb13lc0idhu" path="res://scenes/enemy/advanced/enemy_twin.gd" id="2_2lov3"]
+[ext_resource type="Texture2D" uid="uid://cygcxbovpv7lr" path="res://assets/art/alligator.png" id="3_nbots"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbots"]
+atlas = ExtResource("3_nbots")
+region = Rect2(0, 0, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_450s3"]
+atlas = ExtResource("3_nbots")
+region = Rect2(80, 0, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de8iu"]
+atlas = ExtResource("3_nbots")
+region = Rect2(160, 0, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyokg"]
+atlas = ExtResource("3_nbots")
+region = Rect2(240, 0, 80, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3rik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbots")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_450s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de8iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyokg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
 script = ExtResource("2_2lov3")
 _stun_duration = 3.0
 score = 3
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
+sprite_frames = SubResource("SpriteFrames_h3rik")
+frame_progress = 0.0
