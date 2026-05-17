@@ -97,7 +97,7 @@ point_count = 2
 [resource]
 script = ExtResource("7_vpnt8")
 enemy_policy = Array[ExtResource("1_3uyci")]([SubResource("Resource_6gkjt"), SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s"), SubResource("Resource_quk26")])
-tide_enemy_policy = Array[ExtResource("1_3uyci")]([SubResource("Resource_6gkjt"), SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s"), SubResource("Resource_quk26"), SubResource("Resource_ae27o")])
+tide_enemy_policy = Array[ExtResource("1_3uyci")]([SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s"), SubResource("Resource_ae27o")])
 balance = SubResource("Curve_qq5q4")
 tide_balance = SubResource("Curve_bnteq")
 max_tides = SubResource("Curve_afgys")
