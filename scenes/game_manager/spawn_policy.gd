@@ -88,7 +88,7 @@ func sample(level: int) -> Sample:
 
 	res.cursor_start = cursor_start.sample_baked(level)
 	res.cursor_end = cursor_end.sample_baked(level)
-	res.cursor_clicks = cursor_clicks.sample_baked(level)
+	res.cursor_clicks = ceili(cursor_clicks.sample_baked(level))
 
 	return res
 

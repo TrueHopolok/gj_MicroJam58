@@ -21,7 +21,7 @@ func _arrange_children() -> void:
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint() or not spam_arrange:
 		return
 	_arrange_children()
