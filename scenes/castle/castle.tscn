@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mepx6xm683l7" path="res://assets/art/castle_dead.png" id="2_njhjj"]
 [ext_resource type="Texture2D" uid="uid://bdcs38hgjs14y" path="res://assets/art/castle_hit.png" id="3_vutgn"]
 [ext_resource type="Texture2D" uid="uid://be264me8fnkh1" path="res://assets/art/castle_idle.png" id="5_jxdab"]
+[ext_resource type="FontFile" uid="uid://quhl6q6tlmeb" path="res://assets/fonts/MedievalKnife-Regular.ttf" id="5_qfbvt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njhjj"]
 animations = [{
@@ -35,6 +36,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_vutgn"]
 radius = 24.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_vutgn"]
+font = ExtResource("5_qfbvt")
+font_size = 32
+font_color = Color(0.3230404, 0.52579373, 1, 1)
+
 [node name="Castle" type="Area2D" unique_id=1034605710 groups=["Castle"]]
 z_index = -1
 z_as_relative = false
@@ -51,3 +57,15 @@ animation = &"hit"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241299326]
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_vutgn")
+
+[node name="LevelLabel" type="Label" parent="." unique_id=1712377521]
+visible = false
+anchors_preset = -1
+offset_left = -116.0
+offset_top = -37.0
+offset_right = 117.0
+offset_bottom = -12.5
+text = "Level "
+label_settings = SubResource("LabelSettings_vutgn")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -12,11 +12,14 @@ const GROUP: StringName = &"Castle"
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var _label: Label = $LevelLabel
+
 
 func _ready() -> void:
 	_sprite.play(&"idle")
 	body_entered.connect(_get_kicked)
 	_sprite.animation_finished.connect(_on_animation_finished)
+	remove_child(_label)
 
 
 func _on_animation_finished() -> void:
@@ -44,6 +47,20 @@ func take_damage(dmg: int) -> void:
 		_sprite.play(&"hit")
 		if health <= 0:
 			game_over.emit()
+
+
+func print_level(level: int) -> void:
+	if not is_node_ready():
+		await ready
+
+	var l := _label.duplicate()
+	l.show()
+	l.text = "Level %d" % level
+	add_child(l)
+	var t := l.create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(l, "position:y", -50, 1.5).as_relative()
+	t.parallel().tween_property(l, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+	t.chain().tween_callback(l.queue_free)
 
 
 static func get_instance() -> Castle:

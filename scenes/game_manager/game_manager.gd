@@ -96,6 +96,8 @@ func _try_finish_level() -> void:
 
 func _next_level() -> void:
 	_level_counter += 1
+
+	castle.print_level(_level_counter + 1)
 	print("Starting level %d" % _level_counter)
 
 	var spec := spawn_policy.sample(_level_counter)
