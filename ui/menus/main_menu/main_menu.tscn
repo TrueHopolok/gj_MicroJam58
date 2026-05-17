@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://dh808cqj70n3l"]
 
 [ext_resource type="PackedScene" uid="uid://doh5v2chquosb" path="res://scenes/audio/gameplay_audio_player/gameplay_audio_player.tscn" id="1_gpubi"]
-[ext_resource type="Script" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
+[ext_resource type="Script" uid="uid://ccjc1acnstkjx" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
 [ext_resource type="PackedScene" uid="uid://i0n7cjiw24yl" path="res://ui/settings/audio_settings/audio_settings.tscn" id="2_6s8a2"]
 [ext_resource type="AudioStream" uid="uid://c6erikrmps48v" path="res://assets/audio/music/main_preloop.wav" id="2_gpubi"]
 [ext_resource type="Script" uid="uid://bltl6imnc8x2t" path="res://ui/menus/main_menu/play_button.gd" id="3_ioe73"]
 [ext_resource type="AudioStream" uid="uid://cs3blndelene6" path="res://assets/audio/music/main_loop.wav" id="3_tn877"]
 [ext_resource type="Script" uid="uid://c3kdhco0ibbsu" path="res://ui/menus/main_menu/reset_button.gd" id="4_txwgg"]
 [ext_resource type="Script" uid="uid://cvah0thg6gaj1" path="res://ui/menus/main_menu/reset_dialog.gd" id="5_j3h1s"]
+[ext_resource type="Script" uid="uid://c2t75bqh7ktp1" path="res://ui/menus/main_menu/level.gd" id="5_tn877"]
 [ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="6_igis3"]
+[ext_resource type="PackedScene" uid="uid://drticxrn3p1nw" path="res://ui/menus/checkpoint/checkpoint.tscn" id="10_gpubi"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1082861136]
 
@@ -20,10 +22,11 @@ loop_stream = ExtResource("3_tn877")
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 0.3137255)
+metadata/_edit_lock_ = true
 
 [node name="Title" type="RichTextLabel" parent="." unique_id=355611257]
 offset_right = 640.0
-offset_bottom = 128.0
+offset_bottom = 96.0
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
@@ -35,14 +38,24 @@ vertical_alignment = 2
 justification_flags = 162
 
 [node name="Score" type="Label" parent="." unique_id=816618577]
-offset_left = 256.0
-offset_top = 192.0
-offset_right = 384.0
-offset_bottom = 206.0
+offset_left = 176.0
+offset_top = 200.0
+offset_right = 304.0
+offset_bottom = 223.0
 text = "Best score: %d"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_j3h1s")
+
+[node name="Level" type="Label" parent="." unique_id=204155341]
+offset_left = 336.0
+offset_top = 200.0
+offset_right = 464.0
+offset_bottom = 223.0
+text = "Best level: %d"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_tn877")
 
 [node name="AudioSettings" parent="." unique_id=280711572 instance=ExtResource("2_6s8a2")]
 offset_left = 192.0
@@ -52,18 +65,18 @@ offset_bottom = -4.0
 
 [node name="PlayButton" type="Button" parent="." unique_id=1330982424]
 offset_left = 184.0
-offset_top = 144.0
+offset_top = 112.0
 offset_right = 304.0
-offset_bottom = 176.0
+offset_bottom = 144.0
 text = "Play"
 script = ExtResource("3_ioe73")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
 
 [node name="ResetButton" type="Button" parent="." unique_id=266406353]
-offset_left = 336.0
-offset_top = 144.0
-offset_right = 456.0
-offset_bottom = 176.0
+offset_left = 184.0
+offset_top = 160.0
+offset_right = 304.0
+offset_bottom = 192.0
 text = "Reset progress"
 script = ExtResource("4_txwgg")
 metadata/_custom_type_script = "uid://2htt7bkeytt7"
@@ -82,3 +95,6 @@ script = ExtResource("5_j3h1s")
 [node name="Water" parent="." unique_id=1099081789 instance=ExtResource("6_igis3")]
 position = Vector2(320, 180)
 close_hole = true
+metadata/_edit_lock_ = true
+
+[node name="Checkpoint" parent="." unique_id=2007525231 instance=ExtResource("10_gpubi")]

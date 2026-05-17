@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://drticxrn3p1nw"]
+
+[ext_resource type="Script" uid="uid://hblsg2rvwx6d" path="res://ui/menus/checkpoint/left.gd" id="1_au435"]
+[ext_resource type="Script" uid="uid://uligr7tw8chh" path="res://ui/menus/checkpoint/right.gd" id="2_jbi6r"]
+[ext_resource type="Script" uid="uid://bqvx1w6pgu4l0" path="res://ui/menus/checkpoint/reset.gd" id="3_jbi6r"]
+[ext_resource type="Script" uid="uid://dq1yfqsjbvh36" path="res://ui/menus/checkpoint/max.gd" id="4_jbi6r"]
+
+[node name="Checkpoint" type="Control" unique_id=2007525231]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 344.0
+offset_top = 112.0
+offset_right = 440.0
+offset_bottom = 184.0
+
+[node name="Left" type="Button" parent="." unique_id=1110085027]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 16.0
+offset_bottom = 49.0
+text = "<"
+script = ExtResource("1_au435")
+metadata/_custom_type_script = "uid://2htt7bkeytt7"
+metadata/_edit_lock_ = true
+
+[node name="Right" type="Button" parent="." unique_id=884459891]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 49.0
+text = ">"
+script = ExtResource("2_jbi6r")
+metadata/_custom_type_script = "uid://2htt7bkeytt7"
+metadata/_edit_lock_ = true
+
+[node name="Reset" type="Button" parent="." unique_id=1730150409]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 40.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 8
+text = "Set to 1"
+script = ExtResource("3_jbi6r")
+metadata/_custom_type_script = "uid://2htt7bkeytt7"
+metadata/_edit_lock_ = true
+
+[node name="Max" type="Button" parent="." unique_id=1982155897]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 96.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 8
+text = "Set to max"
+script = ExtResource("4_jbi6r")
+metadata/_custom_type_script = "uid://2htt7bkeytt7"
+metadata/_edit_lock_ = true
+
+[node name="Level" type="Label" parent="." unique_id=91398127]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 48.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="." unique_id=2021611132]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 24.0
+text = "Starting level"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true

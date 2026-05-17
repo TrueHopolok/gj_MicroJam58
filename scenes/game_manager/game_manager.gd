@@ -30,7 +30,10 @@ static func get_instance() -> GameManager:
 
 
 func _ready() -> void:
-	_level_counter = start_at_level - 1
+	if start_at_level != 0:
+		_level_counter = start_at_level - 1
+	else:
+		_level_counter = Persistence.current_level - 1
 	add_to_group(GROUP_NAME)
 
 	Persistence.current_score = 0
@@ -101,7 +104,7 @@ func _on_enemy_death(enemy_score: int = 1) -> void:
 func _try_finish_level() -> void:
 	if _active_enemies > 0 or not _event_queue.is_empty():
 		return
-
+	Persistence.current_level += 1
 	_next_level()
 
 
