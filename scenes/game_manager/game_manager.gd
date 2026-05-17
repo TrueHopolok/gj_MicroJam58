@@ -20,9 +20,20 @@ const CURSOR_RADIUS_BIG: float = 64
 const CURSOR_RADIUS_SMALL: float = 2
 
 const GAME_OVER_SCENE: StringName = &"res://ui/menus/gameover_menu/gameover_menu.tscn"
+const GROUP_NAME: StringName = &"GameManager"
+
+
+static func find() -> GameManager:
+	var node := (Engine.get_main_loop() as SceneTree).get_first_node_in_group(GROUP_NAME) as GameManager
+	if not is_instance_valid(node):
+		push_error("GameManager.find(): no game manager instance found")
+		return null
+	return node
 
 
 func _ready() -> void:
+	add_to_group(GROUP_NAME)
+
 	Persistence.current_score = 0
 
 	randomize()
@@ -64,7 +75,6 @@ func _process_event(ev: TimedEvent) -> void:
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:
 		var inst: Node2D = ev.spawn.instantiate()
-		_initialize_child(inst)
 		m.single_spawn(inst)
 
 	if not ev.tide.is_empty():
@@ -72,18 +82,9 @@ func _process_event(ev: TimedEvent) -> void:
 
 		for p: PackedScene in ev.tide:
 			var inst: Node2D = p.instantiate()
-			_initialize_child(inst)
 			insts.push_back(inst)
 
 		m.tide_spawn(insts)
-
-
-func _initialize_child(inst: Node) -> void:
-	inst.connect_death_signal(_on_enemy_death)
-	if inst.has_method("get_enemy_amount"):
-		_active_enemies += inst.get_enemy_amount()
-	else:
-		_active_enemies += 1
 
 
 func _on_enemy_death(enemy_score: int = 1) -> void:
@@ -118,10 +119,12 @@ func _execute_level_spec(spec: SpawnPolicy.Sample) -> void:
 	for i: int in spec.enemies.size():
 		var delay: int = roundi(spec.enemy_spawn_interval * 1e6) * (i + 1)
 		_event_queue.push_back(TimedEvent.single(start+delay, spec.enemies[i]))
+		_queued_enemies += 1
 
 	for i: int in spec.tides.size():
 		var delay: int = roundi(spec.tide_spawn_interval * 1e6) * (i + 1)
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
+		_queued_enemies += spec.tides[i].size()
 
 	_event_queue.sort_custom(func (lhs: TimedEvent, rhs: TimedEvent) -> bool:
 		return lhs.t > rhs.t)
@@ -136,6 +139,15 @@ func _execute_level_spec(spec: SpawnPolicy.Sample) -> void:
 func _on_game_over() -> void:
 	Persistence.submit()
 	Transition.change_scene_path(GAME_OVER_SCENE)
+
+
+func register_enemy(enemy: Enemy) -> void:
+	enemy.died.connect(_on_enemy_death, CONNECT_ONE_SHOT)
+
+	if enemy.has_method("get_enemy_amount"):
+		_active_enemies += enemy.get_enemy_amount()
+	else:
+		_active_enemies += 1
 
 
 class LevelSpec:
