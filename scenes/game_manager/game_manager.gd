@@ -17,7 +17,7 @@ const GROUP_NAME: StringName = &"GameManager"
 static func get_instance() -> GameManager:
 	var node := (Engine.get_main_loop() as SceneTree).get_first_node_in_group(GROUP_NAME) as GameManager
 	if not is_instance_valid(node):
-		push_error("GameManager.get_instance(): no game manager instance found")
+		push_error("[GameManager.get_instance]: no game manager instance found")
 		return null
 	return node
 
@@ -30,15 +30,15 @@ func _ready() -> void:
 	randomize()
 
 	if spawn_policy == null:
-		push_error("game manager: no spawn policy")
+		push_error("[GameManager.ready]: no spawn policy")
 		return
 
 	if castle == null:
-		push_error("game manager: no castle")
+		push_error("[GameManager.ready]: no castle")
 		return
 
 	if cursor_manager == null:
-		push_error("game manager: no cursor manager")
+		push_error("[GameManager.ready]: no cursor manager")
 		return
 
 	spawn_policy.initialize()
@@ -61,7 +61,7 @@ func _clamp_remap(v: float, istart: float, istop: float, ostart: float, ostop: f
 
 
 func _process_event(ev: TimedEvent) -> void:
-	print("Process event %s" % ev)
+	#print("[GameManager.process_event]: %s" % ev)
 
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:

@@ -56,11 +56,11 @@ func _single_tide_spawn(enemy: Node2D) -> void:
 		return
 	var x: float = randf_range(-_tide_longest_radius, _tide_longest_radius)
 	var y: float = sqrt(_tide_longest_radius * _tide_longest_radius - x * x) * [-1, 1].pick_random()
-	var p: Vector2 = Vector2(x, y)
-	p += p.direction_to(Vector2.ZERO) * randf_range(0, _tide_longest_radius - _tide_shortest_radius)
-	enemy.position = p
+	var pos: Vector2 = Vector2(x, y)
+	pos += pos.direction_to(Vector2.ZERO) * randf_range(0, _tide_longest_radius - _tide_shortest_radius)
+	enemy.position = pos
 	add_child(enemy)
-	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, p.x, p.y])
+	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, pos.x, pos.y])
 
 
 ## Spawns enemy node on the outer radius.
@@ -69,16 +69,19 @@ func _single_tide_spawn(enemy: Node2D) -> void:
 ## 1. Generates x from -R to R;
 ## 2. Calculates y = +-sqrt(R^2 - x^2);
 ## 3. Add node to a tree as a child.
-func single_spawn(enemy: Node2D) -> void:
+func single_spawn(enemy: Node2D, pos: Vector2 = Vector2.ZERO) -> void:
 	if !is_instance_valid(enemy):
 		push_error("[%s.single_spawn]: invalid instance to spawn" % [GROUP])
 		return
-	var x: float = randf_range(-_outer_radius, _outer_radius)
-	var y: float = sqrt(_outer_radius * _outer_radius - x * x) * [-1, 1].pick_random()
-	var p: Vector2 = Vector2(x, y)
-	enemy.position = p
+	if pos == Vector2.ZERO:
+		var x: float = randf_range(-_outer_radius, _outer_radius)
+		var y: float = sqrt(_outer_radius * _outer_radius - x * x) * [-1, 1].pick_random()
+		pos = Vector2(x, y)
+		enemy.position = pos
+	else:
+		enemy.position = pos
 	add_child(enemy)
-	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, p.x, p.y])
+	print("[%s.single_tide_spawn]: spawned the %s on [%f; %f]" % [GROUP, enemy.name, pos.x, pos.y])
 
 
 ## Spawns enemies as a tide.
