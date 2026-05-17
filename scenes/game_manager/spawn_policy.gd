@@ -27,9 +27,7 @@ const DEFAULT_TIDE_GAP_SECONDS: float = 10
 
 @export var cursor_start: Curve
 @export var cursor_end: Curve
-
-## Fraction of level time that cursor shrinks
-@export var cursor_shrink_fract: Curve
+@export var cursor_clicks: Curve
 
 
 func sample(level: int) -> Sample:
@@ -90,7 +88,7 @@ func sample(level: int) -> Sample:
 
 	res.cursor_start = cursor_start.sample_baked(level)
 	res.cursor_end = cursor_end.sample_baked(level)
-	res.cursor_shrink_fract = cursor_shrink_fract.sample_baked(level)
+	res.cursor_clicks = cursor_clicks.sample_baked(level)
 
 	return res
 
@@ -160,7 +158,7 @@ func _sample_from_premade(pm: PremadeLevel) -> Sample:
 	res.tide_spawn_interval = pm.length / res.tides.size()
 	res.cursor_start = pm.cursor_start
 	res.cursor_end = pm.cursor_end
-	res.cursor_shrink_fract = pm.cursor_shrink_fract
+	res.cursor_clicks = pm.cursor_clicks
 
 	return res
 
@@ -173,4 +171,4 @@ class Sample:
 
 	var cursor_start: float
 	var cursor_end: float
-	var cursor_shrink_fract: float
+	var cursor_clicks: int
