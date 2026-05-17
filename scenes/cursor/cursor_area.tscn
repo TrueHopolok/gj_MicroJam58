@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://lt5nqprcuii"]
 
 [ext_resource type="Script" uid="uid://cjms4hl4vd6qc" path="res://scenes/cursor/cursor_area.gd" id="1_px5lg"]
-[ext_resource type="Texture2D" uid="uid://4ot1ky0qs4x5" path="res://assets/art/cursor/test_cursor_area.png" id="2_px5lg"]
+[ext_resource type="Script" uid="uid://cp783t2ywpp47" path="res://scenes/cursor/circle.gd" id="3_4306a"]
 
-[node name="CursorArea" type="Node2D" unique_id=130380618 node_paths=PackedStringArray("sprite")]
+[node name="CursorArea" type="Node2D" unique_id=130380618]
 script = ExtResource("1_px5lg")
-sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1157191842]
-modulate = Color(1, 1, 1, 0.49803922)
-texture = ExtResource("2_px5lg")
+[node name="Circle" type="Node2D" parent="." unique_id=1266281560]
+script = ExtResource("3_4306a")
+color = Color(1, 1, 1, 0.654902)
+metadata/_custom_type_script = "uid://cp783t2ywpp47"
+
+[node name="Circle2" type="Node2D" parent="." unique_id=536063046]
+script = ExtResource("3_4306a")
+filled = true
+color = Color(1, 1, 1, 0.11764706)
+metadata/_custom_type_script = "uid://cp783t2ywpp47"

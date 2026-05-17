@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://xx3u4g8jko0a" path="res://assets/audio/music/gj_tides_preloop.wav" id="2_ugojt"]
 [ext_resource type="AudioStream" uid="uid://cq5qrae7ribaj" path="res://assets/audio/music/gj_tides_loop.wav" id="3_f6yoc"]
 [ext_resource type="AudioStream" uid="uid://cse5tc1oennaj" path="res://assets/audio/sfx/powerUp.wav" id="5_ugojt"]
+[ext_resource type="AudioStream" uid="uid://b1gm0hqt46a7u" path="res://assets/audio/sfx/star_ok.wav" id="6_f6yoc"]
 [ext_resource type="PackedScene" uid="uid://hiys7loc6fle" path="res://scenes/enemy_mother/enemy_mother.tscn" id="6_sro07"]
 [ext_resource type="PackedScene" uid="uid://bsaksh3dsbrl8" path="res://scenes/cursor/cursor_manager.tscn" id="7_3naof"]
 [ext_resource type="PackedScene" uid="uid://cav0jmryusucx" path="res://ui/menus/pause_menu/pause_menu.tscn" id="8_17klg"]
@@ -25,6 +26,10 @@ bus = &"SFX"
 
 [node name="ImpossibleHit" type="AudioStreamPlayer" parent="." unique_id=1894184511 groups=["ImpossibleSFX"]]
 stream = ExtResource("5_ugojt")
+bus = &"SFX"
+
+[node name="StarOkHit" type="AudioStreamPlayer" parent="." unique_id=1282196668 groups=["StarOkSFX"]]
+stream = ExtResource("6_f6yoc")
 bus = &"SFX"
 
 [node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]

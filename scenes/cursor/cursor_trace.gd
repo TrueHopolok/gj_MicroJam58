@@ -2,17 +2,18 @@ class_name CursorTrace
 extends Node2D
 
 
-const START_OPACITY: float = 0.3
-const LIFETIME: float = 0.5
+const START_OPACITY: float = 0.4
+const LIFETIME: float = 0.4
 
-@export var sprite: Sprite2D
+
+@onready var circle: Circle = $Circle
 
 
 func _ready() -> void:
 	var t := create_tween()
-	t.tween_property(sprite, ^"modulate:a", 0.0, LIFETIME).from(START_OPACITY)
+	t.tween_property(circle, ^"color:a", 0.0, LIFETIME).from(START_OPACITY)
 	t.chain().tween_callback(self.queue_free)
 
- 
+
 func set_radius(r: float):
-	sprite.scale = Vector2.ONE * ((r * 2) / sprite.texture.get_size().x)
+	circle.radius = r
