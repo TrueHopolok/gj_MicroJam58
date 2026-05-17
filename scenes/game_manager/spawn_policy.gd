@@ -143,6 +143,8 @@ func _sample_from_premade(pm: PremadeLevel) -> Sample:
 		for key: PackedScene in pm.enemies.data:
 			for _i: int in pm.enemies.data[key]:
 				es.push_back(key)
+	
+	es.shuffle()
 
 	var ts: Array[Array]
 	for t: EnemyList in pm.tides:
@@ -150,6 +152,7 @@ func _sample_from_premade(pm: PremadeLevel) -> Sample:
 		for key: PackedScene in t.data:
 			for _i: int in t.data[key]:
 				tide.push_back(key)
+		tide.shuffle()
 		ts.push_back(tide)
 
 	var res := Sample.new()
