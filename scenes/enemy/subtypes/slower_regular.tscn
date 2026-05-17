@@ -1,6 +1,47 @@
 [gd_scene format=3 uid="uid://clljnd0y586p4"]
 
 [ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_ncrg0"]
+[ext_resource type="Texture2D" uid="uid://0mkfp4dsgyya" path="res://assets/art/shrimp.png" id="2_2flwd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duhkt"]
+atlas = ExtResource("2_2flwd")
+region = Rect2(0, 0, 37, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yeb1"]
+atlas = ExtResource("2_2flwd")
+region = Rect2(37, 0, 37, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4f1o"]
+atlas = ExtResource("2_2flwd")
+region = Rect2(74, 0, 37, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3ewk"]
+atlas = ExtResource("2_2flwd")
+region = Rect2(111, 0, 37, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_op7x8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duhkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yeb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4f1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3ewk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" unique_id=344490489 instance=ExtResource("1_ncrg0")]
 speed = 30.0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
+sprite_frames = SubResource("SpriteFrames_op7x8")
+frame_progress = 0.0

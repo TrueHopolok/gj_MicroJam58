@@ -2,8 +2,49 @@
 
 [ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_4n8d7"]
 [ext_resource type="Script" uid="uid://dmowb7y68gh6u" path="res://scenes/enemy/advanced/enemy_idolled.gd" id="2_iwr62"]
+[ext_resource type="Texture2D" uid="uid://b6540hc1h751y" path="res://assets/art/lobster.png" id="3_nra51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nra51"]
+atlas = ExtResource("3_nra51")
+region = Rect2(0, 0, 45, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0doy8"]
+atlas = ExtResource("3_nra51")
+region = Rect2(45, 0, 45, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8up7"]
+atlas = ExtResource("3_nra51")
+region = Rect2(90, 0, 45, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnfgl"]
+atlas = ExtResource("3_nra51")
+region = Rect2(135, 0, 45, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0doy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nra51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0doy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8up7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnfgl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EnemyIdolled" unique_id=344490489 instance=ExtResource("1_4n8d7")]
 script = ExtResource("2_iwr62")
 speed = 25.0
 score = 4
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
+sprite_frames = SubResource("SpriteFrames_0doy8")
+frame_progress = 0.0

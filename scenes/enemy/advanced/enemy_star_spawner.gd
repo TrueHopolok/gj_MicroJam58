@@ -46,7 +46,7 @@ func _draw() -> void:
 		var to := _child_at(i+1)
 		if not is_instance_valid(from) or not is_instance_valid(to):
 			continue
-		draw_line(to_local(from.global_position), to_local(to.global_position), Color.LIME)
+		draw_line(to_local(from.global_position), to_local(to.global_position), Color.DEEP_PINK)
 
 
 func _child_clicked(idx: int) -> void:
