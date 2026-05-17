@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 func _draw() -> void:
 	if not is_instance_valid(twin):
 		return
-	draw_dashed_line(to_local(global_position), to_local(twin.global_position), Color.GREEN_YELLOW)
+	draw_dashed_line(to_local(global_position), to_local(twin.global_position), Color.GREEN_YELLOW, 1.0)
 
 
 func take_damage() -> void:
