@@ -7,11 +7,15 @@ extends Enemy
 var twin: EnemyTwin
 var _stun_left: float = 0.0
 
+@onready var _impossible_sfx_player: AudioStreamPlayer = get_tree().get_first_node_in_group('ImpossibleSFX')
+
 
 func _physics_process(delta: float) -> void:
 	if stunned():
+		_sprite.animation = &"stunned"
 		_stun_left = clampf(_stun_left - delta, 0.0, _stun_duration)
 	else:
+		_sprite.animation = &"default"
 		super(delta)
 	queue_redraw()
 
@@ -33,7 +37,7 @@ func take_damage() -> void:
 			_die()
 			twin._die()
 		else:
-			_hit_sfx_player.play()
+			_impossible_sfx_player.play()
 			health = 1
 			_stun_left = _stun_duration
 

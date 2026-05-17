@@ -6,6 +6,8 @@ const CIRCLE_RADIUS: float = 10.0
 
 var enemies: Dictionary[Enemy, bool]
 
+@onready var _impossible_sfx_player: AudioStreamPlayer = get_tree().get_first_node_in_group('ImpossibleSFX')
+
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -27,3 +29,5 @@ func idol_died(enemy: Enemy) -> void:
 func take_damage() -> void:
 	if enemies.is_empty():
 		super()
+	else:
+		_impossible_sfx_player.play()
