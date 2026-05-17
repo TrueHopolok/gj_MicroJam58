@@ -2,7 +2,7 @@ class_name EnemyRotate
 extends Enemy
 
 
-@export var _rotation_strength: float = 300.0
+@export var _rotation_strength: float = 200.0
 
 var _counter_clockwise: bool = [false, true].pick_random()
 

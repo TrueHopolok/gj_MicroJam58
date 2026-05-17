@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://clljnd0y586p4"]
+
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_ncrg0"]
+
+[node name="Enemy" unique_id=344490489 instance=ExtResource("1_ncrg0")]
+speed = 30.0

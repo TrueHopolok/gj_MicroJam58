@@ -7,7 +7,7 @@ signal tide_finished()
 const BATCH_SPAWN: int = 50
 const GROUP: String = "EnemyMother"
 
-@export var _tide_shortest_radius: float = 90.0
+@export var _tide_shortest_radius: float = 110.0
 @export var _tide_longest_radius: float = 140.0
 @export var _outer_radius: float = 400.0
 

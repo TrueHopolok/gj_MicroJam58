@@ -43,6 +43,7 @@ animations = [{
 [node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
 script = ExtResource("2_2lov3")
 _stun_duration = 3.0
+speed = 30.0
 score = 3
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
