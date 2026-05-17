@@ -36,6 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func set_radius(r: float) -> void:
+	if not is_node_ready():
+		await ready
 	radius = r
 	cursor_area.set_radius(r)
 

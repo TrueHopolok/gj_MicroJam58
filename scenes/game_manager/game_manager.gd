@@ -54,6 +54,7 @@ func _ready() -> void:
 	_next_level()
 
 	castle.game_over.connect(_on_game_over)
+	cursor_manager.set_radius(1)
 
 
 func _physics_process(_delta: float) -> void:
@@ -65,7 +66,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _clamp_remap(v: float, istart: float, istop: float, ostart: float, ostop: float) -> float:
-	return remap(clampf(v, istart, istop), istart, istop, ostart, ostop)
+	return remap(clampf(v, minf(istart, istop), maxf(istart, istop)), istart, istop, ostart, ostop)
 
 
 func _process_event(ev: TimedEvent) -> void:
@@ -140,8 +141,7 @@ func _execute_level_spec(spec: SpawnPolicy.Sample) -> void:
 
 func _on_click() -> void:
 	_cursor_clicks_left -= 1
-	_cursor_clicks = maxi(_cursor_clicks, 0)
-
+	_cursor_clicks_left = maxi(_cursor_clicks_left, 0)
 	cursor_manager.tween_radius(_clamp_remap(_cursor_clicks_left, _cursor_clicks, 0, _cursor_start, _cursor_end))
 
 
