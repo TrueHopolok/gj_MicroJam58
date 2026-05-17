@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://2dc8xad8ktc5" path="res://scenes/water/water.gdshader" id="1_2dnj0"]
 [ext_resource type="Script" uid="uid://bscs7b7himduf" path="res://scenes/water/water.gd" id="2_mj6gl"]
 [ext_resource type="Texture2D" uid="uid://bju0kyow3wes" path="res://assets/art/island.png" id="3_dmnfl"]
-[ext_resource type="Script" uid="uid://j4xqw8yrulp5" path="res://scenes/water/score_label.gd" id="4_xvg6f"]
+[ext_resource type="Script" path="res://scenes/water/score_label.gd" id="4_xvg6f"]
 
 [sub_resource type="Animation" id="Animation_mj6gl"]
 length = 0.001
@@ -142,9 +142,9 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="LabelSettings" id="LabelSettings_xvg6f"]
 font_size = 32
-font_color = Color(0.89535147, 0.73019964, 0.46065533, 1)
-shadow_color = Color(0, 0, 0, 0.15686275)
-shadow_offset = Vector2(-1, 0)
+font_color = Color(0.7414674, 0.5767942, 0.295143, 1)
+shadow_color = Color(0, 0, 0, 0.29411766)
+shadow_offset = Vector2(-1, -0.841)
 
 [node name="Water" type="Node2D" unique_id=1099081789 groups=["Water"]]
 script = ExtResource("2_mj6gl")
