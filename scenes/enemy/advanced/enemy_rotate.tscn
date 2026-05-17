@@ -28,7 +28,7 @@ animations = [{
 
 [node name="EnemyRotate" unique_id=344490489 instance=ExtResource("1_w6r5s")]
 script = ExtResource("2_f7e01")
-_rotation_strength = 801.0
+_rotation_strength = 250.0
 score = 3
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
