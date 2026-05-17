@@ -91,31 +91,31 @@ script = ExtResource("9_74rde")
 metadata/_edit_lock_ = true
 
 [node name="Flower" parent="FlowerPath" unique_id=1148444808 instance=ExtResource("9_sd1s0")]
-position = Vector2(0, -53)
+position = Vector2(0, -48)
 
 [node name="Flower2" parent="FlowerPath" unique_id=627593166 instance=ExtResource("9_sd1s0")]
-position = Vector2(31.152618, -42.877903)
+position = Vector2(28.213692, -38.832817)
 
 [node name="Flower3" parent="FlowerPath" unique_id=351984701 instance=ExtResource("9_sd1s0")]
-position = Vector2(50.406, -16.3779)
+position = Vector2(45.650715, -14.832815)
 
 [node name="Flower4" parent="FlowerPath" unique_id=669535538 instance=ExtResource("9_sd1s0")]
-position = Vector2(50.405994, 16.377903)
+position = Vector2(45.65071, 14.832817)
 
 [node name="Flower5" parent="FlowerPath" unique_id=85352965 instance=ExtResource("9_sd1s0")]
-position = Vector2(31.152615, 42.877903)
+position = Vector2(28.213688, 38.832817)
 
 [node name="Flower6" parent="FlowerPath" unique_id=951777363 instance=ExtResource("9_sd1s0")]
-position = Vector2(-4.633407e-06, 53)
+position = Vector2(-4.196293e-06, 48)
 
 [node name="Flower7" parent="FlowerPath" unique_id=1431861575 instance=ExtResource("9_sd1s0")]
-position = Vector2(-31.152624, 42.8779)
+position = Vector2(-28.213697, 38.832813)
 
 [node name="Flower8" parent="FlowerPath" unique_id=701765106 instance=ExtResource("9_sd1s0")]
-position = Vector2(-50.405994, 16.377907)
+position = Vector2(-45.65071, 14.832821)
 
 [node name="Flower9" parent="FlowerPath" unique_id=363065640 instance=ExtResource("9_sd1s0")]
-position = Vector2(-50.405994, -16.377907)
+position = Vector2(-45.65071, -14.832822)
 
 [node name="Flower10" parent="FlowerPath" unique_id=235897512 instance=ExtResource("9_sd1s0")]
-position = Vector2(-31.15262, -42.8779)
+position = Vector2(-28.213696, -38.832813)
