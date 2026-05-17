@@ -1,28 +1,28 @@
 [gd_scene format=3 uid="uid://0gqqnf1wmh6y"]
 
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_x7ufm"]
-[ext_resource type="Script" uid="uid://b0jb13lc0idhu" path="res://scenes/enemy/advanced/enemy_twin.gd" id="2_2lov3"]
-[ext_resource type="Texture2D" uid="uid://cygcxbovpv7lr" path="res://assets/art/alligator.png" id="3_nbots"]
-[ext_resource type="Texture2D" uid="uid://b2kd2apdvpp8t" path="res://assets/art/alligator_stunned.png" id="4_450s3"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/gull.tscn" id="1_oqxdf"]
+[ext_resource type="Script" uid="uid://b0jb13lc0idhu" path="res://scenes/enemy/advanced/crocodile.gd" id="2_buugh"]
+[ext_resource type="Texture2D" uid="uid://cygcxbovpv7lr" path="res://assets/art/alligator.png" id="3_vkun5"]
+[ext_resource type="Texture2D" uid="uid://b2kd2apdvpp8t" path="res://assets/art/alligator_stunned.png" id="4_1fi01"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbots"]
-atlas = ExtResource("3_nbots")
+atlas = ExtResource("3_vkun5")
 region = Rect2(0, 0, 80, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_450s3"]
-atlas = ExtResource("3_nbots")
+atlas = ExtResource("3_vkun5")
 region = Rect2(80, 0, 80, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_de8iu"]
-atlas = ExtResource("3_nbots")
+atlas = ExtResource("3_vkun5")
 region = Rect2(160, 0, 80, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyokg"]
-atlas = ExtResource("3_nbots")
+atlas = ExtResource("3_vkun5")
 region = Rect2(240, 0, 80, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkjga"]
-atlas = ExtResource("4_450s3")
+atlas = ExtResource("4_1fi01")
 region = Rect2(0, 0, 79, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h3rik"]
@@ -53,19 +53,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_450s3"]
-radius = 17.0
-height = 72.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_de8iu"]
 radius = 17.0
 height = 72.0
 
-[node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
+[node name="Crocodile" unique_id=344490489 instance=ExtResource("1_oqxdf")]
 z_index = -11
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("2_2lov3")
+script = ExtResource("2_buugh")
 _stun_duration = 3.0
 speed = 15.0
 score = 3
@@ -76,7 +72,6 @@ frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=1123139418]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_450s3")
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(796946081) index="0" unique_id=589498623]
 rotation = 1.5707964

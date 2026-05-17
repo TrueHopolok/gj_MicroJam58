@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://g4va3oey314n"]
 
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_4n8d7"]
-[ext_resource type="Script" uid="uid://dmowb7y68gh6u" path="res://scenes/enemy/advanced/enemy_idolled.gd" id="2_iwr62"]
-[ext_resource type="Texture2D" uid="uid://b6540hc1h751y" path="res://assets/art/lobster.png" id="3_nra51"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/gull.tscn" id="1_n34tu"]
+[ext_resource type="Script" uid="uid://dmowb7y68gh6u" path="res://scenes/enemy/advanced/lobster.gd" id="2_olrsl"]
+[ext_resource type="Texture2D" uid="uid://b6540hc1h751y" path="res://assets/art/lobster.png" id="3_dvxj1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nra51"]
-atlas = ExtResource("3_nra51")
+atlas = ExtResource("3_dvxj1")
 region = Rect2(0, 0, 45, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0doy8"]
-atlas = ExtResource("3_nra51")
+atlas = ExtResource("3_dvxj1")
 region = Rect2(45, 0, 45, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8up7"]
-atlas = ExtResource("3_nra51")
+atlas = ExtResource("3_dvxj1")
 region = Rect2(90, 0, 45, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnfgl"]
-atlas = ExtResource("3_nra51")
+atlas = ExtResource("3_dvxj1")
 region = Rect2(135, 0, 45, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0doy8"]
@@ -40,10 +40,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyIdolled" unique_id=344490489 instance=ExtResource("1_4n8d7")]
+[node name="Lobster" unique_id=344490489 instance=ExtResource("1_n34tu")]
 z_index = -11
 z_as_relative = false
-script = ExtResource("2_iwr62")
+script = ExtResource("2_olrsl")
 speed = 15.0
 score = 4
 

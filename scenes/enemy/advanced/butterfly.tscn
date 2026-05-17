@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0kpht6wfc0we"]
 
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_hx0e3"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/gull.tscn" id="1_hx0e3"]
 [ext_resource type="Script" uid="uid://ca5wme55h4hq6" path="res://scenes/enemy/advanced/butterfly.gd" id="2_hwte4"]
 [ext_resource type="Texture2D" uid="uid://dyrf32thldyn0" path="res://assets/art/butterfly.png" id="3_go8pl"]
 

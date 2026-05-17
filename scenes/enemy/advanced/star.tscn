@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dxs32u1gas3xg"]
 
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_5ikqp"]
-[ext_resource type="Script" path="res://scenes/enemy/advanced/enemy_star.gd" id="2_ruaxj"]
-[ext_resource type="Texture2D" uid="uid://dbythb581nyg5" path="res://assets/art/ring.png" id="3_1or7h"]
-[ext_resource type="Texture2D" uid="uid://hy8t48m7lje7" path="res://assets/art/star.png" id="3_4mqbe"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/gull.tscn" id="1_qrkow"]
+[ext_resource type="Script" uid="uid://b4t8qgnqpsf4u" path="res://scenes/enemy/advanced/star.gd" id="2_njalu"]
+[ext_resource type="Texture2D" uid="uid://hy8t48m7lje7" path="res://assets/art/star.png" id="3_kkag4"]
+[ext_resource type="Texture2D" uid="uid://dbythb581nyg5" path="res://assets/art/ring.png" id="4_uyx6l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoec0"]
-atlas = ExtResource("3_4mqbe")
+atlas = ExtResource("3_kkag4")
 region = Rect2(0, 0, 36, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_63li6"]
@@ -20,12 +20,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyStar" unique_id=344490489 instance=ExtResource("1_5ikqp")]
+[node name="Star" unique_id=344490489 instance=ExtResource("1_qrkow")]
 z_index = -11
 z_as_relative = false
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("2_ruaxj")
+script = ExtResource("2_njalu")
 score = 1
 damage = 0
 
@@ -36,4 +36,4 @@ frame_progress = 0.0
 [node name="Ring" type="Sprite2D" parent="." index="4" unique_id=1746686804]
 visible = false
 modulate = Color(0.21176471, 0.70980394, 0.28235295, 0.7294118)
-texture = ExtResource("3_1or7h")
+texture = ExtResource("4_uyx6l")

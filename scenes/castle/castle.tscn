@@ -50,7 +50,7 @@ font_color = Color(0.3230404, 0.52579373, 1, 1)
 z_index = -12
 z_as_relative = false
 collision_layer = 0
-collision_mask = 14
+collision_mask = 30
 script = ExtResource("1_bly62")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=593212714]

@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="SpawnPolicy" format=3 uid="uid://calr7r0oup3sa"]
 
 [ext_resource type="Script" uid="uid://cmh85gndtw1k3" path="res://scenes/game_manager/enemy_spec.gd" id="1_3uyci"]
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="2_505gr"]
-[ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/enemy_rotate.tscn" id="3_quk26"]
-[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/enemy_twin_spawner.tscn" id="4_ae27o"]
-[ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/enemy_idolled_spawner.tscn" id="5_yx4yo"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/gull.tscn" id="2_ae27o"]
+[ext_resource type="PackedScene" uid="uid://bb8m2ejo1y6x3" path="res://scenes/enemy/advanced/crab.tscn" id="3_yx4yo"]
+[ext_resource type="PackedScene" uid="uid://ccpxvxd0vy0qv" path="res://scenes/enemy/advanced/spawner_twin.tscn" id="4_30l3i"]
+[ext_resource type="PackedScene" uid="uid://ieygnxsn025m" path="res://scenes/enemy/advanced/spawner_idolled.tscn" id="5_vpnt8"]
 [ext_resource type="Script" uid="uid://dnl3b8rhvfev0" path="res://scenes/game_manager/premade_level.gd" id="6_30l3i"]
 [ext_resource type="PackedScene" uid="uid://d0kpht6wfc0we" path="res://scenes/enemy/advanced/butterfly.tscn" id="6_505gr"]
 [ext_resource type="Script" uid="uid://bdtks2mrdyq3k" path="res://scenes/game_manager/spawn_policy.gd" id="7_vpnt8"]
 [ext_resource type="Script" path="res://scenes/game_manager/enemy_list.gd" id="8_ae27o"]
-[ext_resource type="PackedScene" uid="uid://dcnq8vhsh6qdn" path="res://scenes/enemy/advanced/enemy_star_spawner.tscn" id="9_ae27o"]
+[ext_resource type="PackedScene" uid="uid://dcnq8vhsh6qdn" path="res://scenes/enemy/advanced/spawner_star.tscn" id="9_mytwh"]
 
 [sub_resource type="Curve" id="Curve_qq5q4"]
 _limits = [0.0, 150.0, 0.0, 10.0]
@@ -33,28 +33,28 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_6gkjt"]
 script = ExtResource("1_3uyci")
-scene = ExtResource("2_505gr")
+scene = ExtResource("2_ae27o")
 cost = 2
 weight = 5
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [sub_resource type="Resource" id="Resource_lmrlb"]
 script = ExtResource("1_3uyci")
-scene = ExtResource("3_quk26")
+scene = ExtResource("3_yx4yo")
 cost = 3
 weight = 4
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [sub_resource type="Resource" id="Resource_nks25"]
 script = ExtResource("1_3uyci")
-scene = ExtResource("4_ae27o")
+scene = ExtResource("4_30l3i")
 cost = 6
 weight = 2
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
 [sub_resource type="Resource" id="Resource_kub5s"]
 script = ExtResource("1_3uyci")
-scene = ExtResource("5_yx4yo")
+scene = ExtResource("5_vpnt8")
 cost = 8
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 
@@ -77,19 +77,21 @@ point_count = 4
 [sub_resource type="Resource" id="Resource_yx4yo"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("2_505gr"): 5
+ExtResource("2_ae27o"): 5
 })
 
 [sub_resource type="Resource" id="Resource_30l3i"]
 script = ExtResource("6_30l3i")
 enemies = SubResource("Resource_yx4yo")
 length = 15.0
+cursor_end = 64.0
+cursor_clicks = 1
 metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 
 [sub_resource type="Resource" id="Resource_vpnt8"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("2_505gr"): 10
+ExtResource("2_ae27o"): 10
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -104,8 +106,8 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_djmfy"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("3_quk26"): 10,
-ExtResource("2_505gr"): 10
+ExtResource("3_yx4yo"): 10,
+ExtResource("2_ae27o"): 10
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -121,7 +123,7 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_r2yc2"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("3_quk26"): 10
+ExtResource("3_yx4yo"): 10
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -137,17 +139,17 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_mh1qf"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("2_505gr"): 8,
-ExtResource("3_quk26"): 3,
-ExtResource("4_ae27o"): 2
+ExtResource("2_ae27o"): 8,
+ExtResource("3_yx4yo"): 3,
+ExtResource("4_30l3i"): 2
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
 [sub_resource type="Resource" id="Resource_ag3vi"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("3_quk26"): 3,
-ExtResource("4_ae27o"): 3
+ExtResource("3_yx4yo"): 3,
+ExtResource("4_30l3i"): 3
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -164,8 +166,8 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_5qkmc"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("2_505gr"): 5,
-ExtResource("4_ae27o"): 2,
+ExtResource("2_ae27o"): 5,
+ExtResource("4_30l3i"): 2,
 ExtResource("6_505gr"): 2
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
@@ -192,9 +194,9 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_iv2wl"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("2_505gr"): 10,
-ExtResource("3_quk26"): 10,
-ExtResource("4_ae27o"): 4
+ExtResource("2_ae27o"): 10,
+ExtResource("3_yx4yo"): 10,
+ExtResource("4_30l3i"): 4
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -210,7 +212,7 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_6fvpf"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("4_ae27o"): 3
+ExtResource("4_30l3i"): 3
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -226,7 +228,7 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_wdt5o"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("5_yx4yo"): 3
+ExtResource("5_vpnt8"): 3
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -242,7 +244,7 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_wauaa"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("2_505gr"): 30,
+ExtResource("2_ae27o"): 30,
 ExtResource("6_505gr"): 2
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
@@ -250,16 +252,16 @@ metadata/_custom_type_script = "uid://nvfurqfji7ak"
 [sub_resource type="Resource" id="Resource_i7j45"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("5_yx4yo"): 1,
-ExtResource("4_ae27o"): 2
+ExtResource("5_vpnt8"): 1,
+ExtResource("4_30l3i"): 2
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
 [sub_resource type="Resource" id="Resource_tmvtr"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("5_yx4yo"): 2,
-ExtResource("3_quk26"): 3
+ExtResource("5_vpnt8"): 2,
+ExtResource("3_yx4yo"): 3
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -276,7 +278,7 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 [sub_resource type="Resource" id="Resource_tqnpe"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("9_ae27o"): 1
+ExtResource("9_mytwh"): 1
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -292,33 +294,33 @@ metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
 ExtResource("6_505gr"): 1,
-ExtResource("4_ae27o"): 6,
-ExtResource("3_quk26"): 25,
-ExtResource("2_505gr"): 30,
-ExtResource("5_yx4yo"): 3
+ExtResource("4_30l3i"): 6,
+ExtResource("3_yx4yo"): 25,
+ExtResource("2_ae27o"): 30,
+ExtResource("5_vpnt8"): 3
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
 [sub_resource type="Resource" id="Resource_o1ffv"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("3_quk26"): 15
+ExtResource("3_yx4yo"): 15
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
 [sub_resource type="Resource" id="Resource_nrn0n"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("4_ae27o"): 3,
-ExtResource("5_yx4yo"): 1
+ExtResource("4_30l3i"): 3,
+ExtResource("5_vpnt8"): 1
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
 [sub_resource type="Resource" id="Resource_xlxeo"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("9_ae27o"): 1,
-ExtResource("3_quk26"): 1
+ExtResource("9_mytwh"): 1,
+ExtResource("3_yx4yo"): 1
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
@@ -343,7 +345,7 @@ point_count = 3
 
 [sub_resource type="Resource" id="Resource_ae27o"]
 script = ExtResource("1_3uyci")
-scene = ExtResource("9_ae27o")
+scene = ExtResource("9_mytwh")
 cost = 20
 metadata/_custom_type_script = "uid://cmh85gndtw1k3"
 

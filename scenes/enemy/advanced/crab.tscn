@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bb8m2ejo1y6x3"]
 
-[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_w6r5s"]
-[ext_resource type="Script" uid="uid://dofvabe0ant00" path="res://scenes/enemy/advanced/enemy_rotate.gd" id="2_f7e01"]
-[ext_resource type="Texture2D" uid="uid://de0bk71ea2fjy" path="res://assets/art/crab.png" id="3_0dxwa"]
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/gull.tscn" id="1_8ugo5"]
+[ext_resource type="Script" uid="uid://dofvabe0ant00" path="res://scenes/enemy/advanced/crab.gd" id="2_nuahe"]
+[ext_resource type="Texture2D" uid="uid://de0bk71ea2fjy" path="res://assets/art/crab.png" id="3_hlsu7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dxwa"]
-atlas = ExtResource("3_0dxwa")
+atlas = ExtResource("3_hlsu7")
 region = Rect2(0, 0, 39, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otntl"]
-atlas = ExtResource("3_0dxwa")
+atlas = ExtResource("3_hlsu7")
 region = Rect2(39, 0, 39, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_akkdt"]
@@ -26,16 +26,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyRotate" unique_id=344490489 instance=ExtResource("1_w6r5s")]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("2_f7e01")
-_rotation_strength = 200.0
+[node name="Crab" unique_id=344490489 instance=ExtResource("1_8ugo5")]
+z_as_relative = false
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_nuahe")
+_rotation_strength = 150.0
 speed = 25.0
 score = 3
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
-z_index = -11
+z_index = -12
 z_as_relative = false
 rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_akkdt")

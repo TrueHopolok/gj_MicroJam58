@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ieygnxsn025m"]
+
+[ext_resource type="Script" uid="uid://c88mxevy3oatr" path="res://scenes/enemy/advanced/spawner_idolled.gd" id="1_7o2dk"]
+[ext_resource type="PackedScene" uid="uid://g4va3oey314n" path="res://scenes/enemy/advanced/lobster.tscn" id="2_3ba7f"]
+[ext_resource type="PackedScene" uid="uid://clljnd0y586p4" path="res://scenes/enemy/advanced/shrimp.tscn" id="3_8j2ud"]
+
+[node name="SpawnerIdolled" type="Node2D" unique_id=298117548]
+script = ExtResource("1_7o2dk")
+_packed_idol = ExtResource("2_3ba7f")
+_packed_enemies = Array[PackedScene]([ExtResource("3_8j2ud"), ExtResource("3_8j2ud"), ExtResource("3_8j2ud")])

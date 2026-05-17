@@ -1,8 +1,8 @@
 extends Node2D
 
 
-const STAR_CHILD := preload("res://scenes/enemy/advanced/enemy_star.tscn")
-const StarChild := preload("res://scenes/enemy/advanced/enemy_star.gd")
+const STAR_CHILD := preload("res://scenes/enemy/advanced/star.tscn")
+const StarChild := preload("res://scenes/enemy/advanced/star.gd")
 
 const STAR_SPIT := preload("res://scenes/enemy/advanced/star_spit.tscn")
 
