@@ -2,7 +2,7 @@ class_name EnemyIdolledSpawner
 extends Node2D
 
 
-@export var _spawn_radius: float = 50.0
+@export var _spawn_radius: float = 80.0
 @export var _packed_idol: PackedScene
 @export var _packed_enemies: Array[PackedScene]
 
