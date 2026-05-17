@@ -73,6 +73,7 @@ SfxPlayer=""
 EnemySFX=""
 ImpossibleSFX=""
 StarOkSFX=""
+Tutorial=""
 
 [gui]
 

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://duhkj06jamchu" path="res://scenes/castle/castle.tscn" id="9_datfd"]
 [ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="10_qgjuk"]
 [ext_resource type="AudioStream" uid="uid://dqokd3waeuw75" path="res://assets/audio/sfx/enemy_hit.wav" id="11_3t4qf"]
+[ext_resource type="PackedScene" uid="uid://crtebpsrtm1j3" path="res://scenes/tutorial/tutorial.tscn" id="12_nim2u"]
 
 [node name="MainScene" type="Node2D" unique_id=988521978]
 
@@ -32,22 +33,30 @@ bus = &"SFX"
 stream = ExtResource("6_f6yoc")
 bus = &"SFX"
 
-[node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle")]
+[node name="GameManager" type="Node" parent="." unique_id=308351053 node_paths=PackedStringArray("cursor_manager", "castle", "tutorial")]
 script = ExtResource("1_s5p1y")
 spawn_policy = ExtResource("2_6loks")
 cursor_manager = NodePath("../CursorManager")
 castle = NodePath("../Castle")
+tutorial = NodePath("../Tutorial")
 metadata/_custom_type_script = "uid://cagct1tdxfty"
 
 [node name="EnemyMother" parent="." unique_id=140479501 instance=ExtResource("6_sro07")]
+metadata/_edit_lock_ = true
 
 [node name="CursorManager" parent="." unique_id=736183236 instance=ExtResource("7_3naof")]
+metadata/_edit_lock_ = true
+
+[node name="Castle" parent="." unique_id=1034605710 instance=ExtResource("9_datfd")]
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]
+metadata/_edit_lock_ = true
+
+[node name="Water" parent="." unique_id=1099081789 instance=ExtResource("10_qgjuk")]
+metadata/_edit_lock_ = true
 
 [node name="PauseMenu" parent="." unique_id=840180984 instance=ExtResource("8_17klg")]
 visible = false
 
-[node name="Castle" parent="." unique_id=1034605710 instance=ExtResource("9_datfd")]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=283065812]
-
-[node name="Water" parent="." unique_id=1099081789 instance=ExtResource("10_qgjuk")]
+[node name="Tutorial" parent="." unique_id=1439467086 instance=ExtResource("12_nim2u")]

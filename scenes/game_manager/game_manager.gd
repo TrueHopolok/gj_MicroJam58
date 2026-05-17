@@ -6,6 +6,7 @@ extends Node
 @export var spawn_policy: SpawnPolicy
 @export var cursor_manager: CursorManager
 @export var castle: Castle
+@export var tutorial: Tutorial
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
@@ -52,6 +53,10 @@ func _ready() -> void:
 
 	if cursor_manager == null:
 		push_error("[GameManager.ready]: no cursor manager")
+		return
+
+	if tutorial == null:
+		push_error("[GameManager.ready]: no tutorial")
 		return
 
 	spawn_policy.initialize()
@@ -111,6 +116,7 @@ func _try_finish_level() -> void:
 func _next_level() -> void:
 	_level_counter += 1
 
+	tutorial.on_level_switched(_level_counter + 1)
 	castle.print_level(_level_counter + 1)
 	print("Starting level %d" % _level_counter)
 

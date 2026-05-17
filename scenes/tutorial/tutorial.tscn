@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://crtebpsrtm1j3"]
+
+[ext_resource type="Script" uid="uid://q67o2qriolbp" path="res://scenes/tutorial/tutorial.gd" id="1_ymgc8"]
+
+[node name="Tutorial" type="CanvasLayer" unique_id=1439467086 groups=["Tutorial"]]
+script = ExtResource("1_ymgc8")
+
+[node name="Label" type="Label" parent="." unique_id=631719105]
+offset_right = 40.0
+offset_bottom = 17.0
+text = "Hello"
