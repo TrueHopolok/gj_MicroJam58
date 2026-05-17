@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dh808cqj70n3l"]
 
-[ext_resource type="Script" uid="uid://ccjc1acnstkjx" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
+[ext_resource type="Script" path="res://ui/menus/main_menu/score.gd" id="1_j3h1s"]
 [ext_resource type="PackedScene" uid="uid://i0n7cjiw24yl" path="res://ui/settings/audio_settings/audio_settings.tscn" id="2_6s8a2"]
 [ext_resource type="Script" uid="uid://bltl6imnc8x2t" path="res://ui/menus/main_menu/play_button.gd" id="3_ioe73"]
 [ext_resource type="Script" uid="uid://c3kdhco0ibbsu" path="res://ui/menus/main_menu/reset_button.gd" id="4_txwgg"]
 [ext_resource type="Script" uid="uid://cvah0thg6gaj1" path="res://ui/menus/main_menu/reset_dialog.gd" id="5_j3h1s"]
-[ext_resource type="PackedScene" uid="uid://c1jbclhrdggjr" path="res://scenes/water/water_no_hole.tscn" id="6_igis3"]
+[ext_resource type="PackedScene" uid="uid://b3da0aili17qq" path="res://scenes/water/water.tscn" id="6_igis3"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1082861136]
 
@@ -64,3 +64,4 @@ script = ExtResource("5_j3h1s")
 
 [node name="Water" parent="." unique_id=1099081789 instance=ExtResource("6_igis3")]
 position = Vector2(320, 180)
+close_hole = true
