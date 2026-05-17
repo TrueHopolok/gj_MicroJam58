@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cdp0bxohvy2v7" path="res://assets/art/flowers/flower_01.png" id="1_8354e"]
 [ext_resource type="Texture2D" uid="uid://dtty1oebo5kmm" path="res://assets/art/flowers/flower_02.png" id="2_noy32"]
-[ext_resource type="Script" uid="uid://bb1jh6xlw0ts3" path="res://scenes/castle/flower.gd" id="3_noy32"]
+[ext_resource type="Texture2D" uid="uid://b08ikn0u0qagf" path="res://assets/art/flowers/flower_03.png" id="3_01qv7"]
+[ext_resource type="Script" path="res://scenes/castle/flower.gd" id="3_noy32"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_01qv7"]
 animations = [{
@@ -12,6 +13,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_noy32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_01qv7")
 }],
 "loop": false,
 "name": &"default",
