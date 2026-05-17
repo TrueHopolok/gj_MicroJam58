@@ -131,8 +131,8 @@ shader_parameter/foam_softness = 0.094000004465
 shader_parameter/water_darkness = 0.8610000408975
 shader_parameter/aspect_ratio = 1.778
 shader_parameter/hole_pos_uv = Vector2(0.5, 0.5)
-shader_parameter/hole_rad = 0.41
-shader_parameter/hole_foam_thickness = 0.071
+shader_parameter/hole_rad = 0.0
+shader_parameter/hole_foam_thickness = 0.0
 shader_parameter/hole_floam_main_color = Color(1, 1, 1, 1)
 shader_parameter/hole_floam_secondary_color = Color(0.44861436, 0.72321355, 0.9999992, 1)
 
