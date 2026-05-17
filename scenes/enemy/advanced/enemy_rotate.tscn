@@ -27,6 +27,8 @@ animations = [{
 }]
 
 [node name="EnemyRotate" unique_id=344490489 instance=ExtResource("1_w6r5s")]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("2_f7e01")
 _rotation_strength = 200.0
 speed = 25.0

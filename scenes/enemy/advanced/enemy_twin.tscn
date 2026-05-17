@@ -63,6 +63,8 @@ height = 72.0
 
 [node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
 z_index = -11
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("2_2lov3")
 _stun_duration = 3.0
 speed = 15.0
