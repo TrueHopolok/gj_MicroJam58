@@ -6,8 +6,6 @@ signal clicked
 
 const DEFAULT_RADIUS: float = 64
 
-@export var cursor_texture: Resource
-@export var cursor_hotspot: Vector2
 @export var cursor_trace_scene: PackedScene
 @export var cursor_area: CursorArea
 
@@ -17,7 +15,6 @@ var radius: float
 
 
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(cursor_texture, Input.CURSOR_ARROW, cursor_hotspot)
 	set_radius(DEFAULT_RADIUS)
 
 
