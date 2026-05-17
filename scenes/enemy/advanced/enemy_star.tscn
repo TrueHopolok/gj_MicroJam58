@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dxs32u1gas3xg"]
+
+[ext_resource type="PackedScene" uid="uid://gbsgy7a03y4m" path="res://scenes/enemy/enemy.tscn" id="1_5ikqp"]
+[ext_resource type="Script" uid="uid://b4t8qgnqpsf4u" path="res://scenes/enemy/advanced/enemy_star.gd" id="2_ruaxj"]
+[ext_resource type="Texture2D" uid="uid://dbythb581nyg5" path="res://assets/art/ring.png" id="3_1or7h"]
+
+[node name="EnemyStar" unique_id=344490489 instance=ExtResource("1_5ikqp")]
+script = ExtResource("2_ruaxj")
+score = 1
+damage = 0
+
+[node name="Ring" type="Sprite2D" parent="." index="4" unique_id=1746686804]
+visible = false
+modulate = Color(0.21176471, 0.70980394, 0.28235295, 0.7294118)
+texture = ExtResource("3_1or7h")

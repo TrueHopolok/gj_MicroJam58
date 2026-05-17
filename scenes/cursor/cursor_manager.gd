@@ -49,6 +49,9 @@ func _try_hit_enemies(pos: Vector2) -> void:
 
 	var hits := get_world_2d().direct_space_state.intersect_shape(query, 128)
 
+	# In case we hit all vertexes of a star, do it in random order, to make the star sequence fail.
+	hits.shuffle()
+
 	for hit in hits:
 		var enemy := hit.collider.get_parent() as Enemy
 		enemy.take_damage()
