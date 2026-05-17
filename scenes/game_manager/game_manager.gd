@@ -10,15 +10,6 @@ var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
 var _level_counter: int = -1 # first level is 0 not 1
 
-const MAX_BIG_SPAWNS: int = 5
-const BIG_SPAWN_COST: int = 10
-
-## how much of the budget goes towards big waves
-const BIG_SPAWN_PERCENT: int = 40
-
-const CURSOR_RADIUS_BIG: float = 64
-const CURSOR_RADIUS_SMALL: float = 2
-
 const GAME_OVER_SCENE: StringName = &"res://ui/menus/gameover_menu/gameover_menu.tscn"
 const GROUP_NAME: StringName = &"GameManager"
 
@@ -75,6 +66,7 @@ func _process_event(ev: TimedEvent) -> void:
 	var m: EnemyMother = EnemyMother.get_instance()
 	if ev.spawn != null:
 		var inst: Node2D = ev.spawn.instantiate()
+		_active_enemies += _get_enemy_amount(inst)
 		m.single_spawn(inst)
 
 	if not ev.tide.is_empty():
@@ -82,6 +74,7 @@ func _process_event(ev: TimedEvent) -> void:
 
 		for p: PackedScene in ev.tide:
 			var inst: Node2D = p.instantiate()
+			_active_enemies += _get_enemy_amount(inst)
 			insts.push_back(inst)
 
 		m.tide_spawn(insts)
@@ -108,7 +101,7 @@ func _next_level() -> void:
 	var spec := spawn_policy.sample(_level_counter)
 
 	print("Generated spec: enemies=%d @ %fHz tides=%d @ %fHz" % [
-		spec.enemies.size(),1/spec.enemy_spawn_interval, spec.tides.size(), 1/spec.tide_spawn_interval])
+		spec.enemies.size(), 1/spec.enemy_spawn_interval, spec.tides.size(), 1/spec.tide_spawn_interval])
 
 	_execute_level_spec(spec)
 
@@ -119,12 +112,10 @@ func _execute_level_spec(spec: SpawnPolicy.Sample) -> void:
 	for i: int in spec.enemies.size():
 		var delay: int = roundi(spec.enemy_spawn_interval * 1e6) * (i + 1)
 		_event_queue.push_back(TimedEvent.single(start+delay, spec.enemies[i]))
-		_queued_enemies += 1
 
 	for i: int in spec.tides.size():
 		var delay: int = roundi(spec.tide_spawn_interval * 1e6) * (i + 1)
 		_event_queue.push_back(TimedEvent.many(start+delay, spec.tides[i]))
-		_queued_enemies += spec.tides[i].size()
 
 	_event_queue.sort_custom(func (lhs: TimedEvent, rhs: TimedEvent) -> bool:
 		return lhs.t > rhs.t)
@@ -141,13 +132,15 @@ func _on_game_over() -> void:
 	Transition.change_scene_path(GAME_OVER_SCENE)
 
 
+func _get_enemy_amount(node: Node) -> int:
+	if node.has_method("get_enemy_amount"):
+		return node.get_enemy_amount()
+	else:
+		return 1
+
+
 func register_enemy(enemy: Enemy) -> void:
 	enemy.died.connect(_on_enemy_death, CONNECT_ONE_SHOT)
-
-	if enemy.has_method("get_enemy_amount"):
-		_active_enemies += enemy.get_enemy_amount()
-	else:
-		_active_enemies += 1
 
 
 class LevelSpec:
