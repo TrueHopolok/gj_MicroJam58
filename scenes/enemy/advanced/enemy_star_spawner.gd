@@ -1,8 +1,8 @@
 extends Node2D
 
 
-const STAR_CHILD := preload("uid://dxs32u1gas3xg")
-const StarChild := preload("uid://b4t8qgnqpsf4u")
+const STAR_CHILD := preload("res://scenes/enemy/advanced/enemy_star.tscn")
+const StarChild := preload("res://scenes/enemy/advanced/enemy_star.gd")
 
 const TIME: float = 5.0
 const DAMAGE: int = 5
