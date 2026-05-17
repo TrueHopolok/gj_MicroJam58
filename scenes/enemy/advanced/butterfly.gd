@@ -6,7 +6,9 @@ extends Enemy
 
 
 func _die() -> void:
-	super()
+	queue_free()
+	_hit_sfx_player.play()
+	died.emit(0)
 	Castle.get_instance().take_damage(damage)
 
 
