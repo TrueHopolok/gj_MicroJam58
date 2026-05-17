@@ -1,0 +1,92 @@
+extends Node2D
+
+
+const STAR_CHILD := preload("uid://dxs32u1gas3xg")
+const StarChild := preload("uid://b4t8qgnqpsf4u")
+
+const TIME: float = 5.0
+const DAMAGE: int = 5
+
+var _click_n: int = 0
+var _last_click: int = -1
+var _direction: int = 0 # 0 if undecided, -1 or 1
+var _children: Array[StarChild]
+
+
+func _ready() -> void:
+	var initial_pos := global_position
+
+	for i: int in 5:
+		var inst := STAR_CHILD.instantiate() as StarChild
+		inst.global_position = initial_pos.rotated(TAU / 5 * 2 * i)
+		inst.clicked.connect(_child_clicked.bind(i))
+		_children.push_back(inst)
+		get_parent().add_child(inst)
+
+	_children[0].damage = DAMAGE
+
+	get_tree().create_timer(TIME).timeout.connect(func () -> void:
+		for child: StarChild in _children:
+			child.start_running()
+	)
+
+
+func _process(_delta: float) -> void:
+	queue_redraw()
+
+
+func _draw() -> void:
+	for i: int in 5:
+		var from := _child_at(i)
+		var to := _child_at(i+1)
+		if not is_instance_valid(from) or not is_instance_valid(to):
+			continue
+		draw_line(to_local(from.global_position), to_local(to.global_position), Color.LIME)
+
+
+func _child_clicked(idx: int) -> void:
+	if _click_n == 0:
+		_child_at(idx).mark_clicked()
+		_child_at(idx+1).mark_target()
+		_child_at(idx-1).mark_target()
+	elif _click_n == 1:
+		if idx != _wrap(_last_click + 1) and idx != _wrap(_last_click - 1):
+			_reset()
+			return
+		_direction = 1 if idx == _wrap(_last_click + 1) else -1
+		_child_at(_last_click - _direction).reset()
+		_child_at(idx).mark_clicked()
+		_child_at(idx + _direction).mark_target()
+	else:
+		if idx != _wrap(_last_click + _direction):
+			_reset()
+			return
+		_child_at(idx).mark_clicked()
+		_child_at(idx + _direction).mark_target()
+
+	_click_n += 1
+	_last_click = idx
+
+	if _click_n == 5:
+		for child: StarChild in _children:
+			child.die()
+
+		queue_free()
+
+
+
+func _reset() -> void:
+	_direction = 0
+	_last_click = -1
+	_click_n = 0
+
+	for c: StarChild in _children:
+		c.reset()
+
+
+func _wrap(idx: int) -> int:
+	return wrapi(idx, 0, _children.size())
+
+
+func _child_at(idx: int) -> StarChild:
+	return _children[_wrap(idx)]
