@@ -10,8 +10,14 @@ var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
 var _level_counter: int = -1 # first level is 0 not 1
 
+var _cursor_start: float
+var _cursor_end: float
+var _cursor_clicks: int
+var _cursor_clicks_left: int
+
 const GAME_OVER_SCENE: StringName = &"res://ui/menus/gameover_menu/gameover_menu.tscn"
 const GROUP_NAME: StringName = &"GameManager"
+const CURSOR_TIME: float = 0.5
 
 
 static func get_instance() -> GameManager:
@@ -28,6 +34,8 @@ func _ready() -> void:
 	Persistence.current_score = 0
 
 	randomize()
+
+	cursor_manager.clicked.connect(_on_click)
 
 	if spawn_policy == null:
 		push_error("[GameManager.ready]: no spawn policy")
@@ -122,11 +130,19 @@ func _execute_level_spec(spec: SpawnPolicy.Sample) -> void:
 	_event_queue.sort_custom(func (lhs: TimedEvent, rhs: TimedEvent) -> bool:
 		return lhs.t > rhs.t)
 
-	print(_event_queue)
+	_cursor_start = spec.cursor_start
+	_cursor_end = spec.cursor_end
+	_cursor_clicks = spec.cursor_clicks
+	_cursor_clicks_left = spec.cursor_clicks
 
-	var dur := 1 + maxf(spec.enemy_spawn_interval * spec.enemies.size(), spec.tide_spawn_interval * spec.tides.size())
-	dur *= spec.cursor_shrink_fract
-	create_tween().tween_method(cursor_manager.set_radius, spec.cursor_start, spec.cursor_end, dur)
+	cursor_manager.tween_radius(spec.cursor_start)
+
+
+func _on_click() -> void:
+	_cursor_clicks_left -= 1
+	_cursor_clicks = maxi(_cursor_clicks, 0)
+
+	cursor_manager.tween_radius(_clamp_remap(_cursor_clicks_left, _cursor_clicks, 0, _cursor_start, _cursor_end))
 
 
 func _on_game_over() -> void:

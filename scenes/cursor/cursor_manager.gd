@@ -2,6 +2,8 @@ class_name CursorManager
 extends Node2D
 
 
+signal clicked
+
 const DEFAULT_RADIUS: float = 64
 
 @export var cursor_texture: Resource
@@ -30,10 +32,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	_create_trace(pos)
 	_try_hit_enemies(pos)
 
+	clicked.emit()
+
 
 func set_radius(r: float) -> void:
 	radius = r
 	cursor_area.set_radius(r)
+
+
+func tween_radius(r: float) -> void:
+	create_tween().tween_method(set_radius, radius, r, 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 
 func _try_hit_enemies(pos: Vector2) -> void:
