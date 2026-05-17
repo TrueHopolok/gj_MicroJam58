@@ -7,4 +7,4 @@ extends Resource
 @export var length: float = 60.0
 @export var cursor_start: float = 64
 @export var cursor_end: float = 2.0
-@export var cursor_shrink_fract: float = 1.0
+@export var cursor_clicks: int = 100
