@@ -77,14 +77,259 @@ point_count = 4
 [sub_resource type="Resource" id="Resource_yx4yo"]
 script = ExtResource("8_ae27o")
 data = Dictionary[PackedScene, int]({
-ExtResource("9_ae27o"): 1
+ExtResource("2_505gr"): 5
 })
 metadata/_custom_type_script = "uid://nvfurqfji7ak"
 
 [sub_resource type="Resource" id="Resource_30l3i"]
 script = ExtResource("6_30l3i")
-tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_yx4yo")])
+enemies = SubResource("Resource_yx4yo")
+length = 15.0
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_vpnt8"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("2_505gr"): 10
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_mytwh"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_vpnt8")
+length = 15.0
+cursor_end = 30.0
+cursor_clicks = 10
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_djmfy"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("3_quk26"): 10,
+ExtResource("2_505gr"): 10
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_b2dib"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_djmfy")
+length = 20.0
+cursor_start = 60.0
+cursor_end = 30.0
+cursor_clicks = 10
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_r2yc2"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("3_quk26"): 10
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_hjtvt"]
+script = ExtResource("6_30l3i")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_r2yc2")])
+length = 1.0
+cursor_start = 30.0
+cursor_end = 30.0
+cursor_clicks = 1
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_mh1qf"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("2_505gr"): 8,
+ExtResource("3_quk26"): 3,
+ExtResource("4_ae27o"): 2
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_ag3vi"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("3_quk26"): 3,
+ExtResource("4_ae27o"): 3
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_lfixl"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_mh1qf")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_ag3vi")])
+length = 20.0
+cursor_start = 50.0
+cursor_end = 25.0
+cursor_clicks = 15
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_5qkmc"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("2_505gr"): 5,
+ExtResource("4_ae27o"): 2,
+ExtResource("6_505gr"): 2
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_vlkh0"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_5qkmc")
 length = 10.0
+cursor_start = 45.0
+cursor_end = 20.0
+cursor_clicks = 10
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_m2r27"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_mh1qf")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_ag3vi")])
+length = 25.0
+cursor_start = 50.0
+cursor_end = 25.0
+cursor_clicks = 15
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_iv2wl"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("2_505gr"): 10,
+ExtResource("3_quk26"): 10,
+ExtResource("4_ae27o"): 4
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_qinu3"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_iv2wl")
+length = 30.0
+cursor_start = 30.0
+cursor_end = 10.0
+cursor_clicks = 20
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_6fvpf"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("4_ae27o"): 3
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_parlf"]
+script = ExtResource("6_30l3i")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_6fvpf")])
+length = 1.0
+cursor_start = 20.0
+cursor_end = 20.0
+cursor_clicks = 5764
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_wdt5o"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("5_yx4yo"): 3
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_mijcc"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_wdt5o")
+length = 15.0
+cursor_start = 30.0
+cursor_end = 10.0
+cursor_clicks = 8
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_wauaa"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("2_505gr"): 30,
+ExtResource("6_505gr"): 2
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_i7j45"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("5_yx4yo"): 1,
+ExtResource("4_ae27o"): 2
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_tmvtr"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("5_yx4yo"): 2,
+ExtResource("3_quk26"): 3
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_cg1cp"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_wauaa")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_i7j45"), SubResource("Resource_tmvtr")])
+length = 30.0
+cursor_start = 30.0
+cursor_end = 10.0
+cursor_clicks = 20
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_tqnpe"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("9_ae27o"): 1
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_uyw2h"]
+script = ExtResource("6_30l3i")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_tqnpe")])
+length = 1.0
+cursor_start = 30.0
+cursor_clicks = 10
+metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
+
+[sub_resource type="Resource" id="Resource_jem2m"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("6_505gr"): 1,
+ExtResource("4_ae27o"): 6,
+ExtResource("3_quk26"): 25,
+ExtResource("2_505gr"): 30,
+ExtResource("5_yx4yo"): 3
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_o1ffv"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("3_quk26"): 15
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_nrn0n"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("4_ae27o"): 3,
+ExtResource("5_yx4yo"): 1
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_xlxeo"]
+script = ExtResource("8_ae27o")
+data = Dictionary[PackedScene, int]({
+ExtResource("9_ae27o"): 1,
+ExtResource("3_quk26"): 1
+})
+metadata/_custom_type_script = "uid://nvfurqfji7ak"
+
+[sub_resource type="Resource" id="Resource_buxtm"]
+script = ExtResource("6_30l3i")
+enemies = SubResource("Resource_jem2m")
+tides = Array[ExtResource("8_ae27o")]([SubResource("Resource_o1ffv"), SubResource("Resource_nrn0n"), SubResource("Resource_xlxeo")])
+cursor_start = 30.0
+cursor_end = 10.0
+cursor_clicks = 60
 metadata/_custom_type_script = "uid://dnl3b8rhvfev0"
 
 [sub_resource type="Curve" id="Curve_2oq4n"]
@@ -110,7 +355,7 @@ point_count = 2
 
 [resource]
 script = ExtResource("7_vpnt8")
-premade = Array[ExtResource("6_30l3i")]([SubResource("Resource_30l3i")])
+premade = Array[ExtResource("6_30l3i")]([SubResource("Resource_30l3i"), SubResource("Resource_mytwh"), SubResource("Resource_b2dib"), SubResource("Resource_hjtvt"), SubResource("Resource_lfixl"), SubResource("Resource_vlkh0"), SubResource("Resource_m2r27"), SubResource("Resource_qinu3"), SubResource("Resource_parlf"), SubResource("Resource_mijcc"), SubResource("Resource_cg1cp"), SubResource("Resource_uyw2h"), SubResource("Resource_buxtm")])
 enemy_policy = Array[ExtResource("1_3uyci")]([SubResource("Resource_6gkjt"), SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s"), SubResource("Resource_quk26")])
 tide_enemy_policy = Array[ExtResource("1_3uyci")]([SubResource("Resource_lmrlb"), SubResource("Resource_nks25"), SubResource("Resource_kub5s"), SubResource("Resource_ae27o")])
 balance = SubResource("Curve_qq5q4")

@@ -2,6 +2,7 @@ class_name GameManager
 extends Node
 
 
+@export var start_at_level: int = 1
 @export var spawn_policy: SpawnPolicy
 @export var cursor_manager: CursorManager
 @export var castle: Castle
@@ -29,6 +30,7 @@ static func get_instance() -> GameManager:
 
 
 func _ready() -> void:
+	_level_counter = start_at_level - 1
 	add_to_group(GROUP_NAME)
 
 	Persistence.current_score = 0

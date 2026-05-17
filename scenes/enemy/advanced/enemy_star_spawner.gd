@@ -112,3 +112,7 @@ func _wrap(idx: int) -> int:
 
 func _child_at(idx: int) -> StarChild:
 	return _children[_wrap(idx)]
+
+
+func get_enemy_amount() -> int:
+	return 5

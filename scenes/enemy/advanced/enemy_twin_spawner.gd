@@ -11,8 +11,12 @@ func _ready() -> void:
 	var inst_2: EnemyTwin = _twin_2.instantiate()
 	inst_1.twin = inst_2
 	inst_2.twin = inst_1
-	EnemyMother.get_instance().single_spawn(inst_1)
-	EnemyMother.get_instance().single_spawn(inst_2)
+
+	var dist := global_position.length()
+
+	EnemyMother.get_instance().single_spawn(inst_1, Vector2.from_angle(randf_range(0, TAU)) * dist)
+	EnemyMother.get_instance().single_spawn(inst_2, Vector2.from_angle(randf_range(0, TAU)) * dist)
+
 	queue_free()
 
 
