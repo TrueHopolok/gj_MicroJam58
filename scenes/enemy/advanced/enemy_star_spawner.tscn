@@ -3,4 +3,6 @@
 [ext_resource type="Script" uid="uid://0uculhfxiwqy" path="res://scenes/enemy/advanced/enemy_star_spawner.gd" id="1_t4kiy"]
 
 [node name="EnemyStar" type="Node2D" unique_id=1077371724]
+z_index = -11
+z_as_relative = false
 script = ExtResource("1_t4kiy")
