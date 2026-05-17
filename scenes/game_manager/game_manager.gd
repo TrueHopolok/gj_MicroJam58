@@ -8,6 +8,7 @@ extends Node
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
+var _queued_enemies: int = 0
 var _level_counter: int = -1 # first level is 0 not 1
 
 const MAX_BIG_SPAWNS: int = 5
@@ -23,10 +24,10 @@ const GAME_OVER_SCENE: StringName = &"res://ui/menus/gameover_menu/gameover_menu
 const GROUP_NAME: StringName = &"GameManager"
 
 
-static func find() -> GameManager:
+static func get_instance() -> GameManager:
 	var node := (Engine.get_main_loop() as SceneTree).get_first_node_in_group(GROUP_NAME) as GameManager
 	if not is_instance_valid(node):
-		push_error("GameManager.find(): no game manager instance found")
+		push_error("GameManager.get_instance(): no game manager instance found")
 		return null
 	return node
 

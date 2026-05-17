@@ -18,6 +18,7 @@ const TARGET := Vector2.ZERO
 func _ready() -> void:
 	_sprite.play()
 	speed = maxf(speed * 1.0, randfn(speed, speed * 0.25))
+	GameManager.get_instance().register_enemy(self)
 
 
 func _physics_process(_delta: float) -> void:
@@ -38,10 +39,6 @@ func target_reached() -> int:
 	queue_free()
 	died.emit(0)
 	return damage
-
-
-func connect_death_signal(f: Callable) -> void:
-	died.connect(f)
 
 
 func take_damage() -> void:
