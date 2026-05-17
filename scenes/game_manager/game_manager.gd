@@ -8,7 +8,7 @@ extends Node
 
 var _event_queue: Array[TimedEvent] = []
 var _active_enemies: int = 0
-var _level_counter: int = -1 # first level is 0 not 1
+var _level_counter: int = 3 # first level is 0 not 1
 
 var _cursor_start: float
 var _cursor_end: float
