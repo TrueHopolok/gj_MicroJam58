@@ -40,12 +40,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nbots"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_450s3"]
+radius = 24.0
+
 [node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
+z_index = -11
 script = ExtResource("2_2lov3")
 _stun_duration = 3.0
-speed = 30.0
+speed = 15.0
 score = 3
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=969379060]
 sprite_frames = SubResource("SpriteFrames_h3rik")
 frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1123139418]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_nbots")
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(796946081) index="0" unique_id=589498623]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_450s3")
