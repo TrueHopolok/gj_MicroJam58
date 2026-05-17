@@ -53,11 +53,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nbots"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_450s3"]
+radius = 17.0
+height = 72.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_450s3"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_de8iu"]
+radius = 17.0
+height = 72.0
 
 [node name="EnemyTwin" unique_id=344490489 instance=ExtResource("1_x7ufm")]
 z_index = -11
@@ -72,8 +74,8 @@ frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=1123139418]
 rotation = 1.5707964
-shape = SubResource("CircleShape2D_nbots")
+shape = SubResource("CapsuleShape2D_450s3")
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(796946081) index="0" unique_id=589498623]
 rotation = 1.5707964
-shape = SubResource("CircleShape2D_450s3")
+shape = SubResource("CapsuleShape2D_de8iu")

@@ -6,11 +6,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dxwa"]
 atlas = ExtResource("3_0dxwa")
-region = Rect2(40, 0, 40, 39)
+region = Rect2(0, 0, 39, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otntl"]
 atlas = ExtResource("3_0dxwa")
-region = Rect2(0, 0, 40, 39)
+region = Rect2(39, 0, 39, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_akkdt"]
 animations = [{
